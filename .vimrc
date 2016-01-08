@@ -18,5 +18,12 @@ if &term =~ '256color'
   set t_ut=
 endif
 
+" --------------------
+" Pathogen shizzle
+" --------------------
+execute pathogen#infect()
 
-
+" --------------------
+" LaTex Pathogen shizzle
+" --------------------
+let g:tex_flavor='latex'

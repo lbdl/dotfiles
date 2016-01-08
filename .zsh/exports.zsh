@@ -1,7 +1,7 @@
 # NOTE we clear the PATH var in .zshenv
 #
 #export PATH=$PATH~/bin:/usr/local/bin:/usr/local/sbin:~/bin
-
+export PATH=/usr/local/texlive/2015/bin/x86_64-darwin:$PATH
 # Set default console Java to 1.6
 #export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Versions/1.6/Home
 
