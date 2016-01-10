@@ -1,15 +1,32 @@
+
+" --------------------
+" Pathogen shizzle
+" --------------------
+execute pathogen#infect()
+filetype plugin indent on
+
 set wrap
-syntax on
+syntax enable
 set t_Co=256
 set number
-filetype indent on
-filetype plugin on
+
+" ----------------------------------------
+" Colorscheme setting  
+" We are using solarized which needs to have
+" the solarozed theme installed as we also use
+" iTerm2 so it needs to be imported and then
+" set on the default (or given) profile.
+" Its held locally (on coot03) but can be
+" obtained from http://ethanschoonover.com/solarized
+" which details ALL THE THINGS
+" ----------------------------------------
+set background=dark
+colorscheme solarized
 
 set showmode
 set laststatus=2
 set statusline=%<%F\ %h%m%r%=%-14.(%l,%c%V%)\ %P
 set clipboard=unnamed
-colorscheme darcula
 
 set backspace=indent,eol,start
 
@@ -19,11 +36,9 @@ if &term =~ '256color'
 endif
 
 " --------------------
-" Pathogen shizzle
-" --------------------
-execute pathogen#infect()
-
-" --------------------
-" LaTex Pathogen shizzle
+" LaTex shizzle
 " --------------------
 let g:tex_flavor='latex'
+
+
+
