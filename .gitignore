@@ -8,4 +8,5 @@
 !.vimrc
 !.zshrc
 !.gitignore
+!.dotfiles/
 # ...even if they are in subdirectories
