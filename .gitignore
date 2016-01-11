@@ -1,5 +1,6 @@
 # ignore everything
 /*
+.DS_Store
 # But not these files...
 # Which are the config we care about
 !.zsh/
