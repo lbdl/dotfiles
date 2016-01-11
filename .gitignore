@@ -9,4 +9,5 @@
 !.zshrc
 !.gitignore
 !.dotfiles/
+!.tmux.conf
 # ...even if they are in subdirectories
