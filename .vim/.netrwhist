@@ -1,0 +1,9 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =7
+let g:netrw_dirhist_1='/private/etc/paths.d'
+let g:netrw_dirhist_2='/Volumes/OSX-AVR-JAN06-X86/OSX-AVR-JAN07.mpkg'
+let g:netrw_dirhist_3='/Users/timS'
+let g:netrw_dirhist_4='/Users'
+let g:netrw_dirhist_5='/Users/timS/DATA/tnet/tnet/src/library/layer-10/contain/array/string'
+let g:netrw_dirhist_6='/Users/timS'
+let g:netrw_dirhist_7='/Users'
