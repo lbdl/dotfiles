@@ -1,4 +1,3 @@
-
 " --------------------
 " Pathogen shizzle
 " --------------------
@@ -6,15 +5,15 @@ execute pathogen#infect()
 filetype plugin indent on
 
 set number
-"move to a sensible work dir
-"cd ~/DATA/score
-"
-"set a common swap file location
+
+" --------------------
+" Set a location for swap files
+" --------------------
 set dir=~/DATA/swap
+
 set wrap
 syntax enable
 set t_Co=256
-set number
 
 " ----------------------------------------
 " Colorscheme setting  
@@ -26,8 +25,11 @@ set number
 " obtained from http://ethanschoonover.com/solarized
 " which details ALL THE THINGS
 " ----------------------------------------
-set background=dark
+if !has("gui_running")
+    let g:solarized_termtrans=1
+endif
 colorscheme solarized
+set background=dark
 
 set showmode
 set laststatus=2
@@ -77,6 +79,4 @@ autocmd BufEnter ?akefile* set noet ts=4 sw=4
 " LaTex shizzle
 " --------------------
 let g:tex_flavor='latex'
-
-
 
