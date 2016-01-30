@@ -42,8 +42,8 @@ let g:tex_flavor='latex'
 " --------------------
 " Backup and Swaps
 " --------------------
-set directory=$HOME/.vimbk//
-set backupdir=$HOME/.vimbk//
+set directory=$HOME/.vimbk
+set backupdir=$HOME/.vimbk
 "
 " --------------------
 " Tab stops spaces etc
