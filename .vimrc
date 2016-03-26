@@ -34,20 +34,21 @@ if &term =~ '256color'
   set t_ut=
 endif
 
-" --------------------
+" ----------------------------------------
 " LaTex shizzle
-" --------------------
+" ----------------------------------------
 let g:tex_flavor='latex'
 
-" --------------------
+" ----------------------------------------
 " Backup and Swaps
-" --------------------
+" These need to be made if they dont exist.
+" ----------------------------------------
 set directory=$HOME/.vimbk
 set backupdir=$HOME/.vimbk
 "
-" --------------------
+" ----------------------------------------
 " Tab stops spaces etc
-" --------------------
+" ----------------------------------------
 set expandtab
 set tabstop=2 shiftwidth=2 softtabstop=2
 set autoindent
