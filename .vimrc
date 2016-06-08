@@ -1,4 +1,3 @@
-
 " --------------------
 " Pathogen shizzle
 " --------------------
@@ -39,6 +38,26 @@ endif
 " LaTex shizzle
 " --------------------
 let g:tex_flavor='latex'
-
-
+let g:tex_nine_config = {
+            \'compiler': 'xelatex',
+            \'viewer': {'app':'open -a skim', 'target':'pdf'},
+            \'shell_escape': 1,
+    \}
+" --------------------
+" Backup and Swaps
+" --------------------
+set directory=$HOME/.vimbk//
+set backupdir=$HOME/.vimbk//
+"
+" --------------------
+" Tab stops spaces etc
+" --------------------
+set expandtab
+set tabstop=2 shiftwidth=2 softtabstop=2
+set autoindent
+"
+" --------------------
+" Instant Markdown
+" --------------------
+set shell=bash\ -i
 

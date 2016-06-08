@@ -13,3 +13,7 @@ source ~/.zsh/functions.zsh
 source ~/.zsh/history.zsh
 source ~/.zsh/zsh_hooks.zsh
 source  ${HOME}/.dotfiles/z/z.sh
+
+# nasty hackery really but i need a quick win!
+#path+=/usr/local/texlive/2015basic/bin/X86_64-darwin
+
