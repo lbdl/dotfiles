@@ -1,0 +1,3 @@
+[submodule ".vim/bundle/TeX-9"]
+	path = .vim/bundle/TeX-9
+	url = https://github.com/vim-scripts/TeX-9.git
