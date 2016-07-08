@@ -8,6 +8,7 @@ set wrap
 syntax enable
 set t_Co=256
 set number
+set t_vb=  "no error bells visual nor audio
 
 " ----------------------------------------
 " Colorscheme setting  
@@ -36,8 +37,16 @@ endif
 
 " ----------------------------------------
 " LaTex shizzle
+" Tex9 configuration for LaTex
+" We are using XeTex as the compiler and
+" Skim as the .pdf viewer
 " ----------------------------------------
 let g:tex_flavor='latex'
+let g:tex_nine_config = {
+      \'compiler': 'xelatex',
+      \'shell_escape': 1,
+      \'viewer': {'app': 'open -a Skim', 'target': 'pdf'}, 
+      \}
 
 " ----------------------------------------
 " Backup and Swaps
