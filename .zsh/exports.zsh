@@ -1,7 +1,6 @@
-# NOTE we clear the PATH var in .zshenv
 #
-#export PATH=$PATH~/bin:/usr/local/bin:/usr/local/sbin:~/bin
-# Set default console Java to 1.6
+#
+export PATH="$HOME/.rbenv/bin:$PATH"
 #export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Versions/1.6/Home
 
 # Setup terminal, and turn on colors
