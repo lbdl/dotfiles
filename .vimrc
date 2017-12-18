@@ -8,7 +8,7 @@ set wrap
 syntax enable
 set t_Co=256
 set number
-set t_vb=  "no error bells visual nor audio
+set vb  "no error bells visual nor audio
 
 " ----------------------------------------
 " Colorscheme setting  
@@ -58,6 +58,21 @@ set backupdir=$HOME/.vimbk
 " ----------------------------------------
 " Tab stops spaces etc
 " ----------------------------------------
+au BufNewFile,BufRead *.py
+    \set tabstop=4
+    \set softtabstop=4
+    \set shiftwidth=4
+    \set textwidth=79
+    \set expandtab
+    \set autoindent
+    \set fileformat=unix
+    \let python_highlight_all=1
+
+au BufNewFile,BufRead *.js, *.html, *.css
+    \set tabstop=2
+    \set softtabstop=2
+    \set shiftwidth=2
+
 set expandtab
 set tabstop=2 shiftwidth=2 softtabstop=2
 set autoindent

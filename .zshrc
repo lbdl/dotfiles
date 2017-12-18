@@ -13,3 +13,4 @@ source ~/.zsh/functions.zsh
 source ~/.zsh/history.zsh
 source ~/.zsh/zsh_hooks.zsh
 source  ${HOME}/.dotfiles/z/z.sh
+eval "$(rbenv init -)"
