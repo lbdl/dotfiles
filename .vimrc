@@ -58,7 +58,6 @@ set backupdir=$HOME/.vimbk
 " ----------------------------------------
 " Tab stops spaces etc
 " ----------------------------------------
-=======
 au BufNewFile,BufRead *.py
     \set tabstop=4
     \set softtabstop=4
@@ -74,7 +73,6 @@ au BufNewFile,BufRead *.js, *.html, *.css
     \set softtabstop=2
     \set shiftwidth=2
 
->>>>>>> remotes/origin/HEAD
 set expandtab
 set tabstop=2 shiftwidth=2 softtabstop=2
 set autoindent
