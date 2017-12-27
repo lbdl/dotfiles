@@ -10,3 +10,6 @@
 [submodule "z"]
 	path = z
 	url = https://github.com/rupa/z.git
+[submodule ".vim/bundle/elixir"]
+	path = .vim/bundle/elixir
+	url = https://github.com/elixir-editors/vim-elixir.git

@@ -1,0 +1,27 @@
+call plug#begin('./.config/nvim/plugged')
+
+Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
+
+call plug#end()
+
+set wrap
+syntax enable
+set number
+set vb  "no error bells visual nor audio
+
+
+set background=dark
+colorscheme solarized
+
+set showmode
+set laststatus=2
+set statusline=%<%F\ %h%m%r%=%-14.(%l,%c%V%)\ %P
+set clipboard=unnamed
+
+set backspace=indent,eol,start
+
+if &term =~ '256color'
+  " disable Background Color Erase (BCE)
+  set t_ut=
+endif
+
