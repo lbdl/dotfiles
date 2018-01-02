@@ -1,18 +1,82 @@
+"==========================================================
+"Loading .vimrc
+" currently we just redo as we cant be arsed to fiddle
+" and its probably easier to just re edit anyway
+"==========================================================
+
+"set runtimepath^=~/.vim runtimepath+=~/.vim/after
+"    let &packpath = &runtimepath
+"    source ~/.vimrc
+
+"==========================================================
+" Plugins
+"==========================================================
+
 call plug#begin('./.config/nvim/plugged')
+
+Plug 'morhetz/gruvbox'
 
 Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
 
+Plug 'altercation/vim-colors-solarized'
+
+Plug 'ludovicchabant/vim-gutentags'
+  let g:gutentags_cache_dir = '~/.tags_cache' 
+
+" Execute code checks, find mistakes, in the background
+Plug 'neomake/neomake'
+  " Run Neomake when I save any buffer
+  augroup localneomake
+    autocmd! BufWritePost * Neomake
+  augroup END
+  " Don't tell me to use smartquotes in markdown ok?
+  let g:neomake_markdown_enabled_makers = []
+
+Plug 'c-brenn/phoenix.vim'
+
+Plug 'tpope/vim-projectionist'
+
+Plug 'slashmili/alchemist.vim'
+	let g:alchemist_tag_disable = 1
+
 call plug#end()
 
+" ----------------------------------------
+" Colors etc
+" ----------------------------------------
+set background=dark
+syntax on
 set wrap
-syntax enable
+set t_Co=256
+colorscheme gruvbox
+
+" ----------------------------------------
+" Numbers etc
+" ----------------------------------------
 set number
+
+" ----------------------------------------
+" Error bells etc
+" ----------------------------------------
 set vb  "no error bells visual nor audio
 
+" ----------------------------------------
+" Swap files etc
+" ----------------------------------------
+set noswapfile
+" Don't make a backup before overwriting a file.
+set nobackup
+" And again.
+set nowritebackup
 
-set background=dark
-colorscheme solarized
+" ----------------------------------------
+" Map leaders etc
+" ----------------------------------------
+let mapleader = ","
 
+" ----------------------------------------
+" Status line stuff etc
+" ----------------------------------------
 set showmode
 set laststatus=2
 set statusline=%<%F\ %h%m%r%=%-14.(%l,%c%V%)\ %P
@@ -20,8 +84,46 @@ set clipboard=unnamed
 
 set backspace=indent,eol,start
 
-if &term =~ '256color'
-  " disable Background Color Erase (BCE)
-  set t_ut=
-endif
+" ----------------------------------------
+" Backup and Swaps
+" These need to be made if they dont exist.
+" ----------------------------------------
+set directory=$HOME/.vimbk
+set backupdir=$HOME/.vimbk
 
+" ----------------------------------------
+" Tab stops spaces etc
+" ----------------------------------------
+augroup PY
+au BufNewFile,BufRead *.py
+    \set tabstop=4
+    \set softtabstop=4
+    \set shiftwidth=4
+    \set textwidth=79
+    \set expandtab
+    \set autoindent
+    \set fileformat=unix
+    \let python_highlight_all=1
+augroup END
+
+augroup WEB
+au BufNewFile,BufRead *.js, *.html, *.css
+    \set tabstop=2
+    \set softtabstop=2
+    \set shiftwidth=2
+augroup END
+
+set expandtab
+set tabstop=2 shiftwidth=2 softtabstop=2
+set autoindent
+
+" Highlight search results
+set hlsearch
+" Incremental search, search as you type
+set incsearch
+" Ignore case when searching
+set ignorecase
+" Ignore case when searching lowercase
+set smartcase
+" Stop highlighting on Enter
+map <CR> :noh<CR>

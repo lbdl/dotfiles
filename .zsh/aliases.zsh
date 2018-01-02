@@ -61,6 +61,9 @@ if [[ $IS_MAC -eq 1 ]]; then
     alias rebuildopenwith='/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.fram ework/Support/lsregister -kill -r -domain local -domain system -domain user'
 fi
 
+if (( $+commands[brew] )) ; then
+    alias ctags="`brew --prefix`/bin/ctags"
+fi
 # -------------------------------------------------------------------
 # remote machines
 # -------------------------------------------------------------------
