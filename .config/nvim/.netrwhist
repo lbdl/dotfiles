@@ -1,3 +1,7 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =1
+let g:netrw_dirhist_cnt =5
 let g:netrw_dirhist_1='/Users/tims/DATA/dotfiles/.zsh'
+let g:netrw_dirhist_2='/Users/tims/DATA/elixir/hangman_game/procs'
+let g:netrw_dirhist_3='/Users/tims/DATA/WEB/_languages/theme_dev/config'
+let g:netrw_dirhist_4='/Users/tims/DATA/elixir/e4p-code/game/text_client/lib/text_client'
+let g:netrw_dirhist_5='/Users/tims/DATA/elixir/e4p-code/game/hangman/lib/hangman'

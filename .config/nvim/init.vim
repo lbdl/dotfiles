@@ -48,7 +48,7 @@ Plug 'neomake/neomake'
   let g:neomake_elixir_enabled_makers = ['mix', 'credo']
   
 
-  Plug 'slashmili/alchemist.vim'
+Plug 'slashmili/alchemist.vim'
 
 call plug#end()
 " ----------------------------------------
@@ -93,13 +93,13 @@ set nowritebackup
 " Map leaders etc
 " loaded from .vimrc
 " ----------------------------------------
-let mapleader = ","
+let mapleader = ";"
 
 " ----------------------------------------
 " Tags
 " loaded from .vimrc
 " ----------------------------------------
-set tags=./tags/tags;$HOME
+set tags=./tags
 
 " ----------------------------------------
 "  Mouse etc
@@ -120,23 +120,28 @@ set backspace=indent,eol,start
 " Tab stops spaces etc
 " loaded from .vimrc
 " ----------------------------------------
-au BufNewFile,BufRead *.py
-    \set tabstop=4
-    \set softtabstop=4
-    \set shiftwidth=4
-    \set textwidth=79
-    \set expandtab
-    \set autoindent
-    \set fileformat=unix
-    \let python_highlight_all=1
-
-au BufNewFile,BufRead *.js, *.html, *.css
-    \set tabstop=2
-    \set softtabstop=2
-    \set shiftwidth=2
-
-set expandtab
-set tabstop=2 shiftwidth=2 softtabstop=2
+"au BufNewFile,BufRead *.py
+"    \set tabstop=4
+"    \set softtabstop=4
+"    \set shiftwidth=4
+"    \set textwidth=79
+"    \set expandtab
+"    \set autoindent
+"    \set fileformat=unix
+"    \let python_highlight_all=1
+"
+"au BufNewFile,BufRead *.js, *.html, *.css
+"    \set tabstop=2
+"    \set softtabstop=2
+"    \set shiftwidth=2
+"
+"au FileType elixir
+"    \setlocal tabstop=4
+    
+set tabstop=4                 
+set expandtab   "soft tabs
+set shiftwidth=4
+set softtabstop=-1
 set autoindent
 
 " ----------------------------------------
@@ -167,3 +172,7 @@ map <CR> :noh<CR>
 " Buffers etc
 " ----------------------------------------
 nnoremap <F5> :buffers<CR>:buffer<Space>
+" ----------------------------------------
+" Working directories etc
+" ----------------------------------------
+"set autochdir
