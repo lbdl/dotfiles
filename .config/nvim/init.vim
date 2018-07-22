@@ -176,3 +176,9 @@ nnoremap <F5> :buffers<CR>:buffer<Space>
 " Working directories etc
 " ----------------------------------------
 "set autochdir
+"
+"
+" ----------------------------------------
+" Working directories PYENV etc
+" ----------------------------------------
+let g:python3_host_prog = '/Users/tims/.pyenv/versions/neovim3/bin/python'
