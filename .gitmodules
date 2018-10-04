@@ -4,3 +4,12 @@
 [submodule ".vim/bundle/vim-latex"]
 	path = .vim/bundle/vim-latex
 	url = https://github.com/vim-latex/vim-latex.git
+[submodule ".vim/bundle/TeX-9"]
+	path = .vim/bundle/TeX-9
+	url = https://github.com/vim-scripts/TeX-9.git
+[submodule "z"]
+	path = z
+	url = https://github.com/rupa/z.git
+[submodule ".vim/bundle/elixir"]
+	path = .vim/bundle/elixir
+	url = https://github.com/elixir-editors/vim-elixir.git

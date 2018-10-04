@@ -12,4 +12,10 @@ source ~/.zsh/bindkeys.zsh
 source ~/.zsh/functions.zsh
 source ~/.zsh/history.zsh
 source ~/.zsh/zsh_hooks.zsh
-source  ${HOME}/.dotfiles/z/z.sh
+#source  ${HOME}/.dotfiles/z/z.sh
+eval "$(pyenv init -)"
+#note we need the below as if we use the installation instructions
+#eval blah blah then we get the wrong path and shims cannot be found
+#same is true for rbenv the pyenv shim must be at the front of the PATH
+#variable
+pyenv virtualenvwrapper_lazy
