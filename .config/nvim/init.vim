@@ -17,12 +17,19 @@ Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
   let g:deoplete#enable_at_startup = 1
   inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
+Plug 'deoplete-plugins/deoplete-jedi'
+
+Plug 'deoplete-plugins/deoplete-go', {'do': 'make'}
+    let g:deoplete#sources#go#gocode_binary = '$GOPATH/bin/gocode'
+    let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
+
 Plug 'sheerun/vim-polyglot'
 
 Plug 'vim-scripts/TeX-9'
 
 " Elixir
 Plug 'elixir-lang/vim-elixir'
+
 Plug 'slashmili/alchemist.vim'
 
 " Phoenix
@@ -49,6 +56,14 @@ Plug 'neomake/neomake'
   
 
 Plug 'slashmili/alchemist.vim'
+
+Plug 'iamcco/markdown-preview.nvim', {'do': { -> mkdp#util#install() } }
+let g:mkdp_auto_start = 1
+let g:mkdp_refresh_slow = 0
+
+Plug 'weirongxu/plantuml-previewer.vim'
+
+Plug 'tyru/open-browser.vim'
 
 call plug#end()
 " ----------------------------------------
@@ -99,7 +114,7 @@ let mapleader = ";"
 " Tags
 " loaded from .vimrc
 " ----------------------------------------
-set tags=./tags
+set tags=tags;
 
 " ----------------------------------------
 "  Mouse etc
@@ -181,4 +196,6 @@ nnoremap <F5> :buffers<CR>:buffer<Space>
 " ----------------------------------------
 " Working directories PYENV etc
 " ----------------------------------------
-let g:python3_host_prog = '/Users/tims/.pyenv/versions/neovim3/bin/python'
+let g:python_host_prog='/Users/timS/.pyenv/versions/neovim2/bin/python'
+let g:python3_host_prog = '/Users/timS/.pyenv/versions/neovim3/bin/python'
+"/Users/timS/.pyenv/versions/neovim3/bin/python
