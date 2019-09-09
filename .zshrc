@@ -18,4 +18,4 @@ eval "$(pyenv init -)"
 #eval blah blah then we get the wrong path and shims cannot be found
 #same is true for rbenv the pyenv shim must be at the front of the PATH
 #variable
-pyenv virtualenvwrapper_lazy
+#pyenv virtualenvwrapper_lazy

@@ -25,6 +25,8 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 alias bk='cd $OLDPWD'
+alias pu='pushd'
+alias po='popd'
 
 # -------------------------------------------------------------------
 # directory information

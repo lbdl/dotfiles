@@ -1,8 +1,10 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_cnt =8
 let g:netrw_dirhist_1='/Users/tims/DATA/dotfiles/.zsh'
 let g:netrw_dirhist_2='/Users/tims/DATA/elixir/hangman_game/procs'
 let g:netrw_dirhist_3='/Users/tims/DATA/WEB/_languages/theme_dev/config'
 let g:netrw_dirhist_4='/Users/tims/DATA/elixir/e4p-code/game/text_client/lib/text_client'
 let g:netrw_dirhist_5='/Users/tims/DATA/elixir/e4p-code/game/hangman/lib/hangman'
 let g:netrw_dirhist_6='/Users/tims/.zsh'
+let g:netrw_dirhist_7='/Users/tims/DATA/quantum/src/vend/ti/tulipindicators/indicators'
+let g:netrw_dirhist_8='/Users/tims/.zsh'
