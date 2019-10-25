@@ -12,6 +12,7 @@
 call plug#begin('~/.config/nvim/plugged')
 
 Plug 'morhetz/gruvbox'
+Plug 'doums/darcula'
 
 Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
   let g:deoplete#enable_at_startup = 1
@@ -23,21 +24,18 @@ Plug 'deoplete-plugins/deoplete-go', {'do': 'make'}
     let g:deoplete#sources#go#gocode_binary = '$GOPATH/bin/gocode'
     let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
 
+Plug 'fatih/vim-go', {'do': ':GoUpdateBinaries'}
+
 Plug 'sheerun/vim-polyglot'
 
 Plug 'vim-scripts/TeX-9'
 
-" Elixir
-Plug 'elixir-lang/vim-elixir'
-
-Plug 'slashmili/alchemist.vim'
-
-" Phoenix
-Plug 'c-brenn/phoenix.vim'
-Plug 'tpope/vim-projectionist' " required for some navigation features
-
-Plug 'ludovicchabant/vim-gutentags'
+Plug 'blueyed/vim-gutentags'
   let g:gutentags_cache_dir = '~/.tags_cache' 
+
+Plug 'tpope/vim-commentary'
+
+Plug 'qpkorr/vim-bufkill'
 
 " Buffer management
 Plug 'zefei/vim-wintabs'
@@ -114,8 +112,8 @@ let mapleader = ";"
 " Tags
 " loaded from .vimrc
 " ----------------------------------------
-set tags=tags;
-
+"set tags=tags;
+set statusline+=%{gutentags#statusline()}
 " ----------------------------------------
 "  Mouse etc
 " ----------------------------------------
@@ -152,7 +150,8 @@ set backspace=indent,eol,start
 "
 "au FileType elixir
 "    \setlocal tabstop=4
-    
+autocmd FileType tmux colorscheme darcula
+
 set tabstop=4                 
 set expandtab   "soft tabs
 set shiftwidth=4
