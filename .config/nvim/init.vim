@@ -34,6 +34,7 @@ Plug 'blueyed/vim-gutentags'
   let g:gutentags_cache_dir = '~/.tags_cache' 
 
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
 
 Plug 'qpkorr/vim-bufkill'
 
@@ -150,7 +151,8 @@ set backspace=indent,eol,start
 "
 "au FileType elixir
 "    \setlocal tabstop=4
-autocmd FileType tmux colorscheme darcula
+au BufNewFile,BufRead,BufEnter .tmux* colorscheme darcula
+au BufLeave colorscheme gruvbox
 
 set tabstop=4                 
 set expandtab   "soft tabs
