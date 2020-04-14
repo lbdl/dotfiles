@@ -11,11 +11,16 @@
 "==========================================================
 call plug#begin('~/.config/nvim/plugged')
 
+" Colorscheme
 Plug 'morhetz/gruvbox'
 
 Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
   let g:deoplete#enable_at_startup = 1
+  let g:deoplete#sources#go#gocode_binary = '~/go/bin/gocode'
   inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+
+" GOLANG dev
+Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
 
 Plug 'deoplete-plugins/deoplete-jedi'
 
@@ -38,19 +43,26 @@ Plug 'ludovicchabant/vim-gutentags'
 Plug 'zefei/vim-wintabs'
 
 " Execute code checks, find mistakes, in the background
-Plug 'neomake/neomake'
-  " Run Neomake when I save any buffer
-  augroup localneomake
-    autocmd! BufWritePost * 
-          \Neomake
-  augroup END
-  " Don't tell me to use smartquotes in markdown ok?
-  let g:neomake_markdown_enabled_makers = []
-  " Configure a nice credo setup, courtesy https://github.com/neomake/neomake/pull/300
-  let g:neomake_elixir_enabled_makers = ['mix', 'credo']
-  
+"Plug 'neomake/neomake'
+  "" Run Neomake when I save any buffer
+  "augroup localneomake
+    "autocmd! BufWritePost * 
+          "\Neomake
+  "augroup END
+  "" Don't tell me to use smartquotes in markdown ok?
+  "let g:neomake_markdown_enabled_makers = []
+  "" Configure a nice credo setup, courtesy https://github.com/neomake/neomake/pull/300
+"  let g:neomake_elixir_enabled_makers = ['mix', 'credo']
+
+" Linter
+Plug 'dense-analysis/ale'
+
+" GOLANG debugging
+Plug 'sebdah/vim-delve'
 
 Plug 'slashmili/alchemist.vim'
+
+Plug 'scrooloose/nerdcommenter'
 
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 " set to 1, nvim will open the preview window after entering the markdown buffer
@@ -65,6 +77,11 @@ let g:mkdp_refresh_slow = 0
 Plug 'weirongxu/plantuml-previewer.vim'
 
 Plug 'tyru/open-browser.vim'
+
+Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
+
+" GOLANG package func searching
+Plug 'ctrlpvim/ctrlp.vim'
 
 call plug#end()
 " ----------------------------------------
@@ -115,7 +132,7 @@ let mapleader = ";"
 " Tags
 " loaded from .vimrc
 " ----------------------------------------
-set tags=tags;
+set tags=./tags;
 set statusline+=%{gutentags#statusline()}
 " ----------------------------------------
 "  Mouse etc
@@ -205,3 +222,19 @@ augroup filetype_tex
     autocmd FileType tex set spell spelllang=en_gb
 augroup END
 
+
+" ----------------------------------------
+" GOLANG configs
+" ----------------------------------------
+au FileType go set noexpandtab
+au FileType go set shiftwidth=4
+au FileType go set softtabstop=4
+au FileType go set tabstop=4
+let g:go_highlight_build_constraints = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_types = 1
