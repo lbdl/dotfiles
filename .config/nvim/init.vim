@@ -14,33 +14,21 @@ call plug#begin('~/.config/nvim/plugged')
 " Colorscheme
 Plug 'morhetz/gruvbox'
 
-Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
-  let g:deoplete#enable_at_startup = 1
-  let g:deoplete#sources#go#gocode_binary = '~/go/bin/gocode'
-  inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+" Deoplete completions
 
-" GOLANG dev
-Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
+" Deoplete bindings for python
 Plug 'deoplete-plugins/deoplete-jedi'
 
-Plug 'sheerun/vim-polyglot'
-
-Plug 'vim-scripts/TeX-9'
-
-" Elixir
-Plug 'elixir-lang/vim-elixir'
-Plug 'slashmili/alchemist.vim'
-
 " Phoenix
-Plug 'c-brenn/phoenix.vim'
-Plug 'tpope/vim-projectionist' " required for some navigation features
+"Plug 'c-brenn/phoenix.vim'
+"Plug 'tpope/vim-projectionist' " required for some navigation features
 
-Plug 'ludovicchabant/vim-gutentags'
-  let g:gutentags_cache_dir = '~/.tags_cache' 
+"Plug 'ludovicchabant/vim-gutentags'
+"  let g:gutentags_cache_dir = '~/.tags_cache' 
 
 " Buffer management
-Plug 'zefei/vim-wintabs'
 
 " Execute code checks, find mistakes, in the background
 "Plug 'neomake/neomake'
@@ -55,35 +43,39 @@ Plug 'zefei/vim-wintabs'
 "  let g:neomake_elixir_enabled_makers = ['mix', 'credo']
 
 " Linter
-Plug 'dense-analysis/ale'
 
 " GOLANG debugging
-Plug 'sebdah/vim-delve'
-
-Plug 'slashmili/alchemist.vim'
-
-Plug 'scrooloose/nerdcommenter'
-
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 " set to 1, nvim will open the preview window after entering the markdown buffer
 " default: 0
-let g:mkdp_auto_start = 1
 " set to 1, the vim will refresh markdown when save the buffer or
 " leave from insert mode, default 0 is auto refresh markdown as you edit or
 " move the cursor
 " default: 0
-let g:mkdp_refresh_slow = 0
 
-Plug 'weirongxu/plantuml-previewer.vim'
+"Plug 'weirongxu/plantuml-previewer.vim'
 
-Plug 'tyru/open-browser.vim'
+"Plug 'tyru/open-browser.vim'
 
-Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 
 " GOLANG package func searching
-Plug 'ctrlpvim/ctrlp.vim'
 
 call plug#end()
+
+
+" ----------------------------------------
+" Python pyenv for deoplete
+" ----------------------------------------
+let g:python_host_prog = '/Users/tims/.pyenv/versions/neovim2/bin/python'
+let g:python3_host_prog = '/Users/tims/.pyenv/versions/neovim3/bin/python'
+
+
+" ----------------------------------------
+" Deoplete
+" ----------------------------------------
+let g:deoplete#enable_at_startup = 1
+
+
+
 " ----------------------------------------
 " Colors etc
 " ----------------------------------------
@@ -94,9 +86,6 @@ set wrap
 " ----------------------------------------
 " Wintabs
 " ----------------------------------------
-map <C-H> <Plug>(wintabs_previous)
-map <C-L> <Plug>(wintabs_next)
-map <C-T>c <Plug>(wintabs_close)
 " ----------------------------------------
 " Numbers etc
 " ----------------------------------------
@@ -132,8 +121,8 @@ let mapleader = ";"
 " Tags
 " loaded from .vimrc
 " ----------------------------------------
-set tags=./tags;
-set statusline+=%{gutentags#statusline()}
+"set tags=./tags;
+"set statusline+=%{gutentags#statusline()}
 " ----------------------------------------
 "  Mouse etc
 " ----------------------------------------
@@ -214,8 +203,6 @@ nnoremap <F5> :buffers<CR>:buffer<Space>
 " ----------------------------------------
 " Working directories PYENV etc
 " ----------------------------------------
-let g:python3_host_prog = '/Users/tims/.pyenv/versions/neovim3/bin/python'
-
 
 augroup filetype_tex
     autocmd!
