@@ -1,4 +1,4 @@
 function vim
-    nvim $argv
-end
 
+nvim $argv;
+end
