@@ -1,8 +1,10 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
+SETUVAR --export PYENV_ROOT:/Users/tims/\x2epyenv
 SETUVAR __fish_init_2_39_8:\x1d
 SETUVAR __fish_init_2_3_0:\x1d
 SETUVAR __fish_init_3_x:\x1d
+SETUVAR __fish_initialized:3100
 SETUVAR _fish_abbr_ga:git\x20add
 SETUVAR _fish_abbr_gb:git\x20branch
 SETUVAR _fish_abbr_gc:git\x20commit
@@ -21,31 +23,34 @@ SETUVAR budspencer_nocmdhist:c\x1ed\x1ell\x1els\x1em\x1es
 SETUVAR budspencer_pwdstyle:short\x1elong\x1enone
 SETUVAR budspencer_sessions_active:\x1d
 SETUVAR budspencer_sessions_active_pid:\x1d
-SETUVAR fish_color_autosuggestion:555\x1ebrblack
+SETUVAR fish_color_autosuggestion:4D5566
 SETUVAR fish_color_cancel:\x2dr
-SETUVAR fish_color_command:\x2d\x2dbold
-SETUVAR fish_color_comment:red
-SETUVAR fish_color_cwd:green
+SETUVAR fish_color_command:39BAE6
+SETUVAR fish_color_comment:626A73
+SETUVAR fish_color_cwd:59C2FF
 SETUVAR fish_color_cwd_root:red
-SETUVAR fish_color_end:brmagenta
-SETUVAR fish_color_error:brred
-SETUVAR fish_color_escape:bryellow\x1e\x2d\x2dbold
+SETUVAR fish_color_end:F29668
+SETUVAR fish_color_error:FF3333
+SETUVAR fish_color_escape:95E6CB
 SETUVAR fish_color_history_current:\x2d\x2dbold
 SETUVAR fish_color_host:normal
-SETUVAR fish_color_match:\x2d\x2dbackground\x3dbrblue
-SETUVAR fish_color_normal:normal
-SETUVAR fish_color_operator:bryellow
-SETUVAR fish_color_param:cyan
-SETUVAR fish_color_quote:yellow
-SETUVAR fish_color_redirection:brblue
-SETUVAR fish_color_search_match:bryellow\x1e\x2d\x2dbackground\x3dbrblack
-SETUVAR fish_color_selection:white\x1e\x2d\x2dbold\x1e\x2d\x2dbackground\x3dbrblack
+SETUVAR fish_color_host_remote:yellow
+SETUVAR fish_color_match:F07178
+SETUVAR fish_color_normal:B3B1AD
+SETUVAR fish_color_operator:E6B450
+SETUVAR fish_color_param:B3B1AD
+SETUVAR fish_color_quote:C2D94C
+SETUVAR fish_color_redirection:FFEE99
+SETUVAR fish_color_search_match:E6B450
+SETUVAR fish_color_selection:E6B450
+SETUVAR fish_color_status:red
 SETUVAR fish_color_user:brgreen
 SETUVAR fish_color_valid_path:\x2d\x2dunderline
 SETUVAR fish_greeting:Welcome\x20to\x20fish\x2c\x20the\x20friendly\x20interactive\x20shell
 SETUVAR fish_key_bindings:fish_default_key_bindings
-SETUVAR fish_pager_color_completion:\x1d
+SETUVAR fish_pager_color_completion:normal
 SETUVAR fish_pager_color_description:B3A06D\x1eyellow
 SETUVAR fish_pager_color_prefix:white\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
 SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
 SETUVAR fish_user_abbreviations:gc\x20git\x20commit\x1egco\x20git\x20checkout\x1egb\x20git\x20branch\x1egd\x20git\x20diff\x1egpl\x20git\x20pull\x1egl\x20git\x20log\x1ega\x20git\x20add
+SETUVAR --export fish_user_paths:/Users/tims/\x2epyenv/bin
