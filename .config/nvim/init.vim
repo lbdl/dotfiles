@@ -12,8 +12,9 @@
 call plug#begin('~/.config/nvim/plugged')
 
 " Colorscheme
-Plug 'morhetz/gruvbox'
-
+"Plug 'morhetz/gruvbox'
+Plug 'phanviet/vim-monokai-pro'
+Plug 'sheerun/vim-polyglot'
 " Deoplete completions
 
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -21,15 +22,23 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " Deoplete bindings for python
 Plug 'deoplete-plugins/deoplete-jedi'
 
+Plug 'preservim/nerdcommenter'
+"Plug 'preservim/nerdtree'
 " Phoenix
 "Plug 'c-brenn/phoenix.vim'
 "Plug 'tpope/vim-projectionist' " required for some navigation features
 
-"Plug 'ludovicchabant/vim-gutentags'
-"  let g:gutentags_cache_dir = '~/.tags_cache' 
+Plug 'ludovicchabant/vim-gutentags'
+  let g:gutentags_cache_dir = '~/.tags_cache' 
 
+Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
+Plug 'junegunn/fzf.vim'
+
+Plug 'fatih/vim-go'
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Buffer management
-
+Plug 'timonv/vim-cargo'
+Plug 'rust-lang/rust.vim'
 " Execute code checks, find mistakes, in the background
 "Plug 'neomake/neomake'
   "" Run Neomake when I save any buffer
@@ -55,18 +64,17 @@ Plug 'deoplete-plugins/deoplete-jedi'
 "Plug 'weirongxu/plantuml-previewer.vim'
 
 "Plug 'tyru/open-browser.vim'
-
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " GOLANG package func searching
 
 call plug#end()
 
-
 " ----------------------------------------
 " Python pyenv for deoplete
 " ----------------------------------------
-let g:python_host_prog = '/Users/tims/.pyenv/versions/neovim2/bin/python'
-let g:python3_host_prog = '/Users/tims/.pyenv/versions/neovim3/bin/python'
+let g:python_host_prog = '/usr/bin/python2'
+let g:python3_host_prog = '/usr/bin/python3'
 
 
 " ----------------------------------------
@@ -80,7 +88,8 @@ let g:deoplete#enable_at_startup = 1
 " Colors etc
 " ----------------------------------------
 set background=dark
-colorscheme gruvbox
+set termguicolors
+colorscheme monokai_pro
 set wrap
 
 " ----------------------------------------
@@ -89,7 +98,7 @@ set wrap
 " ----------------------------------------
 " Numbers etc
 " ----------------------------------------
-set number
+"set number
 set title
 " ----------------------------------------
 " Encoding etc
@@ -160,11 +169,10 @@ set backspace=indent,eol,start
 "au FileType elixir
 "    \setlocal tabstop=4
     
-set tabstop=4                 
-set expandtab   "soft tabs
-set shiftwidth=4
-set softtabstop=-1
-set autoindent
+"set tabstop=4                 
+"set expandtab   "soft tabs
+"set shiftwidth=4
+"set smartindent
 
 " ----------------------------------------
 " LaTex shizzle
@@ -225,3 +233,18 @@ let g:go_highlight_methods = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_structs = 1
 let g:go_highlight_types = 1
+
+
+" ----------------------------------------
+" general lua based config calls
+" moving general options etc into
+" lua files under ./lua
+" ----------------------------------------
+lua <<
+    require('mason').setup()
+    require('lsp_diag')
+    require('plug')
+    require('opts')
+    require('keys')
+.
+

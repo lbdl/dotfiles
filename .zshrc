@@ -19,3 +19,5 @@ eval "$(pyenv init -)"
 #same is true for rbenv the pyenv shim must be at the front of the PATH
 #variable
 #pyenv virtualenvwrapper_lazy
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
