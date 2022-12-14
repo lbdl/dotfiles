@@ -28,9 +28,3 @@ export LC_COLLATE=C
 #export GH_ISSUE_CREATE_TOKEN=083f60c674d8eb41f98258df9fc8d94cb733218a
 
 # Virtual Environment Stuff
-#export WORKON_HOME=~/.ve
-#export PROJECT_HOME=~/DATA/PY
-
-#both PYENV and RBENV use shims that get added to the front of $PATH
-#so we cant use both of them together. Boo
-#eval "$(rbenv init -)"

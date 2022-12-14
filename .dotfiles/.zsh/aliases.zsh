@@ -1,9 +1,4 @@
-## -------------------------------------------------------------------
-# Nvim
 # -------------------------------------------------------------------
-
-alias vim=nvim
-
 # use nocorrect alias to prevent auto correct from "fixing" these
 # -------------------------------------------------------------------
 #alias foobar='nocorrect foobar'
@@ -25,8 +20,6 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 alias bk='cd $OLDPWD'
-alias pu='pushd'
-alias po='popd'
 
 # -------------------------------------------------------------------
 # directory information
@@ -36,7 +29,7 @@ alias lsd='ls -aFhlG'
 alias l='ls -al'
 alias ls='ls -GFh' # Colorize output, add file type indicator, and put sizes in human readable format
 alias ll='ls -GFhl' # Same as above, but in long listing format
-#alias tree="ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'"
+alias tree="ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'"
 alias dus='du -sckx * | sort -nr' #directories sorted by size
 
 alias wordy='wc -w * | sort | tail -n10' # sort files in current directory by the number of words they contain
@@ -63,31 +56,28 @@ if [[ $IS_MAC -eq 1 ]]; then
     alias rebuildopenwith='/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.fram ework/Support/lsregister -kill -r -domain local -domain system -domain user'
 fi
 
-if (( $+commands[brew] )) ; then
-    alias ctags="`brew --prefix`/bin/ctags"
-fi
 # -------------------------------------------------------------------
 # remote machines
 # -------------------------------------------------------------------
-#filthyip=176.126.245.4
-#filthyu=filthywizard
-#alias filth="ssh -2 ${filthyu}@${filthyip}"
+filthyip=176.126.245.4
+filthyu=filthywizard
+alias filth="ssh -2 ${filthyu}@${filthyip}"
 
 # -------------------------------------------------------------------
 # database
 # -------------------------------------------------------------------
-#alias 'psqlstart=/usr/local/pgsql/bin/pg_ctl -D /usr/local/pgsql/data -l logfile start'
-#alias 'psqlstop=/usr/local/pgsql/bin/pg_ctl stop'
+alias 'psqlstart=/usr/local/pgsql/bin/pg_ctl -D /usr/local/pgsql/data -l logfile start'
+alias 'psqlstop=/usr/local/pgsql/bin/pg_ctl stop'
 #alias mysql='mysql -u root'
 #alias mysqladmin='mysqladmin -u root'
 
 # -------------------------------------------------------------------
 # ome devvm start, stop, ssh, and mount
 # -------------------------------------------------------------------
-#alias 'startvm=VBoxHeadless --startvm devvm'
-#alias 'stopvm=VBoxManage controlvm devvm poweroff'
-#alias 'devvm=ssh -p 10022 ome@localhost'
-#alias 'devmount=mount_smbfs //ome:ch1cag0@localhost:10139/ome /Users/$USERNAME/Projects/devvm/'
+alias 'startvm=VBoxHeadless --startvm devvm'
+alias 'stopvm=VBoxManage controlvm devvm poweroff'
+alias 'devvm=ssh -p 10022 ome@localhost'
+alias 'devmount=mount_smbfs //ome:ch1cag0@localhost:10139/ome /Users/$USERNAME/Projects/devvm/'
 
 
 # -------------------------------------------------------------------
@@ -151,11 +141,11 @@ alias sz='source ~/.zshrc'
 # -------------------------------------------------------------------
 # some Octopress helpers
 # -------------------------------------------------------------------
-#alias generate='date ; rake generate ; date ;'
-#alias gen='date ; rake generate ; date ;'
-#alias ingen='date ; rake integrate ; generate ; date ;'
-#alias deploy='rm deploy.log ; rake deploy > deploy.log ; tail -n 3 deploy.log ;'
-#alias np='newpost.rb'
+alias generate='date ; rake generate ; date ;'
+alias gen='date ; rake generate ; date ;'
+alias ingen='date ; rake integrate ; generate ; date ;'
+alias deploy='rm deploy.log ; rake deploy > deploy.log ; tail -n 3 deploy.log ;'
+alias np='newpost.rb'
 
 # copy .htaccess files for zanshin.net and its image sub-directory
 #alias 'htaccess=scp /Users/mark/Projects/octopress/zanshin/source/htaccess/.htaccess markn@markn.webfactional.com:~/webapps/zanshin ; scp /Users/mark/Projects/octopress/zanshin/source/images/.htaccess markn@markn.webfactional.com:~/webapps/zanshin/images ;'

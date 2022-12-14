@@ -1,14 +1,14 @@
-" --------------------
+" ----------------------------------------
 " Pathogen shizzle
-" --------------------
-execute pathogen#infect()
-filetype plugin indent on
-
-set wrap
-syntax enable
-set t_Co=256
-set number
-set vb  "no error bells visual nor audio
+" ----------------------------------------
+"execute pathogen#infect()
+"filetype plugin indent on
+"
+"set wrap
+"syntax enable
+"set t_Co=256
+"set number
+"set vb  "no error bells visual nor audio
 
 " ----------------------------------------
 " Colorscheme setting  
