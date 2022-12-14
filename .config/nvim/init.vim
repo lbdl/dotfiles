@@ -33,7 +33,6 @@ Plug 'ludovicchabant/vim-gutentags'
 
 Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
 Plug 'junegunn/fzf.vim'
-
 Plug 'fatih/vim-go'
 "Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Buffer management
@@ -246,5 +245,6 @@ lua <<
     require('plug')
     require('opts')
     require('keys')
+    require('plugin_config')
 .
 

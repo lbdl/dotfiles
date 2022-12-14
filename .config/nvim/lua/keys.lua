@@ -134,6 +134,12 @@ nnoremap <silent> <leader>cC :lua require('crates').open_crates_io()<cr>
 ]])
 
 
+-- FloaTerm configuration
+map('n', "<leader>ft", ":FloatermNew --name=myfloat --height=0.8 --width=0.7 --autoclose=2 fish <CR> ")
+map('n', "t", ":FloatermToggle myfloat<CR>")
+map('t', "<Esc>", "<C-\\><C-n>:q<CR>")
+
+
 -- Comment.nvim configuration
 -- current line
 vim.keymap.set('n', 'cc', '<Plug>(comment_toggle_linewise_current)')

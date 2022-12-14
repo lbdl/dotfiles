@@ -16,5 +16,14 @@ return require('packer').startup(function(use)
     use 'hrsh7th/cmp-vsnip'                             
     use 'hrsh7th/cmp-path'                              
     use 'hrsh7th/cmp-buffer'                            
-    use 'hrsh7th/vim-vsnip'                             
+    use 'hrsh7th/vim-vsnip'      
+    use 'nvim-treesitter/nvim-treesitter'
+    use 'puremourning/vimspector'
+    use 'voldikss/vim-floaterm'
+    -- telescope
+    -- we also need brew install ripgrep for telescope
+    -- see :checkhealth telescope and install instructions
+    use 'nvim-lua/plenary.nvim'
+    use 'nvim-telescope/telescope.nvim'
+    use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' } -- Make telescope faster
 end)
