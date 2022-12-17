@@ -24,10 +24,15 @@ return require('packer').startup(function(use)
     use 'nvim-treesitter/nvim-treesitter'
     use 'puremourning/vimspector'
     use 'voldikss/vim-floaterm'
+    use "norcalli/nvim-colorizer.lua"
     -- telescope
     -- we also need brew install ripgrep for telescope
     -- see :checkhealth telescope and install instructions
     use 'nvim-lua/plenary.nvim'
     use 'nvim-telescope/telescope.nvim'
     use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' } -- Make telescope faster
+    use { 'kyazdani42/nvim-tree.lua', -- Filesystem navigation
+        requires = 'kyazdani42/nvim-web-devicons' } -- Filesystem icons
+    use { 'nvim-lualine/lualine.nvim', -- Statusline
+        requires = { 'kyazdani42/nvim-web-devicons', opt = true } }   
 end)

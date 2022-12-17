@@ -52,6 +52,8 @@ cmp.setup({
   },
 })
 
+-- Colorizer
+require 'colorizer'.setup()
 
 -- Treesitter Plugin Setup 
 require('nvim-treesitter.configs').setup {
@@ -88,5 +90,41 @@ require('telescope').setup {
           --  filetypes = { "png", "webp", "jpg", "jpeg", "ppm", "pdf" },
             --find_cmd = "rg", -- find command (defaults to `fd`)
        -- },
+    },
+}
+
+
+-- Nvim Tree Setup
+require('nvim-tree').setup {
+    sort_by = "case_sensitive",
+    view = {
+        adaptive_size = false,
+        mappings = {
+            list = {
+                { key = "u", action = "dir_up" },
+            },
+        },
+    },
+    renderer = {
+        group_empty = true,
+        icons = {
+            git_placement = "after",
+            glyphs = {
+                git = {
+                    unstaged = "-",
+                    staged = "s",
+                    untracked = "u",
+                    renamed = "r",
+                    deleted = "d",
+                    ignored = "i",
+                },
+            },
+        },
+    },
+    filters = {
+        dotfiles = false,
+    },
+    git = {
+        ignore = false,
     },
 }

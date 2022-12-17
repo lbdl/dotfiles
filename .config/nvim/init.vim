@@ -30,38 +30,11 @@ Plug 'ludovicchabant/vim-gutentags'
 Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
 Plug 'junegunn/fzf.vim'
 Plug 'fatih/vim-go'
-"Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" Buffer management
 Plug 'timonv/vim-cargo'
 Plug 'rust-lang/rust.vim'
-" Execute code checks, find mistakes, in the background
-"Plug 'neomake/neomake'
-  "" Run Neomake when I save any buffer
-  "augroup localneomake
-    "autocmd! BufWritePost * 
-          "\Neomake
-  "augroup END
-  "" Don't tell me to use smartquotes in markdown ok?
-  "let g:neomake_markdown_enabled_makers = []
-  "" Configure a nice credo setup, courtesy https://github.com/neomake/neomake/pull/300
-"  let g:neomake_elixir_enabled_makers = ['mix', 'credo']
-
-" Linter
-
-" GOLANG debugging
-" set to 1, nvim will open the preview window after entering the markdown buffer
-" default: 0
-" set to 1, the vim will refresh markdown when save the buffer or
-" leave from insert mode, default 0 is auto refresh markdown as you edit or
-" move the cursor
-" default: 0
-
-"Plug 'weirongxu/plantuml-previewer.vim'
-
 "Plug 'tyru/open-browser.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-" GOLANG package func searching
 
 call plug#end()
 
@@ -93,6 +66,7 @@ nmap <leader>gN :GitGutterPrevHunk<CR>
 nmap <leader>ga :GitGutterStageHunk<CR> 
 nmap <leader>gu :GitGutterUndoHunk<CR>
 
+nnoremap <leader>gs :Magit<CR>
 " ----------------------------------------
 " Colors etc
 " ----------------------------------------
