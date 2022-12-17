@@ -22,6 +22,7 @@ cmp.setup({
       select = true,
     })
   },
+
   -- Installed sources:
   sources = {
     { name = 'path' },                              -- file paths

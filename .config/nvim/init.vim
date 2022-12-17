@@ -23,10 +23,6 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'deoplete-plugins/deoplete-jedi'
 
 Plug 'preservim/nerdcommenter'
-"Plug 'preservim/nerdtree'
-" Phoenix
-"Plug 'c-brenn/phoenix.vim'
-"Plug 'tpope/vim-projectionist' " required for some navigation features
 
 Plug 'ludovicchabant/vim-gutentags'
   let g:gutentags_cache_dir = '~/.tags_cache' 

@@ -10,6 +10,10 @@ return require('packer').startup(function(use)
     -- LSP completion source:
     use 'hrsh7th/cmp-nvim-lsp'
 
+    -- git stuff
+    use 'jreybert/vimagit'
+    use 'airblade/vim-gitgutter'
+
     -- Useful completion sources:
     use 'hrsh7th/cmp-nvim-lua'
     use 'hrsh7th/cmp-nvim-lsp-signature-help'
