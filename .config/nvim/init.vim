@@ -81,7 +81,21 @@ let g:python3_host_prog = '/usr/bin/python3'
 " ----------------------------------------
 let g:deoplete#enable_at_startup = 1
 
+" ----------------------------------------
+" Magit and GitGutter Key bindings
+" ----------------------------------------
+"control the speed of the gutter update
+set updatetime=250 
+let g:gitgutter_sign_added='++'
+let g:gitgutter_sign_modified='>'
+let g:gitgutter_sign_removed='--'
+let g:gitgutter_sign_removed_first_line='^'
+let g:gitgutter_sign_modified_removed='<'
 
+nmap <leader>gn :GitGutterNextHunk<CR> 
+nmap <leader>gN :GitGutterPrevHunk<CR>
+nmap <leader>ga :GitGutterStageHunk<CR> 
+nmap <leader>gu :GitGutterUndoHunk<CR>
 
 " ----------------------------------------
 " Colors etc
@@ -92,17 +106,15 @@ colorscheme monokai_pro
 set wrap
 
 " ----------------------------------------
-" Wintabs
-" ----------------------------------------
-" ----------------------------------------
 " Numbers etc
 " ----------------------------------------
-"set number
 set title
+
 " ----------------------------------------
 " Encoding etc
 " ----------------------------------------
 set encoding=utf-8
+
 " ----------------------------------------
 " Error bells etc
 " loaded from .vimrc
@@ -129,8 +141,9 @@ let mapleader = ";"
 " Tags
 " loaded from .vimrc
 " ----------------------------------------
-"set tags=./tags;
-"set statusline+=%{gutentags#statusline()}
+set tags=./tags;
+set statusline+=%{gutentags#statusline()}
+
 " ----------------------------------------
 "  Mouse etc
 " ----------------------------------------
@@ -146,32 +159,6 @@ set statusline=%<%F\ %h%m%r%=%-14.(%l,%c%V%)\ %P
 set clipboard=unnamed
 set backspace=indent,eol,start
 
-" ----------------------------------------
-" Tab stops spaces etc
-" loaded from .vimrc
-" ----------------------------------------
-"au BufNewFile,BufRead *.py
-"    \set tabstop=4
-"    \set softtabstop=4
-"    \set shiftwidth=4
-"    \set textwidth=79
-"    \set expandtab
-"    \set autoindent
-"    \set fileformat=unix
-"    \let python_highlight_all=1
-"
-"au BufNewFile,BufRead *.js, *.html, *.css
-"    \set tabstop=2
-"    \set softtabstop=2
-"    \set shiftwidth=2
-"
-"au FileType elixir
-"    \setlocal tabstop=4
-    
-"set tabstop=4                 
-"set expandtab   "soft tabs
-"set shiftwidth=4
-"set smartindent
 
 " ----------------------------------------
 " LaTex shizzle
@@ -185,6 +172,11 @@ let g:tex_nine_config = {
       \'shell_escape': 1,
       \'viewer': {'app': 'open -a Skim', 'target': 'pdf'}, 
       \}
+
+augroup filetype_tex
+    autocmd!
+    autocmd FileType tex set spell spelllang=en_gb
+augroup END
 
 " ----------------------------------------
 " Searching etc
@@ -201,21 +193,6 @@ map <CR> :noh<CR>
 " Buffers etc
 " ----------------------------------------
 nnoremap <F5> :buffers<CR>:buffer<Space>
-" ----------------------------------------
-" Working directories etc
-" ----------------------------------------
-"set autochdir
-"
-"
-" ----------------------------------------
-" Working directories PYENV etc
-" ----------------------------------------
-
-augroup filetype_tex
-    autocmd!
-    autocmd FileType tex set spell spelllang=en_gb
-augroup END
-
 
 " ----------------------------------------
 " GOLANG configs
