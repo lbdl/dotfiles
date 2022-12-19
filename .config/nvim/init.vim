@@ -15,35 +15,53 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'morhetz/gruvbox'
 
 " Deoplete completions
+"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+"Plug 'deoplete-plugins/deoplete-docker'
+Plug 'elemecca/dockerfile.vim'
 
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 " Deoplete bindings for python
-Plug 'deoplete-plugins/deoplete-jedi'
+"Plug 'deoplete-plugins/deoplete-jedi'
 
+" Asciidoc syntax extentions
+Plug 'habamax/vim-asciidoctor'
 " Phoenix
 "Plug 'c-brenn/phoenix.vim'
 "Plug 'tpope/vim-projectionist' " required for some navigation features
 
-"Plug 'ludovicchabant/vim-gutentags'
-"  let g:gutentags_cache_dir = '~/.tags_cache' 
+Plug 'ludovicchabant/vim-gutentags'
 
+" Nerdtree
+Plug 'preservim/nerdtree'
+
+" Nerd commenter
+Plug 'preservim/nerdcommenter'
+
+Plug 'pearofducks/ansible-vim'
+
+Plug 'hashivim/vim-terraform'
+
+" some code completions via  LSP
+Plug 'neoclide/coc.nvim', {'tag': '*'}
+    "let g:coc_global_extensions = ['coc-solargraph']
+"Plug 'jvirtanen/vim-hcl'
 " Buffer management
 
 " Execute code checks, find mistakes, in the background
 "Plug 'neomake/neomake'
   "" Run Neomake when I save any buffer
   "augroup localneomake
-    "autocmd! BufWritePost * 
-          "\Neomake
+  "  autocmd! BufWritePost * 
+  "       "Neomake
   "augroup END
-  "" Don't tell me to use smartquotes in markdown ok?
+  """ Don't tell me to use smartquotes in markdown ok?
   "let g:neomake_markdown_enabled_makers = []
   "" Configure a nice credo setup, courtesy https://github.com/neomake/neomake/pull/300
 "  let g:neomake_elixir_enabled_makers = ['mix', 'credo']
 
 " Linter
-
+Plug 'rust-lang/rust.vim'
 " GOLANG debugging
 " set to 1, nvim will open the preview window after entering the markdown buffer
 " default: 0
@@ -56,7 +74,6 @@ Plug 'deoplete-plugins/deoplete-jedi'
 
 "Plug 'tyru/open-browser.vim'
 
-
 " GOLANG package func searching
 
 call plug#end()
@@ -65,8 +82,8 @@ call plug#end()
 " ----------------------------------------
 " Python pyenv for deoplete
 " ----------------------------------------
-let g:python_host_prog = '/Users/tims/.pyenv/versions/neovim2/bin/python'
-let g:python3_host_prog = '/Users/tims/.pyenv/versions/neovim3/bin/python'
+"let g:python_host_prog = '/Users/tims/.pyenv/versions/neovim2/bin/python'
+"let g:python3_host_prog = '/Users/tims/.pyenv/versions/neovim3/bin/python'
 
 
 " ----------------------------------------
@@ -75,14 +92,56 @@ let g:python3_host_prog = '/Users/tims/.pyenv/versions/neovim3/bin/python'
 let g:deoplete#enable_at_startup = 1
 
 
+" ----------------------------------------
+" YAML
+" ----------------------------------------
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+"let g:indentLine_char = '|'
+let g:indentLine_char = '⦙'
+" ----------------------------------------
+" /YAML
+" ----------------------------------------
+
+" ----------------------------------------
+" VAGRANT
+" ----------------------------------------
+augroup vagrant
+    au!
+    au BufRead,BufNewFile Vagrantfile set filetype=ruby
+augroup END
+" ----------------------------------------
+" /VAGRANT
+" ----------------------------------------
+
+" ----------------------------------------
+" FASTLANE
+" ----------------------------------------
+augroup fastlane
+    au!
+    au BufRead,BufNewFile Fastfile,Appfile set filetype=ruby
+augroup END
+" ----------------------------------------
+" /FASTLANE
+" ----------------------------------------
+
+" ----------------------------------------
+" ALE
+" ----------------------------------------
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:ale_sign_error = '✘'
+let g:ale_sign_warning = '⚠'
+let g:ale_lint_on_text_changed = 'never'
+" ----------------------------------------
+" /ALE
+" ----------------------------------------
 
 " ----------------------------------------
 " Colors etc
 " ----------------------------------------
 set background=dark
-colorscheme gruvbox
+colorscheme monokai
 set wrap
-
+set termguicolors
 " ----------------------------------------
 " Wintabs
 " ----------------------------------------
@@ -142,20 +201,20 @@ set backspace=indent,eol,start
 " Tab stops spaces etc
 " loaded from .vimrc
 " ----------------------------------------
-"au BufNewFile,BufRead *.py
-"    \set tabstop=4
-"    \set softtabstop=4
-"    \set shiftwidth=4
-"    \set textwidth=79
-"    \set expandtab
-"    \set autoindent
-"    \set fileformat=unix
-"    \let python_highlight_all=1
-"
-"au BufNewFile,BufRead *.js, *.html, *.css
-"    \set tabstop=2
-"    \set softtabstop=2
-"    \set shiftwidth=2
+au BufNewFile,BufRead *.py
+    \set tabstop=4
+    \set softtabstop=4
+    \set shiftwidth=4
+    \set textwidth=79
+    \set expandtab
+    \set autoindent
+    \set fileformat=unix
+    \let python_highlight_all=1
+
+au BufNewFile,BufRead *.js, *.html, *.css
+    \set tabstop=2
+    \set softtabstop=2
+    \set shiftwidth=2
 "
 "au FileType elixir
 "    \setlocal tabstop=4
@@ -178,7 +237,10 @@ let g:tex_nine_config = {
       \'shell_escape': 1,
       \'viewer': {'app': 'open -a Skim', 'target': 'pdf'}, 
       \}
-
+" ----------------------------------------
+" Keymaps etc
+" ----------------------------------------
+let NERDTreeShowHidden=1
 " ----------------------------------------
 " Searching etc
 " ----------------------------------------
