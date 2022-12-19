@@ -15,14 +15,32 @@ call plug#begin('~/.config/nvim/plugged')
 "Plug 'morhetz/gruvbox'
 Plug 'phanviet/vim-monokai-pro'
 Plug 'sheerun/vim-polyglot'
-" Deoplete completions
 
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
-" Deoplete bindings for python
-Plug 'deoplete-plugins/deoplete-jedi'
+"Plug 'deoplete-plugins/deoplete-docker'
+Plug 'elemecca/dockerfile.vim'
 
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+
+
+
+Plug 'ludovicchabant/vim-gutentags'
+
+" Nerdtree
+Plug 'preservim/nerdtree'
+
+" Nerd commenter
 Plug 'preservim/nerdcommenter'
+
+Plug 'pearofducks/ansible-vim'
+
+Plug 'hashivim/vim-terraform'
+
+" some code completions via  LSP
+Plug 'neoclide/coc.nvim', {'tag': '*'}
+
+" Linter
+Plug 'rust-lang/rust.vim'
 
 Plug 'ludovicchabant/vim-gutentags'
   let g:gutentags_cache_dir = '~/.tags_cache' 
@@ -32,8 +50,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'fatih/vim-go'
 Plug 'timonv/vim-cargo'
 Plug 'rust-lang/rust.vim'
-"Plug 'tyru/open-browser.vim'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
 
 
 call plug#end()
@@ -41,8 +58,8 @@ call plug#end()
 " ----------------------------------------
 " Python pyenv for deoplete
 " ----------------------------------------
-let g:python_host_prog = '/usr/bin/python2'
-let g:python3_host_prog = '/usr/bin/python3'
+"let g:python_host_prog = '/Users/tims/.pyenv/versions/neovim2/bin/python'
+"let g:python3_host_prog = '/Users/tims/.pyenv/versions/neovim3/bin/python'
 
 
 " ----------------------------------------
@@ -67,6 +84,50 @@ nmap <leader>ga :GitGutterStageHunk<CR>
 nmap <leader>gu :GitGutterUndoHunk<CR>
 
 nnoremap <leader>gs :Magit<CR>
+
+" ----------------------------------------
+" YAML
+" ----------------------------------------
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+"let g:indentLine_char = '|'
+let g:indentLine_char = '⦙'
+" ----------------------------------------
+" /YAML
+" ----------------------------------------
+
+" ----------------------------------------
+" VAGRANT
+" ----------------------------------------
+augroup vagrant
+    au!
+    au BufRead,BufNewFile Vagrantfile set filetype=ruby
+augroup END
+" ----------------------------------------
+" /VAGRANT
+" ----------------------------------------
+
+" ----------------------------------------
+" FASTLANE
+" ----------------------------------------
+augroup fastlane
+    au!
+    au BufRead,BufNewFile Fastfile,Appfile set filetype=ruby
+augroup END
+" ----------------------------------------
+" /FASTLANE
+" ----------------------------------------
+
+" ----------------------------------------
+" ALE
+" ----------------------------------------
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:ale_sign_error = '✘'
+let g:ale_sign_warning = '⚠'
+let g:ale_lint_on_text_changed = 'never'
+" ----------------------------------------
+" /ALE
+" ----------------------------------------
+
 " ----------------------------------------
 " Colors etc
 " ----------------------------------------

@@ -2,8 +2,23 @@ source ~/.config/fish/fish_aliases
 source ~/.config/fish/fish_vars
 direnv hook fish | source
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-# eval //anaconda3/bin/conda "shell.fish" "hook" $argv | source
-# <<< conda initialize <<<
+source (pyenv init - | psub)
+source (rbenv init - | psub)
+source (pyenv virtualenv-init - | psub)
 
+status --is-interactive; and pyenv init - | source
+status --is-interactive; and pyenv virtualenv-init - | source
+status --is-interactive; and source (rbenv init -|psub)
+
+rbenv rehash >/dev/null 2>&1
+
+# Change prompt
+functions -c fish_prompt _old_fish_prompt
+function fish_prompt
+  if set -q VIRTUAL_ENV
+    echo -n -s (set_color -b blue white) "(" (basename "$VIRTUAL_ENV") ")" (set_color normal) " "
+  end
+  _old_fish_prompt
+end
+
+test -e /Users/tims/.iterm2_shell_integration.fish ; and source /Users/tims/.iterm2_shell_integration.fish ; or true
