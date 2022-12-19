@@ -1,3 +1,6 @@
 .zsh/cache
-plugged
-tags
+plugged/
+filezilla/
+coc/
+iterm2/
+fish_variables
