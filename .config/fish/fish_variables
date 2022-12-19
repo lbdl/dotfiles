@@ -55,4 +55,4 @@ SETUVAR fish_pager_color_prefix:white\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
 SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
 SETUVAR fish_pager_color_selected_background:\x2dr
 SETUVAR fish_user_abbreviations:gc\x20git\x20commit\x1egco\x20git\x20checkout\x1egb\x20git\x20branch\x1egd\x20git\x20diff\x1egpl\x20git\x20pull\x1egl\x20git\x20log\x1ega\x20git\x20add
-SETUVAR --export fish_user_paths:/Users/tims/\x2ecargo/bin\x1e/Users/tims/go/bin\x1e/Users/tims/\x2erbenv/bin\x1e/Users/tims/\x2epyenv/bin
+SETUVAR --export fish_user_paths:/Users/tims/\x2ecargo/bin\x1e/Users/tims/go/bin\x1e/Users/tims/\x2erbenv/bin\x1e/Users/tims/\x2epyenv/bin\x1e/Users/tims/\x2efzf/bin
