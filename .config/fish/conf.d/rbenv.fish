@@ -14,6 +14,6 @@ end
 
 if status --is-login
     set -x PATH "$rbenv_root/shims" $PATH
-    set -x rbenv_SHELL fish
+    set -x RBENV_SHELL fish
 end
 command mkdir -p "$rbenv_root/"{shims,versions}

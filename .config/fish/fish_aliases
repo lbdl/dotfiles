@@ -1,7 +1,0 @@
-alias vim='nvim'
-alias gs='git status'
-alias gl='git log'
-alias gp='git push'
-alias gpl='git pull'
-alias gco='git checkout'
-alias cl='clear'

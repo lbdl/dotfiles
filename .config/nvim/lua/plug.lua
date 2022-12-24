@@ -7,6 +7,9 @@ return require('packer').startup(function(use)
     -- Completion framework:
     use 'hrsh7th/nvim-cmp' 
 
+    -- DAP adaptor
+    use 'mfussenegger/nvim-dap'
+
     -- LSP completion source:
     use 'hrsh7th/cmp-nvim-lsp'
 

@@ -37,7 +37,7 @@ Plug 'pearofducks/ansible-vim'
 Plug 'hashivim/vim-terraform'
 
 " some code completions via  LSP
-Plug 'neoclide/coc.nvim', {'tag': '*'}
+"Plug 'neoclide/coc.nvim', {'tag': '*'}
 
 " Linter
 Plug 'rust-lang/rust.vim'
@@ -47,26 +47,14 @@ Plug 'ludovicchabant/vim-gutentags'
 
 Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
 Plug 'junegunn/fzf.vim'
+
+" TODO do we really need the below or are we now covered via LSP
 Plug 'fatih/vim-go'
 Plug 'timonv/vim-cargo'
 Plug 'rust-lang/rust.vim'
 
 
-
 call plug#end()
-
-" ----------------------------------------
-" Python pyenv for deoplete
-" ----------------------------------------
-"let g:python_host_prog = '/Users/tims/.pyenv/versions/neovim2/bin/python'
-"let g:python3_host_prog = '/Users/tims/.pyenv/versions/neovim3/bin/python'
-
-
-" ----------------------------------------
-" Deoplete
-" ----------------------------------------
-let g:deoplete#enable_at_startup = 1
-
 " ----------------------------------------
 " Magit and GitGutter Key bindings
 " ----------------------------------------
@@ -120,10 +108,10 @@ augroup END
 " ----------------------------------------
 " ALE
 " ----------------------------------------
-let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-let g:ale_sign_error = '✘'
-let g:ale_sign_warning = '⚠'
-let g:ale_lint_on_text_changed = 'never'
+"let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+"let g:ale_sign_error = '✘'
+"let g:ale_sign_warning = '⚠'
+"let g:ale_lint_on_text_changed = 'never'
 " ----------------------------------------
 " /ALE
 " ----------------------------------------
@@ -168,12 +156,6 @@ set nowritebackup
 " ----------------------------------------
 let mapleader = ";"
 
-" ----------------------------------------
-" Tags
-" loaded from .vimrc
-" ----------------------------------------
-set tags=./tags;
-set statusline+=%{gutentags#statusline()}
 
 " ----------------------------------------
 "  Mouse etc
@@ -186,10 +168,17 @@ set mouse=a
 " ----------------------------------------
 set showmode
 set laststatus=2
-set statusline=%<%F\ %h%m%r%=%-14.(%l,%c%V%)\ %P
+"set statusline=%<%F\ %h%m%r%=%-14.(%l,%c%V%)\ %P
+set statusline=%<%F\ %m%r%=%(%l,%c%)\ %P
 set clipboard=unnamed
 set backspace=indent,eol,start
 
+" ----------------------------------------
+" Tags
+" loaded from .vimrc
+" ----------------------------------------
+set tags=./tags;
+"set statusline+=%{gutentags#statusline()}
 
 " ----------------------------------------
 " LaTex shizzle
@@ -249,10 +238,12 @@ let g:go_highlight_types = 1
 " ----------------------------------------
 lua <<
     require('mason').setup()
+    require('mason-lspconfig').setup()
     require('lsp_diag')
     require('plug')
     require('opts')
     require('keys')
     require('plugin_config')
+    require('lsp_diag')
 .
 
