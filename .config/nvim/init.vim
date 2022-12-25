@@ -12,22 +12,11 @@
 call plug#begin('~/.config/nvim/plugged')
 
 " Colorscheme
-"Plug 'morhetz/gruvbox'
 Plug 'phanviet/vim-monokai-pro'
-Plug 'sheerun/vim-polyglot'
 
-
-"Plug 'deoplete-plugins/deoplete-docker'
 Plug 'elemecca/dockerfile.vim'
 
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-
-
-
 Plug 'ludovicchabant/vim-gutentags'
-
-" Nerdtree
-Plug 'preservim/nerdtree'
 
 " Nerd commenter
 Plug 'preservim/nerdcommenter'
@@ -36,23 +25,12 @@ Plug 'pearofducks/ansible-vim'
 
 Plug 'hashivim/vim-terraform'
 
-" some code completions via  LSP
-"Plug 'neoclide/coc.nvim', {'tag': '*'}
-
-" Linter
-Plug 'rust-lang/rust.vim'
-
 Plug 'ludovicchabant/vim-gutentags'
   let g:gutentags_cache_dir = '~/.tags_cache' 
 
 Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
+
 Plug 'junegunn/fzf.vim'
-
-" TODO do we really need the below or are we now covered via LSP
-Plug 'fatih/vim-go'
-Plug 'timonv/vim-cargo'
-Plug 'rust-lang/rust.vim'
-
 
 call plug#end()
 " ----------------------------------------
@@ -66,10 +44,10 @@ let g:gitgutter_sign_removed='--'
 let g:gitgutter_sign_removed_first_line='^'
 let g:gitgutter_sign_modified_removed='<'
 
-nmap <leader>gn :GitGutterNextHunk<CR> 
-nmap <leader>gN :GitGutterPrevHunk<CR>
-nmap <leader>ga :GitGutterStageHunk<CR> 
-nmap <leader>gu :GitGutterUndoHunk<CR>
+nmap <leader>ggn :GitGutterNextHunk<CR> 
+nmap <leader>ggN :GitGutterPrevHunk<CR>
+nmap <leader>gga :GitGutterStageHunk<CR> 
+nmap <leader>ggu :GitGutterUndoHunk<CR>
 
 nnoremap <leader>gs :Magit<CR>
 
@@ -238,12 +216,16 @@ let g:go_highlight_types = 1
 " ----------------------------------------
 lua <<
     require('mason').setup()
-    require('mason-lspconfig').setup()
+    require('mason-lspconfig').setup {
+        ensure_installed = { "gopls", "rust_analyzer", "pylsp", "ruby_ls", "yamlls", "dockerls" },
+    }
     require('lsp_diag')
     require('plug')
     require('opts')
     require('keys')
     require('plugin_config')
-    require('lsp_diag')
+    -- LSP
+    require('lsp-dap')
+    -- DAP
 .
 

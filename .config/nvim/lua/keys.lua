@@ -93,18 +93,27 @@ map('n', "<F7>", ":call vimspector#Evaluate()<cr>")
 
 -- LSP Navigation
 -- Code Actions
+-- Also set in lsp-dap.lua
 map('n', "ca", ":lua vim.lsp.buf.code_action()<CR>")
 vim.cmd([[
-nnoremap <silent> <c-]>     <cmd>lua vim.lsp.buf.definition()<CR>
-nnoremap <silent> <c-k>     <cmd>lua vim.lsp.buf.signature_help()<CR>
-nnoremap <silent> K         <cmd>lua vim.lsp.buf.hover()<CR>
-nnoremap <silent> gi        <cmd>lua vim.lsp.buf.implementation()<CR>
-nnoremap <silent> gc        <cmd>lua vim.lsp.buf.incoming_calls()<CR>
-nnoremap <silent> gd        <cmd>lua vim.lsp.buf.type_definition()<CR>
-nnoremap <silent> gr        <cmd>lua vim.lsp.buf.references()<CR>
-nnoremap <silent> gn        <cmd>lua vim.lsp.buf.rename()<CR>
-nnoremap <silent> gs        <cmd>lua vim.lsp.buf.document_symbol()<CR>
-nnoremap <silent> gw        <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
+nnoremap <silent> <c-]>     <   cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent> <c-k>         <cmd>lua vim.lsp.buf.signature_help()<CR>
+nnoremap <silent> K             <cmd>lua vim.lsp.buf.hover()<CR>
+nnoremap <silent> gi            <cmd>lua vim.lsp.buf.implementation()<CR>
+nnoremap <silent> gc            <cmd>lua vim.lsp.buf.incoming_calls()<CR>
+nnoremap <silent> gd            <cmd>lua vim.lsp.buf.type_definition()<CR>
+nnoremap <silent> gr            <cmd>lua vim.lsp.buf.references()<CR>
+nnoremap <silent> gn            <cmd>lua vim.lsp.buf.rename()<CR>
+nnoremap <silent> gs            <cmd>lua vim.lsp.buf.document_symbol()<CR>
+nnoremap <silent> gw            <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
+nnoremap <silent> gD            <cmd>lua vim.lsp.buf.declaration()<CR>
+nnoremap <silent> [d            <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
+nnoremap <silent> ]d            <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
+nnoremap <silent> <leader>law   <cmd>lua vim.lsp.buf.add_workspace_folder()<CR>
+nnoremap <silent> <leader>lrw   <cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>
+nnoremap <silent> <leader>llw   <cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>
+nnoremap <silent> <leader>ld    <cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>
+nnoremap <silent> <leader>ll    <cmd>lua vim.lsp.diagnostic.set_loclist()<CR>
 ]])
 
 
