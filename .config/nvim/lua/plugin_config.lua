@@ -101,6 +101,7 @@ require('telescope').setup {
 }
 
 
+
 -- Nvim Tree Setup
 require('nvim-tree').setup {
 

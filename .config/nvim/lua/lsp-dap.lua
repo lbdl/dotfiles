@@ -1,20 +1,18 @@
 local on_attach = function(client, bufnr)
-    require('completion').on_attach()
 
     local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
     local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
-
     local opts = { noremap=true, silent=true }
     
     -- Set some keybinds conditional on server capabilities
-    if client.resolved_capabilities.document_formatting then
+    if client.server_capabilities.document_formatting then
         buf_set_keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-    elseif client.resolved_capabilities.document_range_formatting then
+    elseif client.server_capabilities.document_range_formatting then
         buf_set_keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
     end
 
     -- Set autocommands conditional on server_capabilities
-    if client.resolved_capabilities.document_highlight then
+    if client.server_capabilities.document_highlight then
         vim.api.nvim_exec([[
         hi LspReferenceRead cterm=bold ctermbg=red guibg=LightYellow
         hi LspReferenceText cterm=bold ctermbg=red guibg=LightYellow
@@ -56,18 +54,28 @@ capabilities.textDocument.codeAction = {
 -- LSPs
 -- these have been installed via Mason
 -- rust_analyzer needs setup as below
-local rt = require("rust-tools")
+-- local rt = 
+--require("rust-tools").setup({
+--  server = {
+--    on_attach = function(_, bufnr)
+--      -- Hover actions
+--      vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr })
+--      -- Code action groups
+--      vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
+--    end,
+--  },
+--})
 
-rt.setup({
-  server = {
-    on_attach = function(_, bufnr)
-      -- Hover actions
-      vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr })
-      -- Code action groups
-      vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
-    end,
-  },
-})
+--rt.setup({
+--  server = {
+--    on_attach = function(_, bufnr)
+--      -- Hover actions
+--      vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr })
+--      -- Code action groups
+--      vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
+--    end,
+--  },
+--})
 
 -- Rest of LSP's below
 -- see :h mason-lspconfig
@@ -120,7 +128,4 @@ require('lspconfig').yamlls.setup{
        closingLabels = true,
     };
 }
-
---require('lspconfig').pylsp.setup{}
-
 

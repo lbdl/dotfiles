@@ -56,7 +56,6 @@ map("n", "<leader>fmp", ":lua require('telescope.builtin').man_pages()<cr>")
 map("n", "<leader>fgc", ":lua require('telescope.builtin').git_commits()<cr>")
 map("n", "<leader>fgb", ":lua require('telescope.builtin').git_branches()<cr>")
 
-
 -- Todo List
 map("n", "<leader>qf", ":TodoQuickFix<cr>")
 
@@ -72,23 +71,25 @@ map("n", "<leader>\\", ":TransparentToggle<CR>")
 -- Toggle colored column at 81
 map('n', '<leader>|', ':execute "set colorcolumn=" . (&colorcolumn == "" ? "81" : "")<CR>')
 
-
 -- Tagbar Toggle
 -- map('n', "<leader>tt", ":TagbarToggle<CR>");
 map('n', "<leader>tt", ":SymbolsOutline<CR>");
 
-
 -- Vimspector
 vim.cmd([[
 nmap <F5> <cmd>call vimspector#Launch()<cr>
-nmap <F10> <cmd>call vimspector#StepOver()<cr>
+nmap <F8> <cmd>call vimspector#StepOver()<cr>
 nmap <F6> <cmd>call vimspector#Reset()<cr>
-nmap <F11> <cmd>call vimspector#StepOut()<cr>")
-nmap <F9> <cmd>call vimspector#StepInto()<cr>")
+nmap <F9> <cmd>call vimspector#StepOut()<cr>")
+nmap <F7> <cmd>call vimspector#StepInto()<cr>")
 ]])
+
 map('n', "<F3>", ":call vimspector#ToggleBreakpoint()<cr>")
 map('n', "<F4>", ":call vimspector#AddWatch()<cr>")
-map('n', "<F7>", ":call vimspector#Evaluate()<cr>")
+map('n', "<F10>", ":call vimspector#Evaluate()<cr>")
+
+-- nvim-dap-ui
+
 
 
 -- LSP Navigation
@@ -96,7 +97,7 @@ map('n', "<F7>", ":call vimspector#Evaluate()<cr>")
 -- Also set in lsp-dap.lua
 map('n', "ca", ":lua vim.lsp.buf.code_action()<CR>")
 vim.cmd([[
-nnoremap <silent> <c-]>     <   cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent> <c-]>         <cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap <silent> <c-k>         <cmd>lua vim.lsp.buf.signature_help()<CR>
 nnoremap <silent> K             <cmd>lua vim.lsp.buf.hover()<CR>
 nnoremap <silent> gi            <cmd>lua vim.lsp.buf.implementation()<CR>
@@ -116,10 +117,15 @@ nnoremap <silent> <leader>ld    <cmd>lua vim.lsp.diagnostic.show_line_diagnostic
 nnoremap <silent> <leader>ll    <cmd>lua vim.lsp.diagnostic.set_loclist()<CR>
 ]])
 
+-- Neotest
+vim.cmd([[
+nnoremap <silent> <leader>tt :lua require('neotest').run.run(vim.fn.expand('%'))<cr>
+]])
+
 
 vim.cmd([[
-nnoremap <silent> g[ <cmd>lua vim.diagnostic.goto_prev()<CR>
-nnoremap <silent> g] <cmd>lua vim.diagnostic.goto_next()<CR>
+nnoremap <silent> g[            <cmd>lua vim.diagnostic.goto_prev()<CR>
+nnoremap <silent> g]            <cmd>lua vim.diagnostic.goto_next()<CR>
 ]])
 
 

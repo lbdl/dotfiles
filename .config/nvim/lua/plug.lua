@@ -4,6 +4,7 @@ return require('packer').startup(function(use)
     use 'williamboman/mason-lspconfig'
     use 'neovim/nvim-lspconfig'
     use 'simrat39/rust-tools.nvim'
+
     -- Completion framework:
     use 'hrsh7th/nvim-cmp' 
 
@@ -28,6 +29,7 @@ return require('packer').startup(function(use)
     use 'puremourning/vimspector'
     use 'voldikss/vim-floaterm'
     use "norcalli/nvim-colorizer.lua"
+    use "rcarriga/nvim-notify"
     -- telescope
     -- we also need brew install ripgrep for telescope
     -- see :checkhealth telescope and install instructions
@@ -38,4 +40,18 @@ return require('packer').startup(function(use)
         requires = 'kyazdani42/nvim-web-devicons' } -- Filesystem icons
     use { 'nvim-lualine/lualine.nvim', -- Statusline
         requires = { 'kyazdani42/nvim-web-devicons', opt = true } }   
+
+    -- debuggger gui 
+    use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
+    
+    -- testing frameworks
+    use "nvim-neotest/neotest-python"
+    use {
+      "nvim-neotest/neotest",
+      requires = {
+        "nvim-lua/plenary.nvim",
+        "nvim-treesitter/nvim-treesitter",
+        "antoinemadec/FixCursorHold.nvim"
+      }
+    }
 end)

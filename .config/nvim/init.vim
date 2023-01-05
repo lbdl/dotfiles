@@ -30,8 +30,6 @@ Plug 'ludovicchabant/vim-gutentags'
 
 Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
 
-Plug 'junegunn/fzf.vim'
-
 call plug#end()
 " ----------------------------------------
 " Magit and GitGutter Key bindings
@@ -190,7 +188,7 @@ map <CR> :noh<CR>
 " ----------------------------------------
 " Buffers etc
 " ----------------------------------------
-nnoremap <F5> :buffers<CR>:buffer<Space>
+"nnoremap <F5> :buffers<CR>:buffer<Space>
 
 " ----------------------------------------
 " GOLANG configs
@@ -225,7 +223,11 @@ lua <<
     require('keys')
     require('plugin_config')
     -- LSP
+    require("rust-tools")
     require('lsp-dap')
+    -- Neotest
+   -- require('test_conf')
     -- DAP
+    --require('dap_conf')
 .
 
