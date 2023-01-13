@@ -1,5 +1,5 @@
 -- Completion Plugin Setup
-local cmp = require'cmp'
+local cmp = require('cmp')
 cmp.setup({
   -- Enable LSP snippets
   snippet = {
@@ -32,6 +32,7 @@ cmp.setup({
     { name = 'buffer', keyword_length = 2 },        -- source current buffer
     { name = 'vsnip', keyword_length = 2 },         -- nvim-cmp source for vim-vsnip 
     { name = 'calc'},                               -- source for math calculation
+    { name = 'orgmode'},                            -- source for orgmode
   },
   window = {
       completion = cmp.config.window.bordered(),
@@ -51,18 +52,21 @@ cmp.setup({
       end,
   },
 })
-
 -- Colorizer
 require 'colorizer'.setup()
+
+-- org-mode
+require('orgmode').setup_ts_grammar()
 
 -- Treesitter Plugin Setup 
 require('nvim-treesitter.configs').setup {
       ensure_installed = { "bash", "c", "cmake", "css", "dockerfile", "go", "gomod", "gowork", "hcl", "help", "html",
         "http", "javascript", "json", "lua", "make", "markdown", "python", "regex", "ruby", "rust", "toml", "vim", "yaml",
-        "zig" },
+        "zig", "org" },
     auto_install = true,
     highlight = {
         enable = true,
+        additional_vim_regex_highlighting = {'org'},
     },
     incremental_selection = {
         enable = true,
@@ -77,6 +81,12 @@ require('nvim-treesitter.configs').setup {
         enable = true,
     }
 }
+
+-- org-mode
+require('orgmode').setup({
+    org_agenda_files = {'~/org-mode/**/*'},
+    org_default_notes_file = {'~/org-mode/refile.org'},
+})
 
 
 -- Telescope Setup

@@ -41,6 +41,14 @@ return require('packer').startup(function(use)
     use { 'nvim-lualine/lualine.nvim', -- Statusline
         requires = { 'kyazdani42/nvim-web-devicons', opt = true } }   
 
+    -- org-mode
+    use {'nvim-orgmode/orgmode', config = function() 
+            require('orgmode').setup{}
+        end
+        }
+
+    -- code search stuff
+    use 'preservim/tagbar'
     -- debuggger gui 
     use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
     

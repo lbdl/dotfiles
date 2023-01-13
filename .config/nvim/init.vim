@@ -206,6 +206,12 @@ let g:go_highlight_operators = 1
 let g:go_highlight_structs = 1
 let g:go_highlight_types = 1
 
+" ----------------------------------------
+" JSON etc
+" ----------------------------------------
+let g:vim_json_syntax_conceal=0
+let g:markdown_syntax_conceal=0
+
 
 " ----------------------------------------
 " general lua based config calls
