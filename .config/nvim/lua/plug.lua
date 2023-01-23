@@ -47,6 +47,11 @@ return require('packer').startup(function(use)
         end
         }
 
+    -- refactoring for PY
+    use { "python-rope/ropevim", 
+        run = "pip install ropevim",
+        disable = false 
+    }
     -- code search stuff
     use 'preservim/tagbar'
     -- debuggger gui 
