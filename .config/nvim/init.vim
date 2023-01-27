@@ -232,8 +232,8 @@ lua <<
     require("rust-tools")
     require('lsp-dap')
     -- Neotest
-   -- require('test_conf')
+    require('test_conf')
     -- DAP
-    --require('dap_conf')
+    require('dap-conf')
 .
 

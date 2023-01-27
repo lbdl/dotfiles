@@ -65,10 +65,10 @@ vim.keymap.set("n", "<localleader>de", function()
   require("notify")("Debugger session ended", "warn")
 end)
 
--- some unicode chars for symbols 
--- ⾍
--- 🔴
--- ↯
+ --some unicode chars for symbols 
+ --⾍
+ --🔴
+ --↯
 
 
 

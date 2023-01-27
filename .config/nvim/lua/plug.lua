@@ -10,6 +10,9 @@ return require('packer').startup(function(use)
 
     -- DAP adaptor
     use 'mfussenegger/nvim-dap'
+    use 'mfussenegger/nvim-dap-python'
+    use 'nvim-neotest/neotest-plenary' 
+    use 'nvim-neotest/neotest-vim-test'
 
     -- LSP completion source:
     use 'hrsh7th/cmp-nvim-lsp'

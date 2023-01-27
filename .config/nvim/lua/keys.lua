@@ -119,7 +119,11 @@ nnoremap <silent> <leader>ll    <cmd>lua vim.lsp.diagnostic.set_loclist()<CR>
 
 -- Neotest
 vim.cmd([[
-nnoremap <silent> <leader>tt :lua require('neotest').run.run(vim.fn.expand('%'))<cr>
+nnoremap <silent> <leader>tf :lua require('neotest').run.run()<CR>
+nnoremap <silent> <leader>tt :lua require("neotest").run.run(vim.fn.expand("%"))<CR>
+nnoremap <silent> <leader>td :lua require('neotest').run.run({strategy = "dap"})<CR>
+nnoremap <silent> <leader>ts :lua require('neotest').run.stop()<CR>
+nnoremap <silent> <leader>ta :lua require('neotest').run.attach()<CR>
 ]])
 
 
