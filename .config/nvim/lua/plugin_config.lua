@@ -88,6 +88,8 @@ require('orgmode').setup({
     org_default_notes_file = {'~/org-mode/refile.org'},
 })
 
+-- gopls
+require('lspconfig').gopls.setup{}
 
 -- Telescope Setup
 require('telescope').setup {
@@ -109,8 +111,6 @@ require('telescope').setup {
        -- },
     },
 }
-
-
 
 -- Nvim Tree Setup
 require('nvim-tree').setup {
