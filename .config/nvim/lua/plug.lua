@@ -8,14 +8,20 @@ return require('packer').startup(function(use)
     -- Completion framework:
     use 'hrsh7th/nvim-cmp' 
 
+    -- Colours etc
+    use "rebelot/kanagawa.nvim"
+
     -- DAP adaptor
     use 'mfussenegger/nvim-dap'
     use 'mfussenegger/nvim-dap-python'
-    use 'nvim-neotest/neotest-plenary' 
-    use 'nvim-neotest/neotest-vim-test'
-
+    --use 'nvim-neotest/neotest-plenary' 
+    --use 'nvim-neotest/neotest-vim-test'
+    use "antoinemadec/FixCursorHold.nvim"
     -- LSP completion source:
     use 'hrsh7th/cmp-nvim-lsp'
+    
+    -- lua vim config lsp stuff
+    use "folke/neodev.nvim"
 
     -- git stuff
     use 'jreybert/vimagit'
@@ -33,6 +39,7 @@ return require('packer').startup(function(use)
     use 'voldikss/vim-floaterm'
     use "norcalli/nvim-colorizer.lua"
     use "rcarriga/nvim-notify"
+   
     -- telescope
     -- we also need brew install ripgrep for telescope
     -- see :checkhealth telescope and install instructions
@@ -61,13 +68,23 @@ return require('packer').startup(function(use)
     use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
     
     -- testing frameworks
-    use "nvim-neotest/neotest-python"
-    use {
+     use {
       "nvim-neotest/neotest",
       requires = {
         "nvim-lua/plenary.nvim",
         "nvim-treesitter/nvim-treesitter",
         "antoinemadec/FixCursorHold.nvim"
       }
-    }
+    }  
+     use "nvim-neotest/neotest-python"
+    --use "nvim-neotest/neotest-python"
+    --use 'vim-test/vim-test'
+    --use {
+      --"nvim-neotest/neotest",
+      --requires = {
+        --"nvim-lua/plenary.nvim",
+        --"nvim-treesitter/nvim-treesitter",
+        --"antoinemadec/FixCursorHold.nvim"
+      --}
+    --}
 end)

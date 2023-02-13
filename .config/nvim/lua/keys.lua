@@ -76,13 +76,13 @@ map('n', '<leader>|', ':execute "set colorcolumn=" . (&colorcolumn == "" ? "81" 
 map('n', "<leader>tt", ":SymbolsOutline<CR>");
 
 -- Vimspector
-vim.cmd([[
-nmap <F5> <cmd>call vimspector#Launch()<cr>
-nmap <F8> <cmd>call vimspector#StepOver()<cr>
-nmap <F6> <cmd>call vimspector#Reset()<cr>
-nmap <F9> <cmd>call vimspector#StepOut()<cr>")
-nmap <F7> <cmd>call vimspector#StepInto()<cr>")
-]])
+--vim.cmd([[
+--nmap <F5> <cmd>call vimspector#Launch()<cr>
+--nmap <F8> <cmd>call vimspector#StepOver()<cr>
+--nmap <F6> <cmd>call vimspector#Reset()<cr>
+--nmap <F9> <cmd>call vimspector#StepOut()<cr>")
+--nmap <F7> <cmd>call vimspector#StepInto()<cr>")
+--]])
 
 map('n', "<F3>", ":call vimspector#ToggleBreakpoint()<cr>")
 map('n', "<F4>", ":call vimspector#AddWatch()<cr>")
@@ -90,6 +90,22 @@ map('n', "<F10>", ":call vimspector#Evaluate()<cr>")
 
 -- nvim-dap-ui
 
+
+-- Neotest
+vim.cmd([[
+" run nearest test
+nnoremap <silent> <leader>TT    <cmd>lua require("neotest").run.run()<CR>
+" run last test
+nnoremap <silent> <leader>TL    <cmd>lua require("neotest").run.run_last()<CR>
+" run test file
+nnoremap <silent> <leader>TF    <cmd>lua require("neotest").run.run(vim.fn.expand("%"))<CR>
+" debug nearest test
+nnoremap <silent> <leader>TD    <cmd>lua require("neotest").run.run({strategy = "dap"})<CR>
+" open summary tab
+nnoremap <silent> <leader>TS    <cmd>lua require("neotest").summary.toggle()<CR>
+" open result output window
+nnoremap <silent> <leader>TO    <cmd>lua require("neotest").output.open({ enter = true })<CR>
+]])
 
 
 -- LSP Navigation
@@ -117,14 +133,6 @@ nnoremap <silent> <leader>ld    <cmd>lua vim.lsp.diagnostic.show_line_diagnostic
 nnoremap <silent> <leader>ll    <cmd>lua vim.lsp.diagnostic.set_loclist()<CR>
 ]])
 
--- Neotest
-vim.cmd([[
-nnoremap <silent> <leader>tf :lua require('neotest').run.run()<CR>
-nnoremap <silent> <leader>tt :lua require("neotest").run.run(vim.fn.expand("%"))<CR>
-nnoremap <silent> <leader>td :lua require('neotest').run.run({strategy = "dap"})<CR>
-nnoremap <silent> <leader>ts :lua require('neotest').run.stop()<CR>
-nnoremap <silent> <leader>ta :lua require('neotest').run.attach()<CR>
-]])
 
 
 vim.cmd([[

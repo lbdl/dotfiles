@@ -60,6 +60,11 @@ opt.splitbelow = true -- bool: Place new window below the current one
 -- Format on Save
 vim.cmd([[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]])
 
+-- Vimtest
+vim.cmd([[
+"let test#strategy = "asyncrun_background"
+let test#strategy = "floaterm"
+]])
 
 -- Vimspector
 vim.cmd([[
