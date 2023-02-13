@@ -56,13 +56,13 @@ cmp.setup({
 require 'colorizer'.setup()
 
 -- org-mode
-require('orgmode').setup_ts_grammar()
+--require('orgmode').setup_ts_grammar()
 
 -- Treesitter Plugin Setup 
 require('nvim-treesitter.configs').setup {
       ensure_installed = { "bash", "c", "cmake", "css", "dockerfile", "go", "gomod", "gowork", "hcl", "help", "html",
         "http", "javascript", "json", "lua", "make", "markdown", "python", "regex", "ruby", "rust", "toml", "vim", "yaml",
-        "zig", "org" },
+        "zig", "org", "proto" },
     auto_install = true,
     highlight = {
         enable = true,
@@ -83,9 +83,24 @@ require('nvim-treesitter.configs').setup {
 }
 
 -- org-mode
-require('orgmode').setup({
-    org_agenda_files = {'~/org-mode/**/*'},
-    org_default_notes_file = {'~/org-mode/refile.org'},
+--require('orgmode').setup({
+    --org_agenda_files = {'~/org-mode/**/*'},
+    --org_default_notes_file = {'~/org-mode/refile.org'},
+--})
+
+-- Neotest
+require("neotest").setup({
+  adapters = {
+    require("neotest-python")
+  },
+  output_panel = {
+      enabled = false,
+      open = "bot split | resize 15"
+    },
+    output = {
+        enabled = true,
+        open_on_run = true;
+    }
 })
 
 -- gopls

@@ -1,14 +1,14 @@
 -- nvim-dap-ui
-local ldap = require('dap')
+
 -- require('dap').set_log_level('INFO') -- Helps when configuring DAP, see logs with :DapShowLog
 
-ldap.adapters.python = {
+require('dap').adapters.python = {
     type = 'executable';
     command = 'python';
     args = { '-m', 'debugpy.adapter' };
 }
 
-ldap.configurations.python = {
+require('dap').configurations.python = {
   {
     -- The first three options are required by nvim-dap
     -- the type here established the link to the adapter definition: `dap.adapters.python`    

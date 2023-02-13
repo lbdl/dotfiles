@@ -98,6 +98,7 @@ augroup END
 set background=dark
 set termguicolors
 colorscheme monokai_pro
+colorscheme kanagawa
 set wrap
 
 " ----------------------------------------
@@ -227,13 +228,19 @@ lua <<
     require('plug')
     require('opts')
     require('keys')
+    require("neodev").setup({
+        library = { 
+            plugins = { "neotest", "nvim-dap-ui" }, types = true },
+    })
     require('plugin_config')
     -- LSP
     require("rust-tools")
     require('lsp-dap')
     -- Neotest
-   -- require('test_conf')
-    -- DAP
-    --require('dap_conf')
+    -- require('test_conf')
+        -- DAP
+    require('dap-python').setup('python')
+    require('dap-conf')
+    require("dapui").setup()
 .
 

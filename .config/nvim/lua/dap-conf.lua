@@ -5,30 +5,30 @@ if not (dap_ok) then
   return
 end
 
--- require('dap').set_log_level('INFO') -- Helps when configuring DAP, see logs with :DapShowLog
+---- require('dap').set_log_level('INFO') -- Helps when configuring DAP, see logs with :DapShowLog
 
-dap.adapters.python = {
-    type = 'executable';
-    command = 'python';
-    args = { '-m', 'debugpy.adapter' };
-}
+--dap.adapters.python = {
+    --type = 'executable';
+    --command = 'python';
+    --args = { '-m', 'debugpy.adapter' };
+--}
 
-dap.configurations.python = {
-  {
-    -- The first three options are required by nvim-dap
-    -- the type here established the link to the adapter definition: `dap.adapters.python`    
-    type = 'python';
-    request = 'launch';
-    name = "Launch file";
+--dap.configurations.python = {
+  --{
+    ---- The first three options are required by nvim-dap
+    ---- the type here established the link to the adapter definition: `dap.adapters.python`    
+    --type = 'python';
+    --request = 'launch';
+    --name = "Launch file";
 
-    -- Options below are for debugpy, see https://github.com/microsoft/debugpy/wiki/Debug-configuration-settings
-    program = "${file}";
-    stopOnEntry = False;
-    },
-}
+    ---- Options below are for debugpy, see https://github.com/microsoft/debugpy/wiki/Debug-configuration-settings
+    --program = "${file}";
+    --stopOnEntry = False;
+    --},
+--}
 
 local dap_ui_ok, ui = pcall(require, "dapui")
-if not (dap_ok and dap_ui_ok) then
+if not (dap_ui_ok) then
     require("notify")("dap-ui not installed!", "warning")
   return
 end
@@ -65,10 +65,10 @@ vim.keymap.set("n", "<localleader>de", function()
   require("notify")("Debugger session ended", "warn")
 end)
 
--- some unicode chars for symbols 
--- ⾍
--- 🔴
--- ↯
+ --some unicode chars for symbols 
+ --⾍
+ --🔴
+ --↯
 
 
 
