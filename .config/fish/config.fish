@@ -1,12 +1,8 @@
 direnv hook fish | source
 
-source (pyenv init - | psub)
-source (rbenv init - | psub)
-source (pyenv virtualenv-init - | psub)
-
-status --is-interactive; and pyenv init - | source
+status --is-interactive; and pyenv init - --no-push-path | source
 status --is-interactive; and pyenv virtualenv-init - | source
-status --is-interactive; and source (rbenv init -|psub)
+status --is-interactive; and rbenv init - fish | source
 
 rbenv rehash >/dev/null 2>&1
 

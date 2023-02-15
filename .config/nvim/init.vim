@@ -12,7 +12,7 @@
 call plug#begin('~/.config/nvim/plugged')
 
 " Colorscheme
-Plug 'phanviet/vim-monokai-pro'
+"Plug 'phanviet/vim-monokai-pro'
 
 Plug 'elemecca/dockerfile.vim'
 
@@ -97,7 +97,7 @@ augroup END
 " ----------------------------------------
 set background=dark
 set termguicolors
-colorscheme monokai_pro
+"colorscheme monokai_pro
 colorscheme kanagawa
 set wrap
 
@@ -213,6 +213,14 @@ let g:go_highlight_types = 1
 let g:vim_json_syntax_conceal=0
 let g:markdown_syntax_conceal=0
 
+" ----------------------------------------
+" PYENV etc
+" dont forget to chnage this see 
+" https://github.com/deoplete-plugins/deoplete-jedi/wiki/Setting-up-Python-for-Neovim#using-virtual-environments
+" for info
+" ----------------------------------------
+
+let g:python3_host_prog = '/Users/tims/.pyenv/versions/nvim3-10/bin/python'
 
 " ----------------------------------------
 " general lua based config calls
@@ -239,7 +247,7 @@ lua <<
     -- Neotest
     -- require('test_conf')
         -- DAP
-    require('dap-python').setup('python')
+    require('dap-python').setup('~/.pyenv/versions/nvim3-10/bin/python')
     require('dap-conf')
     require("dapui").setup()
 .
