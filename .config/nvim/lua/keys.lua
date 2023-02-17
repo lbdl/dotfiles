@@ -1,5 +1,4 @@
 --[[ keys.lua ]]
-
 -- Functional wrapper for mapping custom keybindings
 -- mode (as in Vim modes like Normal/Insert mode)
 -- lhs (the custom keybinds you need)
@@ -12,7 +11,6 @@ function map(mode, lhs, rhs, opts)
     end
     vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
-
 
 -- Load all OPTs
 map("n", "<F1>", ":luafile ~/.config/nvim/lua/opts.lua<cr>")
@@ -105,6 +103,7 @@ nnoremap <silent> <leader>TD    <cmd>lua require("neotest").run.run({strategy = 
 nnoremap <silent> <leader>TS    <cmd>lua require("neotest").summary.toggle()<CR>
 " open result output window
 nnoremap <silent> <leader>TO    <cmd>lua require("neotest").output.open({ enter = true })<CR>
+nnoremap <silent> <leader>To    <cmd>lua require("neotest").output_panel.open()<CR>
 ]])
 
 

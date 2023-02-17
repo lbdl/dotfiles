@@ -1,9 +1,8 @@
 local on_attach = function(client, bufnr)
-
     local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
     local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
-    local opts = { noremap=true, silent=true }
-    
+    local opts = { noremap = true, silent = true }
+
     -- Set some keybinds conditional on server capabilities
     if client.server_capabilities.document_formatting then
         buf_set_keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
@@ -31,21 +30,21 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 
 -- Code actions
 capabilities.textDocument.codeAction = {
-  dynamicRegistration = false;
-      codeActionLiteralSupport = {
-          codeActionKind = {
-              valueSet = {
-                 "",
-                 "quickfix",
-                 "refactor",
-                 "refactor.extract",
-                 "refactor.inline",
-                 "refactor.rewrite",
-                 "source",
-                 "source.organizeImports",
-              };
-          };
-      };
+    dynamicRegistration = false,
+    codeActionLiteralSupport = {
+        codeActionKind = {
+            valueSet = {
+                "",
+                "quickfix",
+                "refactor",
+                "refactor.extract",
+                "refactor.inline",
+                "refactor.rewrite",
+                "source",
+                "source.organizeImports",
+            },
+        },
+    },
 }
 
 -- Snippets
@@ -54,7 +53,7 @@ capabilities.textDocument.codeAction = {
 -- LSPs
 -- these have been installed via Mason
 -- rust_analyzer needs setup as below
--- local rt = 
+-- local rt =
 --require("rust-tools").setup({
 --  server = {
 --    on_attach = function(_, bufnr)
@@ -82,62 +81,64 @@ capabilities.textDocument.codeAction = {
 
 -- example to setup sumneko and enable call snippets
 require('lspconfig').sumneko_lua.setup({
-  settings = {
-    Lua = {
-      completion = {
-        callSnippet = "Replace"
-      }
-    }
-  }
+    settings = {
+        Lua = {
+            completion = {
+                callSnippet = "Replace"
+            },
+            diagnostics = {
+                globals = { 'vim' },
+            },
+        },
+    },
 })
 
-require('lspconfig').pylsp.setup{
-    capabilities = capabilities;
-    on_attach = on_attach;
+require('lspconfig').pylsp.setup {
+    capabilities = capabilities,
+    on_attach = on_attach,
     init_options = {
-       onlyAnalyzeProjectsWithOpenFiles = true,
-       suggestFromUnimportedLibraries = false,
-       closingLabels = true,
-    };
+        onlyAnalyzeProjectsWithOpenFiles = true,
+        suggestFromUnimportedLibraries = false,
+        closingLabels = true,
+    },
 }
 
-require('lspconfig').dockerls.setup{
-    capabilities = capabilities;
-    on_attach = on_attach;
+require('lspconfig').dockerls.setup {
+    capabilities = capabilities,
+    on_attach = on_attach,
     init_options = {
-       onlyAnalyzeProjectsWithOpenFiles = true,
-       suggestFromUnimportedLibraries = false,
-       closingLabels = true,
-    };
+        onlyAnalyzeProjectsWithOpenFiles = true,
+        suggestFromUnimportedLibraries = false,
+        closingLabels = true,
+    },
 }
 
-require('lspconfig').ruby_ls.setup{
-    capabilities = capabilities;
-    on_attach = on_attach;
+require('lspconfig').ruby_ls.setup {
+    capabilities = capabilities,
+    on_attach = on_attach,
     init_options = {
-       onlyAnalyzeProjectsWithOpenFiles = true,
-       suggestFromUnimportedLibraries = false,
-       closingLabels = true,
-    };
+        onlyAnalyzeProjectsWithOpenFiles = true,
+        suggestFromUnimportedLibraries = false,
+        closingLabels = true,
+    },
 }
 
-require('lspconfig').gopls.setup{
-    capabilities = capabilities;
-    on_attach = on_attach;
+require('lspconfig').gopls.setup {
+    capabilities = capabilities,
+    on_attach = on_attach,
     init_options = {
-       onlyAnalyzeProjectsWithOpenFiles = true,
-       suggestFromUnimportedLibraries = false,
-       closingLabels = true,
-    };
+        onlyAnalyzeProjectsWithOpenFiles = true,
+        suggestFromUnimportedLibraries = false,
+        closingLabels = true,
+    },
 }
 
-require('lspconfig').yamlls.setup{
-    capabilities = capabilities;
-    on_attach = on_attach;
+require('lspconfig').yamlls.setup {
+    capabilities = capabilities,
+    on_attach = on_attach,
     init_options = {
-       onlyAnalyzeProjectsWithOpenFiles = true,
-       suggestFromUnimportedLibraries = false,
-       closingLabels = true,
-    };
+        onlyAnalyzeProjectsWithOpenFiles = true,
+        suggestFromUnimportedLibraries = false,
+        closingLabels = true,
+    },
 }
-

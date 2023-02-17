@@ -15,4 +15,4 @@ function fish_prompt
   _old_fish_prompt
 end
 
-test -e /Users/tims/.iterm2_shell_integration.fish ; and source /Users/tims/.iterm2_shell_integration.fish ; or true
+#test -e /Users/tims/.iterm2_shell_integration.fish ; and source /Users/tims/.iterm2_shell_integration.fish ; or true

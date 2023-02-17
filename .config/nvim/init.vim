@@ -220,7 +220,7 @@ let g:markdown_syntax_conceal=0
 " for info
 " ----------------------------------------
 
-let g:python3_host_prog = '/Users/tims/.pyenv/versions/nvim3-10/bin/python'
+let g:python3_host_prog = '~/.pyenv/versions/nvim3-10/bin/python'
 
 " ----------------------------------------
 " general lua based config calls
@@ -244,8 +244,9 @@ lua <<
     -- LSP
     require("rust-tools")
     require('lsp-dap')
+    require('notify')
     -- Neotest
-    -- require('test_conf')
+    require('neotest_conf')
         -- DAP
     require('dap-python').setup('~/.pyenv/versions/nvim3-10/bin/python')
     require('dap-conf')
