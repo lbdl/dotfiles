@@ -16,7 +16,7 @@ call plug#begin('~/.config/nvim/plugged')
 
 Plug 'elemecca/dockerfile.vim'
 
-Plug 'ludovicchabant/vim-gutentags'
+"Plug 'ludovicchabant/vim-gutentags'
 
 " Nerd commenter
 Plug 'preservim/nerdcommenter'
@@ -244,9 +244,12 @@ lua <<
     -- LSP
     require("rust-tools")
     require('lsp-dap')
+    -- Notify
+    --require('notify').setup()
     require('notify')
     -- Neotest
     require('neotest_conf')
+    --require('neotest').setup({adapters = {"neotest-python"} })
         -- DAP
     require('dap-python').setup('~/.pyenv/versions/nvim3-10/bin/python')
     require('dap-conf')

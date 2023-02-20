@@ -3,8 +3,6 @@ require("neotest").setup({
     adapters = {
         require("neotest-python")({
             dap = { justMyCode = false },
-            runner = "pytest",
-            python = "~/.pyenv/versions/nvim3-10/bin/python"
         })
     },
     output_panel = {
