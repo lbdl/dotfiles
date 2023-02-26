@@ -4,6 +4,14 @@ source (pyenv init - | psub)
 source (pyenv virtualenv-init - | psub)
 status --is-interactive; and rbenv init - fish | source
 
+
+# nvm stuff
+set nvm_path = ~/.nvm
+if test -d nvm_path
+    if test -s $nvm_path/nvm.sh
+    end
+end
+
 rbenv rehash >/dev/null 2>&1
 
 # Change prompt
