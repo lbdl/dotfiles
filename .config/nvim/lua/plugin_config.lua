@@ -75,20 +75,6 @@ require('nvim-treesitter.configs').setup {
     }
 }
 
---Neotest
---require("neotest").setup({
---adapters = {
---require("neotest-python")
---},
---output_panel = {
---enabled = false,
---open = "bot split | resize 15"
---},
---output = {
---enabled = true,
---open_on_run = true,
---}
---})
 
 -- gopls
 require('lspconfig').gopls.setup {}

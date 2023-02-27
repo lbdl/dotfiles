@@ -42,10 +42,10 @@ let g:gitgutter_sign_removed='--'
 let g:gitgutter_sign_removed_first_line='^'
 let g:gitgutter_sign_modified_removed='<'
 
-nmap <leader>ggn :GitGutterNextHunk<CR> 
-nmap <leader>ggN :GitGutterPrevHunk<CR>
-nmap <leader>gga :GitGutterStageHunk<CR> 
-nmap <leader>ggu :GitGutterUndoHunk<CR>
+nmap <leader><S-g>n :GitGutterNextHunk<CR> 
+nmap <leader><S-g><S-n> :GitGutterPrevHunk<CR>
+nmap <leader><S-g>a :GitGutterStageHunk<CR> 
+nmap <leader><S-g>u :GitGutterUndoHunk<CR>
 
 nnoremap <leader>gs :Magit<CR>
 

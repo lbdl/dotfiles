@@ -71,7 +71,7 @@ map('n', '<leader>|', ':execute "set colorcolumn=" . (&colorcolumn == "" ? "81" 
 
 -- Tagbar Toggle
 -- map('n', "<leader>tt", ":TagbarToggle<CR>");
-map('n', "<leader>tt", ":SymbolsOutline<CR>");
+map('n', "<leader>tb", ":SymbolsOutline<CR>");
 
 -- Vimspector
 --vim.cmd([[
@@ -82,29 +82,11 @@ map('n', "<leader>tt", ":SymbolsOutline<CR>");
 --nmap <F7> <cmd>call vimspector#StepInto()<cr>")
 --]])
 
-map('n', "<F3>", ":call vimspector#ToggleBreakpoint()<cr>")
-map('n', "<F4>", ":call vimspector#AddWatch()<cr>")
-map('n', "<F10>", ":call vimspector#Evaluate()<cr>")
+--map('n', "<F3>", ":call vimspector#ToggleBreakpoint()<cr>")
+--map('n', "<F4>", ":call vimspector#AddWatch()<cr>")
+--map('n', "<F10>", ":call vimspector#Evaluate()<cr>")
 
 -- nvim-dap-ui
-
-
--- Neotest
-vim.cmd([[
-" run nearest test
-nnoremap <silent> <leader>TT    <cmd>lua require("neotest").run.run()<CR>
-" run last test
-nnoremap <silent> <leader>TL    <cmd>lua require("neotest").run.run_last()<CR>
-" run test file
-nnoremap <silent> <leader>TF    <cmd>lua require("neotest").run.run(vim.fn.expand("%"))<CR>
-" debug nearest test
-nnoremap <silent> <leader>TD    <cmd>lua require("neotest").run.run({strategy = "dap"})<CR>
-" open summary tab
-nnoremap <silent> <leader>TS    <cmd>lua require("neotest").summary.toggle()<CR>
-" open result output window
-nnoremap <silent> <leader>TO    <cmd>lua require("neotest").output.open({ enter = true })<CR>
-nnoremap <silent> <leader>To    <cmd>lua require("neotest").output_panel.open()<CR>
-]])
 
 
 -- LSP Navigation
@@ -161,16 +143,16 @@ nnoremap <silent> <leader>cC :lua require('crates').open_crates_io()<cr>
 
 
 -- FloaTerm configuration
-map('n', "<leader>ft", ":FloatermNew --name=myfloat --height=0.8 --width=0.7 --autoclose=2 fish <CR> ")
-map('n', "t", ":FloatermToggle myfloat<CR>")
+map('n', "<leader><S-F-T>", ":FloatermNew --name=myfloat --height=0.8 --width=0.7 --autoclose=2 fish <CR> ")
+map('n', "<S-t>", ":FloatermToggle myfloat<CR>")
 map('t', "<Esc>", "<C-\\><C-n>:q<CR>")
 
 
 -- Comment.nvim configuration
 -- current line
-vim.keymap.set('n', 'cc', '<Plug>(comment_toggle_linewise_current)')
-vim.keymap.set('n', 'cb', '<Plug>(comment_toggle_blockwise_current)')
+-- vim.keymap.set('n', 'cc', '<Plug>(comment_toggle_linewise_current)')
+--vim.keymap.set('n', 'cb', '<Plug>(comment_toggle_blockwise_current)')
 
 -- Toggle in VISUAL mode
-vim.keymap.set('x', 'cc', '<Plug>(comment_toggle_linewise_visual)')
-vim.keymap.set('x', 'cb', '<Plug>(comment_toggle_blockwise_visual)')
+--vim.keymap.set('x', 'cc', '<Plug>(comment_toggle_linewise_visual)')
+--vim.keymap.set('x', 'cb', '<Plug>(comment_toggle_blockwise_visual)')
