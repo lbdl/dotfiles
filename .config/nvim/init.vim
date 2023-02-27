@@ -221,6 +221,7 @@ let g:markdown_syntax_conceal=0
 " ----------------------------------------
 
 let g:python3_host_prog = '~/.pyenv/versions/nvim3-10/bin/python'
+let g:ruby_host_prog = '~/.rbenv/versions/3.2.1/bin/neovim-ruby-host'
 
 " ----------------------------------------
 " general lua based config calls
