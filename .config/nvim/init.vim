@@ -11,12 +11,7 @@
 "==========================================================
 call plug#begin('~/.config/nvim/plugged')
 
-" Colorscheme
-"Plug 'phanviet/vim-monokai-pro'
-
 Plug 'elemecca/dockerfile.vim'
-
-"Plug 'ludovicchabant/vim-gutentags'
 
 " Nerd commenter
 Plug 'preservim/nerdcommenter'
