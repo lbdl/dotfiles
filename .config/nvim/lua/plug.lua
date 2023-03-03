@@ -16,7 +16,8 @@ return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
     use 'williamboman/mason.nvim'
     use 'williamboman/mason-lspconfig'
-    use 'neovim/nvim-lspconfig'
+
+    -- RUST
     use 'simrat39/rust-tools.nvim'
 
     -- Completion framework:
@@ -28,13 +29,14 @@ return require('packer').startup(function(use)
     -- DAP adaptor
     use 'mfussenegger/nvim-dap'
     use 'mfussenegger/nvim-dap-python'
-    --use 'nvim-neotest/neotest-plenary'
-    --use 'nvim-neotest/neotest-vim-test'
+    use 'theHamsta/nvim-dap-virtual-text'
     use "antoinemadec/FixCursorHold.nvim"
+
     -- LSP completion source:
     use 'hrsh7th/cmp-nvim-lsp'
+    use 'neovim/nvim-lspconfig'
 
-    -- lua vim config lsp stuff
+    -- LUA vim config lsp stuff
     use "folke/neodev.nvim"
 
     -- git stuff
@@ -65,19 +67,15 @@ return require('packer').startup(function(use)
     use { 'nvim-lualine/lualine.nvim', -- Statusline
         requires = { 'kyazdani42/nvim-web-devicons', opt = true } }
 
-    -- org-mode
-    use { 'nvim-orgmode/orgmode', config = function()
-        require('orgmode').setup_ts_grammer()
-    end
-    }
-
     -- refactoring for PY
     use { "python-rope/ropevim",
         run = "pip install ropevim",
         disable = false
     }
+
     -- code search stuff
     use 'preservim/tagbar'
+
     -- debuggger gui
     use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } }
 
