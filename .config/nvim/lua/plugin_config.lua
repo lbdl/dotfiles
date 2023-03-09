@@ -31,7 +31,6 @@ cmp.setup({
         { name = 'buffer',                 keyword_length = 2 }, -- source current buffer
         { name = 'vsnip',                  keyword_length = 2 }, -- nvim-cmp source for vim-vsnip
         { name = 'calc' }, -- source for math calculation
-        { name = 'orgmode' }, -- source for orgmode
     },
     window = {
         completion = cmp.config.window.bordered(),
@@ -56,7 +55,7 @@ cmp.setup({
 require('nvim-treesitter.configs').setup {
     ensure_installed = { "bash", "c", "cmake", "css", "dockerfile", "go", "gomod", "gowork", "hcl", "help", "html",
         "http", "javascript", "json", "lua", "make", "markdown", "python", "regex", "ruby", "rust", "toml", "vim", "yaml",
-        "zig", "org", "proto" },
+        "zig", "proto" },
     auto_install = true,
     highlight = {
         enable = true,

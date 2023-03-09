@@ -31,17 +31,16 @@ ntest.setup({
 
 vim.keymap.set(
     "n",
-    "<leader>tt",
+    "<localleader>tt",
     function()
         ntest.run.run()
-        ntest.summary.open()
     end,
     map_opts
 )
 
 vim.keymap.set(
     "n",
-    "<leader>tl",
+    "<localleader>tl",
     function()
         ntest.run.last()
         ntest.summary.open()
@@ -51,7 +50,7 @@ vim.keymap.set(
 
 vim.keymap.set(
     "n",
-    "<leader>tf",
+    "<localleader>tf",
     function()
         ntest.run.run(vim.fn.expand("%"))
         ntest.summary.open()
@@ -61,7 +60,7 @@ vim.keymap.set(
 
 vim.keymap.set(
     "n",
-    "<leader>to",
+    "<localleader>to",
     function()
         ntest.output.open()
     end,
@@ -70,7 +69,7 @@ vim.keymap.set(
 
 vim.keymap.set(
     "n",
-    "<leader>tc",
+    "<localleader>tc",
     function()
         ntest.summary.close()
     end,
@@ -79,7 +78,7 @@ vim.keymap.set(
 
 vim.keymap.set(
     "n",
-    "<leader>ts",
+    "<localleader>ts",
     function()
         ntest.run.stop()
     end,
@@ -88,7 +87,7 @@ vim.keymap.set(
 
 vim.keymap.set(
     "n",
-    "<leader>td",
+    "<localleader>td",
     function()
         ntest.run.run({ strategy = "dap" })
     end,
@@ -97,7 +96,7 @@ vim.keymap.set(
 
 vim.keymap.set(
     "n",
-    "<leader>tg",
+    "<localleader>tg",
     function()
         ntest.summary.toggle()
     end,

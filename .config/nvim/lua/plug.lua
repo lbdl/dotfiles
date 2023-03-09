@@ -1,12 +1,12 @@
 local ensure_packer = function()
-  local fn = vim.fn
-  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
-  if fn.empty(fn.glob(install_path)) > 0 then
-    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
-    vim.cmd [[packadd packer.nvim]]
-    return true
-  end
-  return false
+    local fn = vim.fn
+    local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
+    if fn.empty(fn.glob(install_path)) > 0 then
+        fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
+        vim.cmd [[packadd packer.nvim]]
+        return true
+    end
+    return false
 end
 
 local packer_bootstrap = ensure_packer()
@@ -27,7 +27,7 @@ return require('packer').startup(function(use)
 
     -- DAP adaptor
     use 'mfussenegger/nvim-dap'
-    use 'mfussenegger/nvim-dap-python'
+    --use 'mfussenegger/nvim-dap-python'
     --use 'nvim-neotest/neotest-plenary'
     --use 'nvim-neotest/neotest-vim-test'
     use "antoinemadec/FixCursorHold.nvim"
@@ -66,10 +66,10 @@ return require('packer').startup(function(use)
         requires = { 'kyazdani42/nvim-web-devicons', opt = true } }
 
     -- org-mode
-    use { 'nvim-orgmode/orgmode', config = function()
-        require('orgmode').setup {}
-    end
-    }
+    --use { 'nvim-orgmode/orgmode', config = function()
+    --require('orgmode').setup_ts_grammer()
+    --end
+    --}
 
     -- refactoring for PY
     use { "python-rope/ropevim",

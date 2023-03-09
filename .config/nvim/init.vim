@@ -127,6 +127,7 @@ set nowritebackup
 " loaded from .vimrc
 " ----------------------------------------
 let mapleader = ";"
+let maplocalleader = "\\"
 
 
 " ----------------------------------------
@@ -231,10 +232,7 @@ lua <<
     require('plug')
     require('opts')
     require('keys')
-    require("neodev").setup({
-        library = { 
-            plugins = { "neotest", "nvim-dap-ui" }, types = true },
-    })
+
     require('plugin_config')
     -- LSP
     require("rust-tools")
@@ -246,8 +244,7 @@ lua <<
     require('neotest_conf')
     --require('neotest').setup({adapters = {"neotest-python"} })
         -- DAP
-    require('dap-python').setup('~/.pyenv/versions/nvim3-10/bin/python')
+    --require('dap-python').setup('~/.pyenv/versions/nvim3-10/bin/python')
     require('dap-conf')
-    require("dapui").setup()
 .
 

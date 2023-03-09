@@ -80,18 +80,18 @@ capabilities.textDocument.codeAction = {
 -- see :h mason-lspconfig
 
 -- example to setup sumneko and enable call snippets
-require('lspconfig').lua_ls.setup({
-    settings = {
-        Lua = {
-            completion = {
-                callSnippet = "Replace"
-            },
-            diagnostics = {
-                globals = { 'vim' },
-            },
-        },
-    },
-})
+--require('lspconfig').lua_ls.setup({
+--settings = {
+--Lua = {
+--completion = {
+--callSnippet = "Replace"
+--},
+--diagnostics = {
+--globals = { 'vim' },
+--},
+--},
+--},
+--})
 
 require('lspconfig').pylsp.setup {
     capabilities = capabilities,
