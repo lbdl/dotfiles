@@ -233,6 +233,9 @@ lua <<
     require('mason-lspconfig').setup {
         ensure_installed = { "gopls", "rust_analyzer", "pylsp", "ruby_ls", "yamlls", "dockerls" },
     }
+    -- Notify
+    --require('notify').setup()
+    require('notify')
     require('lsp_diag')
     require('plug')
     require('opts')
@@ -245,9 +248,7 @@ lua <<
     -- LSP
     require("rust-tools")
     require('lsp-dap')
-    -- Notify
-    --require('notify').setup()
-    require('notify')
+    
     -- Neotest
     require('neotest_conf')
     --require('neotest').setup({adapters = {"neotest-python"} })
