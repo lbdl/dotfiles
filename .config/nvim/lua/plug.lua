@@ -62,9 +62,9 @@ return require('packer').startup(function(use)
     use 'nvim-lua/plenary.nvim'
     use 'nvim-telescope/telescope.nvim'
     use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' } -- Make telescope faster
-    use { 'kyazdani42/nvim-tree.lua', -- Filesystem navigation
-        requires = 'kyazdani42/nvim-web-devicons' } -- Filesystem icons
-    use { 'nvim-lualine/lualine.nvim', -- Statusline
+    use { 'kyazdani42/nvim-tree.lua',                                -- Filesystem navigation
+        requires = 'kyazdani42/nvim-web-devicons' }                  -- Filesystem icons
+    use { 'nvim-lualine/lualine.nvim',                               -- Statusline
         requires = { 'kyazdani42/nvim-web-devicons', opt = true } }
 
     -- refactoring for PY

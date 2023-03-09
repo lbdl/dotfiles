@@ -86,31 +86,12 @@ map('n', "<F3>", ":call vimspector#ToggleBreakpoint()<cr>")
 map('n', "<F4>", ":call vimspector#AddWatch()<cr>")
 map('n', "<F10>", ":call vimspector#Evaluate()<cr>")
 
--- nvim-dap-ui
-
-
--- Neotest
---vim.cmd([[
---" run nearest test
---nnoremap <silent> <leader>tt    <cmd>lua require("neotest").run.run()<CR>
---" run last test
---nnoremap <silent> <leader>TL    <cmd>lua require("neotest").run.run_last()<CR>
---" run test file
---nnoremap <silent> <leader>TF    <cmd>lua require("neotest").run.run(vim.fn.expand("%"))<CR>
---" debug nearest test
---nnoremap <silent> <leader>TD    <cmd>lua require("neotest").run.run({strategy = "dap"})<CR>
---" open summary tab
---nnoremap <silent> <leader>TS    <cmd>lua require("neotest").summary.toggle()<CR>
---" open result output window
---nnoremap <silent> <leader>TO    <cmd>lua require("neotest").output.open({ enter = true })<CR>
---nnoremap <silent> <leader>To    <cmd>lua require("neotest").output_panel.open()<CR>
---]])
-
 
 -- LSP Navigation
 -- Code Actions
 -- Also set in lsp-dap.lua
 map('n', "ca", ":lua vim.lsp.buf.code_action()<CR>")
+
 vim.cmd([[
 nnoremap <silent> <c-]>         <cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap <silent> <c-k>         <cmd>lua vim.lsp.buf.signature_help()<CR>

@@ -11,12 +11,7 @@
 "==========================================================
 call plug#begin('~/.config/nvim/plugged')
 
-" Colorscheme
-"Plug 'phanviet/vim-monokai-pro'
-
 Plug 'elemecca/dockerfile.vim'
-
-"Plug 'ludovicchabant/vim-gutentags'
 
 " Nerd commenter
 Plug 'preservim/nerdcommenter'
@@ -42,10 +37,10 @@ let g:gitgutter_sign_removed='--'
 let g:gitgutter_sign_removed_first_line='^'
 let g:gitgutter_sign_modified_removed='<'
 
-nmap <leader>ggn :GitGutterNextHunk<CR> 
-nmap <leader>ggN :GitGutterPrevHunk<CR>
-nmap <leader>gga :GitGutterStageHunk<CR> 
-nmap <leader>ggu :GitGutterUndoHunk<CR>
+nmap <leader><S-g>n :GitGutterNextHunk<CR> 
+nmap <leader><S-g><S-n> :GitGutterPrevHunk<CR>
+nmap <leader><S-g>a :GitGutterStageHunk<CR> 
+nmap <leader><S-g>u :GitGutterUndoHunk<CR>
 
 nnoremap <leader>gs :Magit<CR>
 
@@ -132,6 +127,7 @@ set nowritebackup
 " loaded from .vimrc
 " ----------------------------------------
 let mapleader = ";"
+let maplocalleader = "\\"
 
 
 " ----------------------------------------
@@ -240,10 +236,7 @@ lua <<
     require('plug')
     require('opts')
     require('keys')
-    require("neodev").setup({
-        library = { 
-            plugins = { "neotest", "nvim-dap-ui" }, types = true },
-    })
+
     require('plugin_config')
     -- LSP
     require("rust-tools")
@@ -255,6 +248,5 @@ lua <<
         -- DAP
     require('dap-python').setup('~/.pyenv/versions/nvim3-10/bin/python')
     require('dap-conf')
-    require("dapui").setup()
 .
 
