@@ -5,27 +5,27 @@ if not (dap_ok) then
     return
 end
 
-dap.set_log_level('INFO') -- Helps when configuring DAP, see logs with :DapShowLog
+dap.set_log_level('DEBUG') -- Helps when configuring DAP, see logs with :DapShowLog
 
-dap.adapters.python = {
-    type = 'executable';
-    command = '~/.pyenv/versions/nvim3-10/bin/python';
-    args = { '-m', 'debugpy' };
-}
+--[[dap.adapters.python = {]]
+    --[[type = 'executable';]]
+    --[[command = '/Users/tims/.pyenv/versions/nvim3-10/bin/python';]]
+    --[[args = { '-m', 'debugpy.adaptor' };]]
+--[[}]]
 
-dap.configurations.python = {
-    {
-        -- The first three options are required by nvim-dap
-        -- the type here established the link to the adapter definition: `dap.adapters.python`
-        type = 'python';
-        request = 'launch';
-        name = "Launch file";
+--[[dap.configurations.python = {]]
+    --[[{]]
+        --[[-- The first three options are required by nvim-dap]]
+        --[[-- the type here established the link to the adapter definition: `dap.adapters.python`]]
+        --[[type = 'python';]]
+        --[[request = 'launch';]]
+        --[[name = "Launch file";]]
 
-        -- Options below are for debugpy, see https://github.com/microsoft/debugpy/wiki/Debug-configuration-settings
-        program = "${file}";
-        stopOnEntry = False;
-    },
-}
+        --[[-- Options below are for debugpy, see https://github.com/microsoft/debugpy/wiki/Debug-configuration-settings]]
+        --[[program = "${file}";]]
+        --[[stopOnEntry = False;]]
+    --[[},]]
+--[[}]]
 
 dap.listeners.after.event_initialised["dapui_config"] = function()
     require('dapui').open()
@@ -55,6 +55,7 @@ require("notify")("dap-ui not installed!", "warning")
 return
 end
 
+ui.setup()
 
 vim.fn.sign_define('DapBreakpoint', { text = '⾍' })
 
@@ -74,6 +75,10 @@ vim.keymap.set("n", "<localleader>db", dap.toggle_breakpoint)
 vim.keymap.set("n", "<localleader>dn", dap.step_over)
 vim.keymap.set("n", "<localleader>di", dap.step_into)
 vim.keymap.set("n", "<localleader>do", dap.step_out)
+vim.keymap.set("n", "<localleader>dt", function()
+    dap.terminate()
+end
+)
 vim.keymap.set("n", "<localleader>d<S-c>", function()
     dap.clear_breakpoints()
     require("notify")("Breakpoints cleared", "warn")

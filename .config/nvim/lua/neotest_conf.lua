@@ -90,6 +90,7 @@ vim.keymap.set(
     "<localleader>td",
     function()
         ntest.run.run({ strategy = "dap" })
+        require('dapui').toggle()
     end,
     map_opts
 )

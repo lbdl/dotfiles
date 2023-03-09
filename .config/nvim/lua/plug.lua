@@ -27,7 +27,7 @@ return require('packer').startup(function(use)
 
     -- DAP adaptor
     use 'mfussenegger/nvim-dap'
-    --use 'mfussenegger/nvim-dap-python'
+    use 'mfussenegger/nvim-dap-python'
     --use 'nvim-neotest/neotest-plenary'
     --use 'nvim-neotest/neotest-vim-test'
     use "antoinemadec/FixCursorHold.nvim"

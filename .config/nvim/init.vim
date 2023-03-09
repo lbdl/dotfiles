@@ -244,7 +244,7 @@ lua <<
     require('neotest_conf')
     --require('neotest').setup({adapters = {"neotest-python"} })
         -- DAP
-    --require('dap-python').setup('~/.pyenv/versions/nvim3-10/bin/python')
+    require('dap-python').setup('~/.pyenv/versions/nvim3-10/bin/python')
     require('dap-conf')
 .
 
