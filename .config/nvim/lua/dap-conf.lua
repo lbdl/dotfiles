@@ -24,15 +24,15 @@ dap.set_log_level('DEBUG') -- Helps when configuring DAP, see logs with :DapShow
 --[[stopOnEntry = False;]]
 --[[},]]
 --[[}]]
-dap.listeners.after.event_initialised["dapui_config"] = function()
-    require('dapui').open()
-end
-dap.listeners.after.event_terminated["dapui_config"] = function()
-    require('dapui').close()
-end
-dap.listeners.after.event_exited["dapui_config"] = function()
-    require('dapui').close()
-end
+--dap.listeners.after.event_initialised["dapui_config"] = function()
+--require('dapui').open()
+--end
+--dap.listeners.after.event_terminated["dapui_config"] = function()
+--require('dapui').close()
+--end
+--dap.listeners.after.event_exited["dapui_config"] = function()
+--require('dapui').close()
+--end
 
 --- NEODEV:
 local neodev_ok, n_dev = pcall(require, "neodev")
@@ -58,21 +58,21 @@ vim.fn.sign_define('DapBreakpoint', { text = '⾍' })
 
 
 -- Start debugging session
-vim.keymap.set("n", "<localleader>ds", function()
+vim.keymap.set("n", "<localleader><F2>", function()
     dap.continue()
-    ui.toggle()
+    ui.open()
     vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-w>=", false, true, true), "n", false) -- Spaces buffers evenly
 end)
 
 -- Set breakpoints, get variable values, step into/out of functions, etc.
 --vim.keymap.set("n", "<localleader>dt", ui.toggle())
 vim.keymap.set("n", "<localleader>dl", require("dap.ui.widgets").hover)
-vim.keymap.set("n", "<localleader>dc", dap.continue)
-vim.keymap.set("n", "<localleader>db", dap.toggle_breakpoint)
-vim.keymap.set("n", "<localleader>dn", dap.step_over)
-vim.keymap.set("n", "<localleader>di", dap.step_into)
-vim.keymap.set("n", "<localleader>do", dap.step_out)
-vim.keymap.set("n", "<localleader>dt", function()
+vim.keymap.set("n", "<localleader><F5>", dap.continue)
+vim.keymap.set("n", "<localleader><F3>", dap.toggle_breakpoint)
+vim.keymap.set("n", "<localleader><F6>", dap.step_over)
+vim.keymap.set("n", "<localleader><F7>", dap.step_into)
+vim.keymap.set("n", "<localleader><F8>", dap.step_out)
+vim.keymap.set("n", "<localleader><F9>", function()
     dap.terminate()
 end
 )
@@ -82,13 +82,14 @@ vim.keymap.set("n", "<localleader>d<S-c>", function()
 end)
 
 -- Close debugger and clear breakpoints
-vim.keymap.set("n", "<localleader>de", function()
+vim.keymap.set("n", "<localleader><F10>", function()
     dap.clear_breakpoints()
-    ui.toggle()
+    ui.close()
     dap.terminate()
     vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-w>=", false, true, true), "n", false)
     require("notify")("Debugger session ended", "warn")
-end)
+end
+)
 
 --some unicode chars for symbols
 --⾍

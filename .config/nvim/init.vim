@@ -211,7 +211,7 @@ let g:markdown_syntax_conceal=0
 
 " ----------------------------------------
 " PYENV etc
-" dont forget to chnage this see 
+" dont forget to change this see 
 " https://github.com/deoplete-plugins/deoplete-jedi/wiki/Setting-up-Python-for-Neovim#using-virtual-environments
 " for info
 " ----------------------------------------
@@ -248,5 +248,6 @@ lua <<
         -- DAP
     require('dap-python').setup('~/.pyenv/versions/nvim3-10/bin/python')
     require('dap-conf')
+    require('lualine').setup()
 .
 

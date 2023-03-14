@@ -26,7 +26,8 @@ ntest.setup({
     },
     summary = {
         open = "botright vsplit | vertical resize 60"
-    }
+    },
+    args = { "-v", "--cov" }
 })
 
 vim.keymap.set(
@@ -90,7 +91,7 @@ vim.keymap.set(
     "<localleader>td",
     function()
         ntest.run.run({ strategy = "dap" })
-        require('dapui').toggle()
+        require('dapui').open()
     end,
     map_opts
 )
