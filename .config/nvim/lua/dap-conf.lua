@@ -66,17 +66,15 @@ end)
 
 -- Set breakpoints, get variable values, step into/out of functions, etc.
 --vim.keymap.set("n", "<localleader>dt", ui.toggle())
-vim.keymap.set("n", "<localleader>dl", require("dap.ui.widgets").hover)
-vim.keymap.set("n", "<localleader><F5>", dap.continue)
-vim.keymap.set("n", "<localleader><F3>", dap.toggle_breakpoint)
-vim.keymap.set("n", "<localleader><F6>", dap.step_over)
-vim.keymap.set("n", "<localleader><F7>", dap.step_into)
-vim.keymap.set("n", "<localleader><F8>", dap.step_out)
-vim.keymap.set("n", "<localleader><F9>", function()
-    dap.terminate()
-end
-)
-vim.keymap.set("n", "<localleader>d<S-c>", function()
+vim.keymap.set("n", "<localleader>dl", require("dap.ui.widgets").hover )
+vim.keymap.set("n", "<localleader><F5>", function() dap.continue() end )
+vim.keymap.set("n", "<localleader><F3>", function() dap.toggle_breakpoint() end )
+vim.keymap.set("n", "<localleader><F6>", function() dap.step_over() end )
+vim.keymap.set("n", "<localleader><F7>", function() dap.step_into() end )
+vim.keymap.set("n", "<localleader><F8>", function() dap.step_out() end )
+vim.keymap.set("n", "<localleader><F9>", function() dap.toggle() end )
+vim.keymap.set("n", "<localleader><F12>", function() dap.terminate() end )
+vim.keymap.set("n", "<localleader><F11>", function()
     dap.clear_breakpoints()
     require("notify")("Breakpoints cleared", "warn")
 end)
@@ -95,3 +93,4 @@ end
 --⾍
 --🔴
 --↯
+--⚡
