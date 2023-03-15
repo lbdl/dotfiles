@@ -26,7 +26,8 @@ ntest.setup({
     },
     summary = {
         open = "botright vsplit | vertical resize 60"
-    }
+    },
+    args = { "-v", "--cov" }
 })
 
 vim.keymap.set(
