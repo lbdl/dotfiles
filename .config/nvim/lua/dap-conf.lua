@@ -7,32 +7,15 @@ end
 
 dap.set_log_level('DEBUG') -- Helps when configuring DAP, see logs with :DapShowLog
 
---[[dap.adapters.python = {]]
---[[type = 'executable';]]
---[[command = '/Users/tims/.pyenv/versions/nvim3-10/bin/python';]]
---[[args = { '-m', 'debugpy.adaptor' };]]
---[[}]]
---[[dap.configurations.python = {]]
---[[{]]
---[[-- The first three options are required by nvim-dap]]
---[[-- the type here established the link to the adapter definition: `dap.adapters.python`]]
---[[type = 'python';]]
---[[request = 'launch';]]
---[[name = "Launch file";]]
---[[-- Options below are for debugpy, see https://github.com/microsoft/debugpy/wiki/Debug-configuration-settings]]
---[[program = "${file}";]]
---[[stopOnEntry = False;]]
---[[},]]
---[[}]]
---dap.listeners.after.event_initialised["dapui_config"] = function()
---require('dapui').open()
---end
---dap.listeners.after.event_terminated["dapui_config"] = function()
---require('dapui').close()
---end
---dap.listeners.after.event_exited["dapui_config"] = function()
---require('dapui').close()
---end
+dap.listeners.after.event_initialised["dapui_config"] = function()
+require('dapui').open()
+end
+dap.listeners.after.event_terminated["dapui_config"] = function()
+require('dapui').close()
+end
+dap.listeners.after.event_exited["dapui_config"] = function()
+require('dapui').close()
+end
 
 --- NEODEV:
 local neodev_ok, n_dev = pcall(require, "neodev")
@@ -54,7 +37,7 @@ end
 
 ui.setup()
 
-vim.fn.sign_define('DapBreakpoint', { text = '⾍' })
+vim.fn.sign_define('DapBreakpoint', { text = '🔴' })
 
 
 -- Start debugging session
@@ -72,7 +55,7 @@ vim.keymap.set("n", "<localleader><F3>", function() dap.toggle_breakpoint() end 
 vim.keymap.set("n", "<localleader><F6>", function() dap.step_over() end )
 vim.keymap.set("n", "<localleader><F7>", function() dap.step_into() end )
 vim.keymap.set("n", "<localleader><F8>", function() dap.step_out() end )
-vim.keymap.set("n", "<localleader><F9>", function() dap.toggle() end )
+vim.keymap.set("n", "<localleader><F9>", function() ui.toggle() end )
 vim.keymap.set("n", "<localleader><F12>", function() dap.terminate() end )
 vim.keymap.set("n", "<localleader><F11>", function()
     dap.clear_breakpoints()
@@ -82,8 +65,8 @@ end)
 -- Close debugger and clear breakpoints
 vim.keymap.set("n", "<localleader><F10>", function()
     dap.clear_breakpoints()
-    ui.close()
     dap.terminate()
+    ui.close()
     vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-w>=", false, true, true), "n", false)
     require("notify")("Debugger session ended", "warn")
 end

@@ -1,5 +1,6 @@
 .zsh/cache
 plugged/
+plugin/
 filezilla/
 coc/
 iterm2/
@@ -7,3 +8,4 @@ fish_variables
 memos.json
 kitty-themes/
 fundle/
+.DS*

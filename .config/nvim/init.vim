@@ -92,7 +92,6 @@ augroup END
 " ----------------------------------------
 set background=dark
 set termguicolors
-"colorscheme monokai_pro
 colorscheme kanagawa
 set wrap
 
@@ -160,11 +159,11 @@ set tags=./tags;
 " Skim as the .pdf viewer
 " ----------------------------------------
 let g:tex_flavor='latex'
-let g:tex_nine_config = {
-      \'compiler': 'xelatex',
-      \'shell_escape': 1,
-      \'viewer': {'app': 'open -a Skim', 'target': 'pdf'}, 
-      \}
+"let g:tex_nine_config = {
+      "\'compiler': 'xelatex',
+      "\'shell_escape': 1,
+      "\'viewer': {'app': 'open -a Skim', 'target': 'pdf'}, 
+      "\}
 
 augroup filetype_tex
     autocmd!

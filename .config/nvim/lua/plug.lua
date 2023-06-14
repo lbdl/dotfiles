@@ -55,6 +55,12 @@ return require('packer').startup(function(use)
     use 'voldikss/vim-floaterm'
     use "norcalli/nvim-colorizer.lua"
     use "rcarriga/nvim-notify"
+ 
+    -- LaTex
+    use 'lervag/vimtex'   
+
+    -- HopWord
+    use 'phaazon/hop.nvim'
 
     -- telescope
     -- we also need brew install ripgrep for telescope

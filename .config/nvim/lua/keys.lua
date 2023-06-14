@@ -64,28 +64,14 @@ map("n", "<leader>e", ":TroubleToggle<cr>")
 map("n", "<leader>nt", ":NvimTreeToggle<CR>")
 
 -- Transparency
-map("n", "<leader>\\", ":TransparentToggle<CR>")
+--map("n", "<leader>\\", ":TransparentToggle<CR>")
 
 -- Toggle colored column at 81
-map('n', '<leader>|', ':execute "set colorcolumn=" . (&colorcolumn == "" ? "81" : "")<CR>')
+map('n', '<leader>|', ':execute "set colorcolumn=" . (&colorcolumn == "" ? "101" : "")<CR>')
 
 -- Tagbar Toggle
 -- map('n', "<leader>tt", ":TagbarToggle<CR>");
 map('n', "<leader>tb", ":SymbolsOutline<CR>");
-
--- Vimspector
---vim.cmd([[
---nmap <F5> <cmd>call vimspector#Launch()<cr>
---nmap <F8> <cmd>call vimspector#StepOver()<cr>
---nmap <F6> <cmd>call vimspector#Reset()<cr>
---nmap <F9> <cmd>call vimspector#StepOut()<cr>")
---nmap <F7> <cmd>call vimspector#StepInto()<cr>")
---]])
-
-map('n', "<F3>", ":call vimspector#ToggleBreakpoint()<cr>")
-map('n', "<F4>", ":call vimspector#AddWatch()<cr>")
-map('n', "<F10>", ":call vimspector#Evaluate()<cr>")
-
 
 -- LSP Navigation
 -- Code Actions
@@ -143,15 +129,15 @@ nnoremap <silent> <leader>cC :lua require('crates').open_crates_io()<cr>
 
 -- FloaTerm configuration
 map('n', "<leader>ft", ":FloatermNew --name=myfloat --height=0.8 --width=0.7 --autoclose=2 fish <CR> ")
-map('n', "t", ":FloatermToggle myfloat<CR>")
+map('n', "<S-t>", ":FloatermToggle myfloat<CR>")
 map('t', "<Esc>", "<C-\\><C-n>:q<CR>")
 
 
 -- Comment.nvim configuration
 -- current line
-vim.keymap.set('n', 'cc', '<Plug>(comment_toggle_linewise_current)')
-vim.keymap.set('n', 'cb', '<Plug>(comment_toggle_blockwise_current)')
+--vim.keymap.set('n', 'cc', '<Plug>(comment_toggle_linewise_current)')
+--vim.keymap.set('n', 'cb', '<Plug>(comment_toggle_blockwise_current)')
 
 -- Toggle in VISUAL mode
-vim.keymap.set('x', 'cc', '<Plug>(comment_toggle_linewise_visual)')
-vim.keymap.set('x', 'cb', '<Plug>(comment_toggle_blockwise_visual)')
+--vim.keymap.set('x', 'cc', '<Plug>(comment_toggle_linewise_visual)')
+--vim.keymap.set('x', 'cb', '<Plug>(comment_toggle_blockwise_visual)')
