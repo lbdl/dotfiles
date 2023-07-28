@@ -70,7 +70,7 @@ map("n", "<leader>\\", ":TransparentToggle<CR>")
 map('n', '<leader>|', ':execute "set colorcolumn=" . (&colorcolumn == "" ? "81" : "")<CR>')
 
 -- Tagbar Toggle
--- map('n', "<leader>tt", ":TagbarToggle<CR>");
+map('n', "<leader>tt", ":TagbarToggle<CR>");
 map('n', "<leader>tb", ":SymbolsOutline<CR>");
 
 -- Vimspector

@@ -31,10 +31,10 @@ dap.listeners.after.event_initialised["dapui_config"] = function()
     require('dapui').open()
 end
 dap.listeners.after.event_terminated["dapui_config"] = function()
-    require('dapui').close()
+    --require('dapui').close()
 end
 dap.listeners.after.event_exited["dapui_config"] = function()
-    require('dapui').close()
+    --require('dapui').close()
 end
 
 --- NEODEV:
@@ -57,7 +57,7 @@ end
 
 ui.setup()
 
-vim.fn.sign_define('DapBreakpoint', { text = '⾍' })
+vim.fn.sign_define('DapBreakpoint', { text = '💀' })
 
 
 -- Start debugging session
@@ -116,3 +116,4 @@ end)
 --⾍
 --🔴
 --↯
+--💀

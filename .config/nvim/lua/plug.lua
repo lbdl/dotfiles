@@ -19,8 +19,16 @@ return require('packer').startup(function(use)
     use 'neovim/nvim-lspconfig'
     use 'simrat39/rust-tools.nvim'
 
+    -- patched fonts
+    use 'nvim-tree/nvim-web-devicons'
+
+    -- lualine
+    use { 'nvim-lualine/lualine.nvim', requires = { 'nvim-tree/nvim-web-devicons', opt = true } }
+
     -- Completion framework:
     use 'hrsh7th/nvim-cmp'
+    use 'hrsh7th/cmp-buffer'
+    use 'hrsh7th/cmp-path'
 
     -- Colours etc
     use "rebelot/kanagawa.nvim"
@@ -28,9 +36,8 @@ return require('packer').startup(function(use)
     -- DAP adaptor
     use 'mfussenegger/nvim-dap'
     use 'mfussenegger/nvim-dap-python'
-    --use 'nvim-neotest/neotest-plenary'
-    --use 'nvim-neotest/neotest-vim-test'
     use "antoinemadec/FixCursorHold.nvim"
+
     -- LSP completion source:
     use 'hrsh7th/cmp-nvim-lsp'
 
@@ -41,15 +48,33 @@ return require('packer').startup(function(use)
     use 'jreybert/vimagit'
     use 'airblade/vim-gitgutter'
 
+    -- Protocol Stuff
+    use 'cstrahan/vim-capnp'
+
+    -- Java
+    use 'mfussenegger/nvim-jdtls'
+
+    -- Autosave
+    use({
+        "Pocco81/auto-save.nvim",	
+        config = function()	 
+            require("auto-save").setup {
+                -- your config goes here	
+                -- -- or just leave it empty :) 
+            }	
+        end,
+    })
+
+    use 'nathanaelkane/vim-indent-guides'
+
+    -- commenting 
+    use 'preservim/nerdcommenter'
     -- Useful completion sources:
-    use 'hrsh7th/cmp-nvim-lua'
     use 'hrsh7th/cmp-nvim-lsp-signature-help'
     use 'hrsh7th/cmp-vsnip'
-    use 'hrsh7th/cmp-path'
-    use 'hrsh7th/cmp-buffer'
     use 'hrsh7th/vim-vsnip'
     use 'nvim-treesitter/nvim-treesitter'
-    use 'puremourning/vimspector'
+    --use 'puremourning/vimspector'
     use 'voldikss/vim-floaterm'
     use "norcalli/nvim-colorizer.lua"
     use "rcarriga/nvim-notify"
@@ -60,22 +85,14 @@ return require('packer').startup(function(use)
     use 'nvim-lua/plenary.nvim'
     use 'nvim-telescope/telescope.nvim'
     use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' } -- Make telescope faster
-    use { 'kyazdani42/nvim-tree.lua', -- Filesystem navigation
-        requires = 'kyazdani42/nvim-web-devicons' } -- Filesystem icons
-    use { 'nvim-lualine/lualine.nvim', -- Statusline
-        requires = { 'kyazdani42/nvim-web-devicons', opt = true } }
+    use { 'nvim-tree/nvim-tree.lua' } -- Filesystem navigation
 
-    -- org-mode
-    --use { 'nvim-orgmode/orgmode', config = function()
-    --require('orgmode').setup_ts_grammer()
-    --end
-    --}
-
-    -- refactoring for PY
+        -- refactoring for PY
     use { "python-rope/ropevim",
         run = "pip install ropevim",
         disable = false
     }
+
     -- code search stuff
     use 'preservim/tagbar'
     -- debuggger gui
@@ -91,14 +108,5 @@ return require('packer').startup(function(use)
         }
     }
     use "nvim-neotest/neotest-python"
-    --use "nvim-neotest/neotest-python"
-    --use 'vim-test/vim-test'
-    --use {
-    --"nvim-neotest/neotest",
-    --requires = {
-    --"nvim-lua/plenary.nvim",
-    --"nvim-treesitter/nvim-treesitter",
-    --"antoinemadec/FixCursorHold.nvim"
-    --}
-    --}
-end)
+end
+)

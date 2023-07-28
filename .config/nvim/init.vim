@@ -14,7 +14,7 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'elemecca/dockerfile.vim'
 
 " Nerd commenter
-Plug 'preservim/nerdcommenter'
+"Plug 'preservim/nerdcommenter'
 
 Plug 'pearofducks/ansible-vim'
 
@@ -26,11 +26,14 @@ Plug 'ludovicchabant/vim-gutentags'
 Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
 
 call plug#end()
+
 " ----------------------------------------
 " Magit and GitGutter Key bindings
 " ----------------------------------------
 "control the speed of the gutter update
+"and also auto save because :w gets old fast
 set updatetime=250 
+au CursorHold,CursorHoldI <buffer> if &readonly == 0 && filereadable(bufname('%')) | silent write | endif
 let g:gitgutter_sign_added='++'
 let g:gitgutter_sign_modified='>'
 let g:gitgutter_sign_removed='--'
@@ -188,6 +191,12 @@ map <CR> :noh<CR>
 "nnoremap <F5> :buffers<CR>:buffer<Space>
 
 " ----------------------------------------
+" Visual Indentation
+" ----------------------------------------
+
+
+
+" ----------------------------------------
 " GOLANG configs
 " ----------------------------------------
 au FileType go set noexpandtab
@@ -246,5 +255,6 @@ lua <<
         -- DAP
     require('dap-python').setup('~/.pyenv/versions/nvim3-10/bin/python')
     require('dap-conf')
+    require('lualine').setup()
 .
 
