@@ -51,6 +51,10 @@ return require('packer').startup(function(use)
     -- Protocol Stuff
     use 'cstrahan/vim-capnp'
 
+    -- YAML/K8s etc
+    use 'Yggdroot/indentLine'
+    use 'nathanaelkane/vim-indent-guides'
+
     -- Java
     use 'mfussenegger/nvim-jdtls'
 
@@ -65,15 +69,16 @@ return require('packer').startup(function(use)
         end,
     })
 
-    use 'nathanaelkane/vim-indent-guides'
 
     -- commenting 
     use 'preservim/nerdcommenter'
+
     -- Useful completion sources:
     use 'hrsh7th/cmp-nvim-lsp-signature-help'
     use 'hrsh7th/cmp-vsnip'
     use 'hrsh7th/vim-vsnip'
     use 'nvim-treesitter/nvim-treesitter'
+
     --use 'puremourning/vimspector'
     use 'voldikss/vim-floaterm'
     use "norcalli/nvim-colorizer.lua"
