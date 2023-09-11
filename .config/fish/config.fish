@@ -3,7 +3,7 @@ direnv hook fish | source
 source (pyenv init - | psub)
 source (pyenv virtualenv-init - | psub)
 status --is-interactive; and rbenv init - fish | source
-
+status --is-interactive; and pyenv virtualenv-init - | source
 
 # nvm stuff
 set nvm_path ~/.nvm
