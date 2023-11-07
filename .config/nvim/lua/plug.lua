@@ -58,6 +58,9 @@ return require('packer').startup(function(use)
     -- Java
     use 'mfussenegger/nvim-jdtls'
 
+    -- LaTex
+    use 'lervag/vimtex'
+    
     -- Autosave
     use({
         "Pocco81/auto-save.nvim",	
