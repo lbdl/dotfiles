@@ -1,12 +1,12 @@
 #virtualenv is for python
-function virtualenv_info {
-    [ $VIRTUAL_ENV ] && echo '('`basename $VIRTUAL_ENV`') '
-}
+#function virtualenv_info {
+    #[ $VIRTUAL_ENV ] && echo '('`basename $VIRTUAL_ENV`') '
+#}
 
 function prompt_char {
     git branch >/dev/null 2>/dev/null && echo '±' && return
-#    hg root >/dev/null 2>/dev/null && echo '☿' && return
-    echo '○'
+    #echo '○'
+    echo '>'
 }
 
 function box_name {
@@ -76,10 +76,25 @@ function parse_git_state() {
 }
  
 
+# substitute ~ for $HOME and then truncate each component
+# to a single letter other than the final path component
+function truncatePath() {
+    local p
+    p=($PWD)
+    p=${p//$HOME/'~'}
+    local path
+    path=(${(s:/:)p})
+    if [[ $#path -gt 1 ]]; then
+        path[1,-2]=(${(M)path[1,-2]#?})
+    fi
+    local truncated_path="${(j:/:)path}"
+    echo "$truncated_path"
+}
+
 # If inside a Git repository, print its branch and state
 function git_prompt_string() {
   local git_where="$(parse_git_branch)"
-  [ -n "$git_where" ] && echo "on %{$fg[cyan]%}${git_where#(refs/heads/|tags/)}$(parse_git_state)"
+  [ -n "$git_where" ] && echo "%{$fg[cyan]%}${git_where#(refs/heads/|tags/)}$(parse_git_state)"
 }
 
 # determine Ruby version whether using RVM or rbenv
@@ -111,10 +126,9 @@ function current_pwd {
 #PROMPT='
 #${PR_GREEN}%n%{$reset_color%} %{$FG[239]%}at%{$reset_color%} ${PR_BOLD_BLUE}$(box_name)%{$reset_color%} %{$FG[239]%}in%{$reset_color%} ${PR_BOLD_YELLOW}$(current_pwd)%{$reset_color%} $(git_prompt_string)
 #$(prompt_char) '
-PROMPT='
-${PR_GREEN}%n%{$reset_color%} %{$FG[239]%}at%{$reset_color%} ${PR_RED}$(box_name)%{$reset_color%} %{$FG[239]%}in%{$reset_color%} ${PR_BOLD_YELLOW}%3~%{$reset_color%} $(git_prompt_string)
-$(prompt_char) '
+#PROMPT='${PR_BOLD_YELLOW}%(3~|../%1~|%~)%{$reset_color%} $(git_prompt_string)$(prompt_char) '
+PROMPT='${PR_BOLD_YELLOW}$(truncatePath)%{$reset_color%} $(git_prompt_string)$(prompt_char) '
 
 export SPROMPT="Correct $fg[red]%R$reset_color to $fg[green]%r$reset_color [(y)es (n)o (a)bort (e)dit]? "
 
-RPROMPT='${PR_GREEN}$(virtualenv_info)%{$reset_color%} ${PR_RED}${ruby_version}%{$reset_color%}'
+RPROMPT='${PR_GREEN}$([ $VIRTUAL_ENV ] && basename $VIRTUAL_ENV)%{$reset_color%} ${PR_RED}${ruby_version}%{$reset_color%}'

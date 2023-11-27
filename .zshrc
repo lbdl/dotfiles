@@ -13,11 +13,21 @@ source ~/.zsh/functions.zsh
 source ~/.zsh/history.zsh
 source ~/.zsh/zsh_hooks.zsh
 #source  ${HOME}/.dotfiles/z/z.sh
-eval "$(pyenv init -)"
-#note we need the below as if we use the installation instructions
-#eval blah blah then we get the wrong path and shims cannot be found
-#same is true for rbenv the pyenv shim must be at the front of the PATH
-#variable
-#pyenv virtualenvwrapper_lazy
+
+# direnv inits
+if which direnv > /dev/null; then
+    eval "$(direnv hook zsh)"
+fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+if which pyenv > /dev/null; then
+    eval "$(pyenv init -)"
+fi
+if which pyenv-virtualenv-init > /dev/null; then
+    export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+    eval "$(pyenv virtualenv-init -)"
+fi
+
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
