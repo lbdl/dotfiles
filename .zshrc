@@ -25,9 +25,23 @@ export PYENV_ROOT="$HOME/.pyenv"
 if which pyenv > /dev/null; then
     eval "$(pyenv init -)"
 fi
+
 if which pyenv-virtualenv-init > /dev/null; then
     export PYENV_VIRTUALENV_DISABLE_PROMPT=1
     eval "$(pyenv virtualenv-init -)"
 fi
 
+if which nodenv > /dev/null; then
+    export PATH="$HOME/.nodenv/bin:$PATH"
+    eval "$(nodenv init -)"
+fi
+
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# pnpm
+export PNPM_HOME="/Users/tims/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end

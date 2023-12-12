@@ -123,6 +123,26 @@ require('lspconfig').ruby_ls.setup {
     },
 }
 
+require('lspconfig').solc.setup {
+    capabilities = capabilities,
+    on_attach = on_attach,
+    init_options = {
+        onlyAnalyzeProjectsWithOpenFiles = true,
+        suggestFromUnimportedLibraries = false,
+        closingLabels = true,
+    },
+}
+
+require('lspconfig').tsserver.setup {
+    capabilities = capabilities,
+    on_attach = on_attach,
+    init_options = {
+        onlyAnalyzeProjectsWithOpenFiles = true,
+        suggestFromUnimportedLibraries = false,
+        closingLabels = true,
+    },
+}
+
 --require('lspconfig').gopls.setup {
 --    capabilities = capabilities,
 --    on_attach = on_attach,

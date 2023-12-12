@@ -2,11 +2,12 @@
 #function virtualenv_info {
     #[ $VIRTUAL_ENV ] && echo '('`basename $VIRTUAL_ENV`') '
 #}
+function git_char {
+   git branch >/dev/null 2>/dev/null && echo '±' 
+}
 
 function prompt_char {
-    git branch >/dev/null 2>/dev/null && echo '±' && return
-    #echo '○'
-    echo '>'
+   echo '>' 
 }
 
 function box_name {
@@ -125,9 +126,10 @@ function current_pwd {
 
 #PROMPT='
 #${PR_GREEN}%n%{$reset_color%} %{$FG[239]%}at%{$reset_color%} ${PR_BOLD_BLUE}$(box_name)%{$reset_color%} %{$FG[239]%}in%{$reset_color%} ${PR_BOLD_YELLOW}$(current_pwd)%{$reset_color%} $(git_prompt_string)
-#$(prompt_char) '
-#PROMPT='${PR_BOLD_YELLOW}%(3~|../%1~|%~)%{$reset_color%} $(git_prompt_string)$(prompt_char) '
-PROMPT='${PR_BOLD_YELLOW}$(truncatePath)%{$reset_color%} $(git_prompt_string)$(prompt_char) '
+#$(git_char) '
+#PROMPT='${PR_BOLD_YELLOW}%(3~|../%1~|%~)%{$reset_color%} $(git_prompt_string)$(git_char) '
+PROMPT='${PR_CYAN}%n%{$reset_color%} ${PR_BOLD_YELLOW} $(truncatePath)%{$reset_color%} $(git_prompt_string) $(git_char) 
+${PR_GREEN}$(prompt_char)%{$reset_color%} '
 
 export SPROMPT="Correct $fg[red]%R$reset_color to $fg[green]%r$reset_color [(y)es (n)o (a)bort (e)dit]? "
 

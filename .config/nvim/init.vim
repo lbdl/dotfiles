@@ -21,7 +21,7 @@ Plug 'pearofducks/ansible-vim'
 Plug 'hashivim/vim-terraform'
 
 Plug 'ludovicchabant/vim-gutentags'
-  let g:gutentags_cache_dir = '~/.tags_cache' 
+  "let g:gutentags_cache_dir = '~/.tags_cache' 
 
 Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
 
@@ -149,7 +149,7 @@ set backspace=indent,eol,start
 " Tags
 " loaded from .vimrc
 " ----------------------------------------
-set tags=./tags;
+"set tags=./tags;
 "set statusline+=%{gutentags#statusline()}
 
 " ----------------------------------------
@@ -226,8 +226,13 @@ let g:ruby_host_prog = '~/.rbenv/versions/3.2.1/bin/neovim-ruby-host'
 lua <<
     require('mason').setup()
     require('mason-lspconfig').setup {
-        ensure_installed = { "gopls", "rust_analyzer", "pylsp", "ruby_ls", "yamlls", "dockerls" },
+        ensure_installed = { "gopls", "rust_analyzer", "pylsp", "ruby_ls", "yamlls", "dockerls", "tsserver", "solc", },
     }
+
+    -- local lspconf = require('lspconfig')
+    -- lspconf.tsserver.setup{}
+    -- lspconf.solc.setup{}
+    -- lspconf.solidity-ls.setup{}
     -- Notify
     --require('notify').setup()
     require('notify')

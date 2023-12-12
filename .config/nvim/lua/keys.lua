@@ -70,7 +70,7 @@ map("n", "<leader>nt", ":NvimTreeToggle<CR>")
 map('n', '<leader>|', ':execute "set colorcolumn=" . (&colorcolumn == "" ? "101" : "")<CR>')
 
 -- Tagbar Toggle
--- map('n', "<leader>tt", ":TagbarToggle<CR>");
+map('n', "<leader>tt", ":TagbarToggle<CR>");
 map('n', "<leader>tb", ":SymbolsOutline<CR>");
 
 -- LSP Navigation
