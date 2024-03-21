@@ -123,14 +123,18 @@ require('lspconfig').ruby_ls.setup {
     },
 }
 
-require('lspconfig').solc.setup {
+--local cmp_capabilities = vim.lsp.protocol.make_client_capabilities()
+--cmp_capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+require('lspconfig').solidity.setup {
     capabilities = capabilities,
+    cmd = { "nomicfoundation-solidity-language-server", "--stdio" },
     on_attach = on_attach,
+    require("lspconfig.util").root_pattern "foundry.toml",
     init_options = {
         onlyAnalyzeProjectsWithOpenFiles = true,
         suggestFromUnimportedLibraries = false,
         closingLabels = true,
-    },
+    }
 }
 
 require('lspconfig').tsserver.setup {
@@ -143,6 +147,16 @@ require('lspconfig').tsserver.setup {
     },
 }
 
+require('lspconfig').ltex.setup {
+    capabilities = capabilities,
+    on_attach = on_attach,
+    language = "en.GB",
+    init_options = {
+        onlyAnalyzeProjectsWithOpenFiles = true,
+        suggestFromUnimportedLibraries = false,
+        closingLabels = true,
+    },
+}
 --require('lspconfig').gopls.setup {
 --    capabilities = capabilities,
 --    on_attach = on_attach,

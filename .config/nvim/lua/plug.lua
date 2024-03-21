@@ -19,12 +19,17 @@ return require('packer').startup(function(use)
 
     -- RUST
     use 'simrat39/rust-tools.nvim'
+    
+    -- SNIPPETS
+    use 'SirVer/ultisnips'
+    use 'honza/vim-snippets'
 
     -- Completion framework:
     use 'hrsh7th/nvim-cmp'
 
     -- Colours etc
     use "rebelot/kanagawa.nvim"
+    use "tomlion/vim-solidity"
 
     -- DAP adaptor
     use 'mfussenegger/nvim-dap'
@@ -46,11 +51,13 @@ return require('packer').startup(function(use)
     -- Useful completion sources:
     use 'hrsh7th/cmp-nvim-lua'
     use 'hrsh7th/cmp-nvim-lsp-signature-help'
-    use 'hrsh7th/cmp-vsnip'
+    --use 'hrsh7th/cmp-vsnip'
     use 'hrsh7th/cmp-path'
     use 'hrsh7th/cmp-buffer'
-    use 'hrsh7th/vim-vsnip'
+    --use 'hrsh7th/vim-vsnip'
+    --use {'tzachar/cmp-tabnine', run='./install.sh', requires = 'hrsh7th/nvim-cmp'}
     use 'nvim-treesitter/nvim-treesitter'
+    use 'nvim-treesitter/playground'
     use 'puremourning/vimspector'
     use 'voldikss/vim-floaterm'
     use "norcalli/nvim-colorizer.lua"
@@ -69,9 +76,15 @@ return require('packer').startup(function(use)
 
     -- LaTex
     use 'lervag/vimtex'   
-
+    use {
+       'phaazon/hop.nvim',
+       branch = 'v2',
+       config = function()
+         require'hop'.setup {}
+       end
+    }
     -- HopWord
-    use 'phaazon/hop.nvim'
+    --use {'phaazon/hop.nvim', branch = v2}
 
     -- telescope
     -- we also need brew install ripgrep for telescope

@@ -20,7 +20,7 @@ Plug 'pearofducks/ansible-vim'
 
 Plug 'hashivim/vim-terraform'
 
-Plug 'ludovicchabant/vim-gutentags'
+" Plug 'ludovicchabant/vim-gutentags'
   "let g:gutentags_cache_dir = '~/.tags_cache' 
 
 Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
@@ -74,6 +74,15 @@ augroup fastlane
 augroup END
 " ----------------------------------------
 " /FASTLANE
+" ----------------------------------------
+
+" ----------------------------------------
+" SOLIDITY
+" ----------------------------------------
+autocmd FileType solidity setlocal wrap
+autocmd FileType solidity setlocal textwidth=0
+" ----------------------------------------
+" /SOLIDITY
 " ----------------------------------------
 
 " ----------------------------------------
@@ -146,11 +155,16 @@ set clipboard=unnamed
 set backspace=indent,eol,start
 
 " ----------------------------------------
-" Tags
-" loaded from .vimrc
+" NERDCommenter (for Solidity)
 " ----------------------------------------
-"set tags=./tags;
-"set statusline+=%{gutentags#statusline()}
+let g:NERDCustomDelimiters = {
+  \ 'solidity': { 'left': '//', 'leftAlt': '/*', 'rightAlt': '*/' }
+  \ }
+
+" ----------------------------------------
+" UITISNIPS 
+" ----------------------------------------
+let g:UltiSnipsSnippetDirectories=["UltiSnips", "snip"]
 
 " ----------------------------------------
 " LaTex shizzle
@@ -158,12 +172,7 @@ set backspace=indent,eol,start
 " We are using XeTex as the compiler and
 " Skim as the .pdf viewer
 " ----------------------------------------
-let g:tex_flavor='latex'
-"let g:tex_nine_config = {
-      "\'compiler': 'xelatex',
-      "\'shell_escape': 1,
-      "\'viewer': {'app': 'open -a Skim', 'target': 'pdf'}, 
-      "\}
+let g:vimtex_compiler_method='latexmk'
 
 augroup filetype_tex
     autocmd!
@@ -209,6 +218,12 @@ let g:vim_json_syntax_conceal=0
 let g:markdown_syntax_conceal=0
 
 " ----------------------------------------
+" NODE for Mason etc
+" ----------------------------------------
+"let g:node_host_prog = '~/.nodenv/versions/18.19.0/bin/node'
+" set viw nodenv global 18.19.0 (coot19)
+
+" ----------------------------------------
 " PYENV etc
 " dont forget to change this see 
 " https://github.com/deoplete-plugins/deoplete-jedi/wiki/Setting-up-Python-for-Neovim#using-virtual-environments
@@ -226,7 +241,7 @@ let g:ruby_host_prog = '~/.rbenv/versions/3.2.1/bin/neovim-ruby-host'
 lua <<
     require('mason').setup()
     require('mason-lspconfig').setup {
-        ensure_installed = { "gopls", "rust_analyzer", "pylsp", "ruby_ls", "yamlls", "dockerls", "tsserver", "solc", },
+        ensure_installed = { "gopls", "rust_analyzer", "pylsp", "ruby_ls", "yamlls", "dockerls", "tsserver", },
     }
 
     -- local lspconf = require('lspconfig')
@@ -240,7 +255,6 @@ lua <<
     require('plug')
     require('opts')
     require('keys')
-
     require('plugin_config')
     -- LSP
     require("rust-tools")

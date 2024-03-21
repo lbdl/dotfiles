@@ -4,7 +4,7 @@ cmp.setup({
     -- Enable LSP snippets
     snippet = {
         expand = function(args)
-            vim.fn["vsnip#anonymous"](args.body)
+            vim.fn["UltiSnips#Anon"](args.body)
         end,
     },
     mapping = {
@@ -29,7 +29,7 @@ cmp.setup({
         { name = 'nvim_lsp_signature_help' },                    -- display function signatures with current parameter emphasized
         { name = 'nvim_lua',               keyword_length = 2 }, -- complete neovim's Lua runtime API such vim.lsp.*
         { name = 'buffer',                 keyword_length = 2 }, -- source current buffer
-        { name = 'vsnip',                  keyword_length = 2 }, -- nvim-cmp source for vim-vsnip
+        { name = 'ultisnips',              keyword_length = 2 }, 
         { name = 'calc' },                                       -- source for math calculation
     },
     window = {
@@ -51,13 +51,17 @@ cmp.setup({
     },
 })
 
+
+
+
 -- Treesitter Plugin Setup
 require('nvim-treesitter.configs').setup {
     ensure_installed = { "bash", "c", "cmake", "css", "dockerfile", "go", "gomod", "gowork", "hcl", "help", "html",
         "http", "javascript", "json", "lua", "make", "markdown", "python", "regex", "ruby", "rust", "toml", "vim",
         "yaml",
-        "zig", "proto" },
+        "zig", "proto", },
     auto_install = true,
+    ignore_install = { "latex" },
     highlight = {
         enable = true,
     },
@@ -105,11 +109,6 @@ require('nvim-tree').setup {
     sort_by = "case_sensitive",
     view = {
         adaptive_size = false,
-        mappings = {
-            list = {
-                { key = "u", action = "dir_up" },
-            },
-        },
     },
     renderer = {
         group_empty = true,

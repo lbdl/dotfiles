@@ -79,8 +79,8 @@ map('n', "<leader>tb", ":SymbolsOutline<CR>");
 map('n', "ca", ":lua vim.lsp.buf.code_action()<CR>")
 
 vim.cmd([[
-nnoremap <silent> <c-]>         <cmd>lua vim.lsp.buf.definition()<CR>
-nnoremap <silent> <c-k>         <cmd>lua vim.lsp.buf.signature_help()<CR>
+nnoremap <silent> <C-]>         <cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent> <C-k>         <cmd>lua vim.lsp.buf.signature_help()<CR>
 nnoremap <silent> K             <cmd>lua vim.lsp.buf.hover()<CR>
 nnoremap <silent> gi            <cmd>lua vim.lsp.buf.implementation()<CR>
 nnoremap <silent> gc            <cmd>lua vim.lsp.buf.incoming_calls()<CR>
