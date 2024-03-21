@@ -1,5 +1,6 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
+SETUVAR --export OPENAI_API_KEY:sk\x2dPTbA9mlcIWf2HyrficnhT3BlbkFJqmY9MsxAzI9FQ0UrKshV
 SETUVAR --export PYENV_ROOT:/Users/tims/\x2epyenv
 SETUVAR --export RUBY_CONFIGURE_OPTS:\x2d\x2dwith\x2dopenssl\x2ddir\x3d/usr/local/opt/openssl\x401\x2e1
 SETUVAR __fish_init_2_39_8:\x1d

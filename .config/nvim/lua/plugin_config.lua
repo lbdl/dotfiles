@@ -4,33 +4,33 @@ cmp.setup({
     -- Enable LSP snippets
     snippet = {
         expand = function(args)
-            vim.fn["vsnip#anonymous"](args.body)
+            vim.fn["UltiSnips#Anon"](args.body)
         end,
     },
     mapping = {
-        ['<C-p>'] = cmp.mapping.select_prev_item(),
-        ['<C-n>'] = cmp.mapping.select_next_item(),
+            ['<C-p>'] = cmp.mapping.select_prev_item(),
+            ['<C-n>'] = cmp.mapping.select_next_item(),
         -- Add tab support
-        ['<S-Tab>'] = cmp.mapping.select_prev_item(),
-        ['<Tab>'] = cmp.mapping.select_next_item(),
-        ['<C-S-f>'] = cmp.mapping.scroll_docs( -4),
-        ['<C-f>'] = cmp.mapping.scroll_docs(4),
-        ['<C-Space>'] = cmp.mapping.complete(),
-        ['<C-e>'] = cmp.mapping.close(),
-        ['<CR>'] = cmp.mapping.confirm({
+            ['<S-Tab>'] = cmp.mapping.select_prev_item(),
+            ['<Tab>'] = cmp.mapping.select_next_item(),
+            ['<C-S-f>'] = cmp.mapping.scroll_docs(-4),
+            ['<C-f>'] = cmp.mapping.scroll_docs(4),
+            ['<C-Space>'] = cmp.mapping.complete(),
+            ['<C-e>'] = cmp.mapping.close(),
+            ['<CR>'] = cmp.mapping.confirm({
             behavior = cmp.ConfirmBehavior.Insert,
             select = true,
         })
     },
     -- Installed sources:
     sources = {
-        { name = 'path' }, -- file paths
+        { name = 'path' },                                       -- file paths
         { name = 'nvim_lsp',               keyword_length = 3 }, -- from language server
-        { name = 'nvim_lsp_signature_help' }, -- display function signatures with current parameter emphasized
+        { name = 'nvim_lsp_signature_help' },                    -- display function signatures with current parameter emphasized
         { name = 'nvim_lua',               keyword_length = 2 }, -- complete neovim's Lua runtime API such vim.lsp.*
         { name = 'buffer',                 keyword_length = 2 }, -- source current buffer
-        { name = 'vsnip',                  keyword_length = 2 }, -- nvim-cmp source for vim-vsnip
-        { name = 'calc' }, -- source for math calculation
+        { name = 'ultisnips',              keyword_length = 2 }, 
+        { name = 'calc' },                                       -- source for math calculation
     },
     window = {
         completion = cmp.config.window.bordered(),
@@ -51,20 +51,25 @@ cmp.setup({
     },
 })
 
+
+
+
 -- Treesitter Plugin Setup
 require('nvim-treesitter.configs').setup {
     ensure_installed = { "bash", "c", "cmake", "css", "dockerfile", "go", "gomod", "gowork", "hcl", "help", "html",
-         "javascript", "json", "lua", "latex", "make", "markdown", "python", "regex", "ruby", "rust", "toml", "vim", "yaml",
-         "proto" },
+        "http", "javascript", "json", "lua", "make", "markdown", "python", "regex", "ruby", "rust", "toml", "vim",
+        "yaml",
+        "zig", "proto", },
     auto_install = true,
+    ignore_install = { "latex" },
     highlight = {
         enable = true,
     },
     incremental_selection = {
         enable = true,
         keymaps = {
-            init_selection = "<S-Tab>", -- normal mode
-            node_incremental = "<Tab>", -- visual mode
+            init_selection = "<S-Tab>",  -- normal mode
+            node_incremental = "<Tab>",  -- visual mode
             node_decremental = "<S-Tab", -- visual mode
         },
     },
@@ -74,9 +79,8 @@ require('nvim-treesitter.configs').setup {
     }
 }
 
-
 -- gopls
-require('lspconfig').gopls.setup {}
+--require('lspconfig').gopls.setup {}
 
 -- Telescope Setup
 require('telescope').setup {
@@ -198,11 +202,6 @@ require('nvim-tree').setup {
     sort_by = "case_sensitive",
     view = {
         adaptive_size = false,
-        mappings = {
-            list = {
-                { key = "u", action = "dir_up" },
-            },
-        },
     },
     renderer = {
         group_empty = true,

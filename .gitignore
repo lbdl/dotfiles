@@ -1,8 +1,12 @@
 .zsh/cache
 plugged/
+plugin/
 filezilla/
 coc/
 iterm2/
 fish_variables
 memos.json
 .DS_Store
+kitty-themes/
+fundle/
+.DS*

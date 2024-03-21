@@ -60,18 +60,13 @@ opt.splitbelow = true -- bool: Place new window below the current one
 -- Format on Save
 -- vim.cmd([[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]])
 
--- Vimtest
-vim.cmd([[
-"let test#strategy = "asyncrun_background"
-let test#strategy = "floaterm"
-]])
+--vim.cmd([[autocmd BufWritePre * if &ft!="asciidoc" || &ft!="lua" | lua vim.lsp.buf.formatting_sync() | endif ]])
 
--- Vimspector
-vim.cmd([[
-let g:vimspector_sidebar_width = 85
-let g:vimspector_bottombar_height = 15
-let g:vimspector_terminal_maxwidth = 70
-]])
+-- Vimtest
+--vim.cmd([[
+--"let test#strategy = "asyncrun_background"
+--"let test#strategy = "floaterm"
+--]])
 
 
 --Set completeopt to have a better completion experience
@@ -94,7 +89,7 @@ vim.api.nvim_set_option('updatetime', 300)
 -- Show autodiagnostic popup on cursor hover_range
 -- Goto previous / next diagnostic warning / error
 -- Show inlay_hints more frequently
-vim.o.updatetime = 350
+vim.o.updatetime = 250
 set.signcolumn = 'yes'
 vim.cmd([[
 autocmd CursorHold * lua vim.diagnostic.open_float(nil, { focusable = false })

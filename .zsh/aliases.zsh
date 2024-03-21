@@ -53,6 +53,7 @@ if [[ $IS_MAC -eq 1 ]]; then
     alias smart='diskutil info disk0 | grep SMART' # display SMART status of hard drive
     # Hall of the Mountain King
     alias cello='say -v cellos "di di di di di di di di di di di di di di di di di di di di di di di di di di"'
+    alias ddt='say "daren is gay"'
     # alias to show all Mac App store apps
     alias apps='mdfind "kMDItemAppStoreHasReceipt=1"'
     # reset Address Book permissions in Mountain Lion (and later presumably)
@@ -103,7 +104,9 @@ alias gm='git commit -m'
 alias gma='git commit -am'
 alias gb='git branch'
 alias gco='git checkout'
-alias gc='git commit'
+#alias gc='git commit'
+# now handled as a function
+
 alias gcb='git checkout -b'
 alias gra='git remote add'
 alias grr='git remote rm'

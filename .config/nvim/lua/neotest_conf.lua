@@ -63,7 +63,7 @@ vim.keymap.set(
     "n",
     "<localleader>to",
     function()
-        ntest.output.open({ enter = true } )
+        ntest.output.open({enter = true})
     end,
     map_opts
 )

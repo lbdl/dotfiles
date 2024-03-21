@@ -3,13 +3,20 @@ direnv hook fish | source
 source (pyenv init - | psub)
 source (pyenv virtualenv-init - | psub)
 status --is-interactive; and rbenv init - fish | source
-
+status --is-interactive; and pyenv virtualenv-init - | source
 
 # nvm stuff
-set nvm_path = ~/.nvm
-if test -d nvm_path
-    if test -s $nvm_path/nvm.sh
+set nvm_path ~/.nvm
+if test -d "$nvm_path" #? have we got this directory
+    set -x NVM_DIR ~/.nvm
+    if test -s "$nvm_path/nvm.sh" #? have we got this file
+        function nvm 
+            bass source (brew --prefix nvm)/nvm.sh --no-use ';' nvm $argv
+        end
+    nvm use default --silent
     end
+else
+    echo "Cant find ~/.nvm have you done 'brew install nvm' ?"
 end
 
 rbenv rehash >/dev/null 2>&1

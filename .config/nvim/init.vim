@@ -20,8 +20,8 @@ Plug 'pearofducks/ansible-vim'
 
 Plug 'hashivim/vim-terraform'
 
-Plug 'ludovicchabant/vim-gutentags'
-  let g:gutentags_cache_dir = '~/.tags_cache' 
+" Plug 'ludovicchabant/vim-gutentags'
+  "let g:gutentags_cache_dir = '~/.tags_cache' 
 
 Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
 
@@ -80,6 +80,15 @@ augroup END
 " ----------------------------------------
 
 " ----------------------------------------
+" SOLIDITY
+" ----------------------------------------
+autocmd FileType solidity setlocal wrap
+autocmd FileType solidity setlocal textwidth=0
+" ----------------------------------------
+" /SOLIDITY
+" ----------------------------------------
+
+" ----------------------------------------
 " ALE
 " ----------------------------------------
 "let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
@@ -95,7 +104,6 @@ augroup END
 " ----------------------------------------
 set background=dark
 set termguicolors
-"colorscheme monokai_pro
 colorscheme kanagawa
 set wrap
 
@@ -150,11 +158,16 @@ set clipboard=unnamed
 set backspace=indent,eol,start
 
 " ----------------------------------------
-" Tags
-" loaded from .vimrc
+" NERDCommenter (for Solidity)
 " ----------------------------------------
-set tags=./tags;
-"set statusline+=%{gutentags#statusline()}
+let g:NERDCustomDelimiters = {
+  \ 'solidity': { 'left': '//', 'leftAlt': '/*', 'rightAlt': '*/' }
+  \ }
+
+" ----------------------------------------
+" UITISNIPS 
+" ----------------------------------------
+let g:UltiSnipsSnippetDirectories=["UltiSnips", "snip"]
 
 " ----------------------------------------
 " LaTex shizzle
@@ -162,12 +175,7 @@ set tags=./tags;
 " We are using XeTex as the compiler and
 " Skim as the .pdf viewer
 " ----------------------------------------
-let g:tex_flavor='latex'
-let g:tex_nine_config = {
-      \'compiler': 'xelatex',
-      \'shell_escape': 1,
-      \'viewer': {'app': 'open -a Skim', 'target': 'pdf'}, 
-      \}
+let g:vimtex_compiler_method='latexmk'
 
 augroup filetype_tex
     autocmd!
@@ -219,13 +227,20 @@ let g:vim_json_syntax_conceal=0
 let g:markdown_syntax_conceal=0
 
 " ----------------------------------------
+" NODE for Mason etc
+" ----------------------------------------
+"let g:node_host_prog = '~/.nodenv/versions/18.19.0/bin/node'
+" set viw nodenv global 18.19.0 (coot19)
+
+" ----------------------------------------
 " PYENV etc
-" dont forget to chnage this see 
+" dont forget to change this see 
 " https://github.com/deoplete-plugins/deoplete-jedi/wiki/Setting-up-Python-for-Neovim#using-virtual-environments
 " for info
 " ----------------------------------------
 
 let g:python3_host_prog = '~/.pyenv/versions/nvim3-10/bin/python'
+let g:ruby_host_prog = '~/.rbenv/versions/3.2.1/bin/neovim-ruby-host'
 
 " ----------------------------------------
 " general lua based config calls
@@ -235,20 +250,25 @@ let g:python3_host_prog = '~/.pyenv/versions/nvim3-10/bin/python'
 lua <<
     require('mason').setup()
     require('mason-lspconfig').setup {
-        ensure_installed = { "gopls", "rust_analyzer", "pylsp", "ruby_ls", "yamlls", "dockerls" },
+        ensure_installed = { "gopls", "rust_analyzer", "pylsp", "ruby_ls", "yamlls", "dockerls", "tsserver", },
     }
+
+    -- local lspconf = require('lspconfig')
+    -- lspconf.tsserver.setup{}
+    -- lspconf.solc.setup{}
+    -- lspconf.solidity-ls.setup{}
+    -- Notify
+    --require('notify').setup()
+    require('notify')
     require('lsp_diag')
     require('plug')
     require('opts')
     require('keys')
-
     require('plugin_config')
     -- LSP
     require("rust-tools")
     require('lsp-dap')
-    -- Notify
-    --require('notify').setup()
-    require('notify')
+    
     -- Neotest
     require('neotest_conf')
     --require('neotest').setup({adapters = {"neotest-python"} })
