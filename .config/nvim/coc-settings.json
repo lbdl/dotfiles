@@ -1,0 +1,10 @@
+{
+    "languageserver": {
+    "cairo1": {
+        "enable": true,
+      "command": "/Users/tims/DATA/BB/dojoengine/target/release/dojo-language-server",
+      "filetypes": ["cairo"],
+      "rootPatterns": ["Scarb.toml", ".git/"]
+    }
+  }
+}

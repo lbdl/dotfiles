@@ -5,7 +5,7 @@
 #export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Versions/1.6/Home
 
 # Setup terminal, and turn on colors
-export TERM=xterm-256color
+#export TERM=xterm-256color
 export CLICOLOR=1
 export LSCOLORS=Gxfxcxdxbxegedabagacad
 

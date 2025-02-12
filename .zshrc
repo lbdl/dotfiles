@@ -19,7 +19,7 @@ if which direnv > /dev/null; then
     eval "$(direnv hook zsh)"
 fi
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+#[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 if which pyenv > /dev/null; then
@@ -38,7 +38,7 @@ fi
 
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-# pnpm
+## pnpm
 export PNPM_HOME="/Users/tims/Library/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;

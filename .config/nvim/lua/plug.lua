@@ -61,7 +61,6 @@ return require('packer').startup(function(use)
     use 'puremourning/vimspector'
     use 'voldikss/vim-floaterm'
     use "norcalli/nvim-colorizer.lua"
-    use "rcarriga/nvim-notify"
  
     -- AutoSave
     use({
@@ -84,7 +83,14 @@ return require('packer').startup(function(use)
        end
     }
     -- HopWord
-    --use {'phaazon/hop.nvim', branch = v2}
+
+    -- notify
+    use {
+    'rcarriga/nvim-notify',
+    config = function()
+        require('notify_config').setup()
+    end
+    }
 
     -- telescope
     -- we also need brew install ripgrep for telescope
@@ -102,6 +108,21 @@ return require('packer').startup(function(use)
         run = "pip install ropevim",
         disable = false
     }
+
+    -- commenting etc
+    use {
+    'numToStr/Comment.nvim',
+    config = function()
+        require('Comment').setup()
+        -- NERDCommenter-style mappings
+        vim.keymap.set('n', '<leader>cc', 'gcc', { remap = true })
+        vim.keymap.set('v', '<leader>cc', 'gc', { remap = true })
+        vim.keymap.set('n', '<leader>cu', 'gcc', { remap = true })
+        vim.keymap.set('v', '<leader>cu', 'gc', { remap = true })
+        vim.keymap.set('n', '<leader>c<space>', 'gcc', { remap = true })
+        vim.keymap.set('v', '<leader>c<space>', 'gc', { remap = true })
+    end
+}
 
     -- code search stuff
     use 'preservim/tagbar'

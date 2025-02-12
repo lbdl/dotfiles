@@ -52,14 +52,12 @@ cmp.setup({
 })
 
 
-
-
 -- Treesitter Plugin Setup
 require('nvim-treesitter.configs').setup {
-    ensure_installed = { "bash", "c", "cmake", "css", "dockerfile", "go", "gomod", "gowork", "hcl", "help", "html",
-        "http", "javascript", "json", "lua", "make", "markdown", "python", "regex", "ruby", "rust", "toml", "vim",
+    ensure_installed = { "bash", "c", "cmake", "css", "go", "gomod", "gowork", "hcl", "help", "html",
+        "http", "javascript", "json", "make", "markdown", "python", "regex", "ruby", "rust", "toml", "vim",
         "yaml",
-        "zig", "proto", },
+         "proto", },
     auto_install = true,
     ignore_install = { "latex" },
     highlight = {
