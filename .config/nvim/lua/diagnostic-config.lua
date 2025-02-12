@@ -26,7 +26,16 @@ vim.diagnostic.config({
     },
 })
 
-vim.cmd([[
-set signcolumn=yes
-autocmd CursorHold * lua vim.diagnostic.open_float(nil, { focusable = false })
-]])
+vim.opt.signcolumn = "yes:1"
+
+-- Set up diagnostic float
+vim.api.nvim_create_autocmd("CursorHold", {
+    callback = function()
+        vim.diagnostic.open_float(nil, { focusable = false })
+    end,
+})
+
+--vim.cmd([[
+--set signcolumn=yes
+--autocmd CursorHold * lua vim.diagnostic.open_float(nil, { focusable = false })
+--]])

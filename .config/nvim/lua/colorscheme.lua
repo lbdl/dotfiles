@@ -7,7 +7,6 @@ local colors = {
     foreground = "#F8F8F2",
     selection = "#49483E",
     comments = "#75715E",
-    
     -- Primary colors
     yellow = "#E6DB74",
     orange = "#FD971F",
@@ -40,7 +39,6 @@ local colors = {
     -- Special highlights
     findHighlight = "#FFE792",
     findHighlightForeground = "#000000",
-    
     -- Specific mappings for notify
     samuraiRed = "#F92672",      -- Using Monokai red
     roninYellow = "#FD971F",     -- Using Monokai orange

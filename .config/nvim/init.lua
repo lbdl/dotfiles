@@ -133,6 +133,7 @@ vim.api.nvim_create_autocmd("FileType", {
     end
 })
 
+
 -- Go Highlight Settings
 vim.g.go_highlight_build_constraints = 1
 vim.g.go_highlight_extra_types = 1
@@ -187,6 +188,7 @@ end
 local lspconfig_ok, _ = pcall(require, 'lspconfig')
 if lspconfig_ok then
     require('lsp-dap')  -- Your LSP configuration file
+    require('diagnostic-config')
 end
 
 -- Load general configurations
