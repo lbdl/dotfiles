@@ -31,6 +31,9 @@ return require('packer').startup(function(use)
     use "rebelot/kanagawa.nvim"
     use "tomlion/vim-solidity"
 
+    -- indentation guides
+    use "lukas-reineke/indent-blankline.nvim"
+
     -- DAP adaptor
     use 'mfussenegger/nvim-dap'
     use 'mfussenegger/nvim-dap-python'
@@ -47,6 +50,7 @@ return require('packer').startup(function(use)
     -- git stuff
     use 'jreybert/vimagit'
     use 'airblade/vim-gitgutter'
+    use 'tpope/vim-fugitive'
 
     -- Useful completion sources:
     use 'hrsh7th/cmp-nvim-lua'

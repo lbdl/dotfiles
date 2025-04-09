@@ -131,3 +131,35 @@ require('nvim-tree').setup {
         ignore = false,
     },
 }
+
+require("ibl").setup {
+    -- For indent-blankline v3+ (latest version)
+    indent = {
+        char = "│", -- Choose the character you prefer for indent lines
+        tab_char = "│",
+    },
+    scope = { 
+        enabled = true,
+        show_start = true,
+        show_end = false,
+        highlight = {"Function", "Label"},
+    },
+    exclude = {
+        filetypes = {
+            "help",
+            "dashboard",
+            "NvimTree",
+            "Trouble",
+            "lazy",
+            "mason",
+            "notify",
+            "toggleterm",
+        },
+        buftypes = {
+            "terminal",
+            "nofile",
+            "quickfix",
+            "prompt",
+        },
+    },
+}

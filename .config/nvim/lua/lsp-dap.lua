@@ -81,6 +81,18 @@ require('lspconfig').pylsp.setup {
     },
 }
 
+local lspconfig = require('lspconfig')
+lspconfig.biome.setup({
+  -- Basic setup
+  cmd = { "biome", "lsp-proxy" },
+  filetypes = { "javascript", "javascriptreact", "json", "jsonc", "typescript", "typescriptreact" },
+  root_dir = lspconfig.util.root_pattern("biome.json", "biome.jsonc", ".git"),
+  -- Additional settings if needed
+  settings = {
+    -- You can add specific Biome LSP settings here if needed
+  },
+})
+
 require('lspconfig').dockerls.setup {
     capabilities = capabilities,
     on_attach = on_attach,
@@ -103,6 +115,7 @@ require('lspconfig').ruby_lsp.setup {
 
 local cmp_capabilities = vim.lsp.protocol.make_client_capabilities()
 cmp_capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+
 require('lspconfig').solidity.setup {
     capabilities = capabilities,
     cmd = { "nomicfoundation-solidity-language-server", "--stdio" },
@@ -145,6 +158,21 @@ require('lspconfig').ts_ls.setup {
 --        closingLabels = true,
 --    },
 --}
+
+require('lspconfig').marksman.setup {
+    capabilities = capabilities,
+    on_attach = on_attach,
+    init_options = {
+        onlyAnalyzeProjectsWithOpenFiles = true,
+        suggestFromUnimportedLibraries = false,
+        closingLabels = true,
+    },
+}
+
+vim.api.nvim_set_hl(0, 'markdownCode', {
+    fg = '#F92672',
+    bg = '#272822'
+})
 
 require('lspconfig').yamlls.setup {
     capabilities = capabilities,

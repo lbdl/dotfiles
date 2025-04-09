@@ -59,7 +59,7 @@ vim.keymap.set('n', '<leader><S-g>n', ':GitGutterNextHunk<CR>')
 vim.keymap.set('n', '<leader><S-g><S-n>', ':GitGutterPrevHunk<CR>')
 vim.keymap.set('n', '<leader><S-g>a', ':GitGutterStageHunk<CR>')
 vim.keymap.set('n', '<leader><S-g>u', ':GitGutterUndoHunk<CR>')
-vim.keymap.set('n', '<leader>gs', ':Magit<CR>')
+-- vim.keymap.set('n', '<leader>gs', ':Magit<CR>')
 
 -- Indentation Settings
 vim.g.indentLine_char = '⦙'
@@ -100,15 +100,6 @@ vim.api.nvim_create_autocmd("FileType", {
         vim.opt_local.textwidth = 0
     end
 })
-
--- NERDCommenter for Solidity
-vim.g.NERDCustomDelimiters = {
-    solidity = {
-        left = '//',
-        leftAlt = '/*',
-        rightAlt = '*/'
-    }
-}
 
 -- UltiSnips
 vim.g.UltiSnipsSnippetDirectories = {"UltiSnips", "snip"}
@@ -179,6 +170,8 @@ if mason_lspconfig_ok then
             "yamlls",
             "dockerls",
             "ts_ls",
+            "marksman",
+            "solidity",
         },
         automatic_installation = true
     })
