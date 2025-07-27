@@ -4,9 +4,9 @@ vim.opt.termguicolors = true
 vim.cmd('colorscheme monokai')
 vim.opt.wrap = true
 
-
-vim.g.python3_host_prog = '~/.pyenv/versions/nvim3-10/bin/python'
-vim.g.ruby_host_prog = '~/.rbenv/versions/3.2.1/bin/neovim-ruby-host'
+--/Users/tims/.pyenv/versions/3.11.0/bin/python
+vim.g.python3_host_prog = '/Users/tims/.pyenv/versions/neovim-py3/bin/python'
+vim.g.ruby_host_prog = vim.fn.expand('~/.rbenv/versions/3.2.2/bin/neovim-ruby-host')
 
 -- Title and Encoding
 vim.opt.title = true
@@ -76,6 +76,17 @@ vim.api.nvim_create_autocmd("FileType", {
     end
 })
 
+-- MD
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = {"markdown", "md"},
+    callback = function()
+        vim.opt_local.wrap = true
+        vim.opt_local.linebreak = true
+        vim.opt_local.textwidth = 0
+        vim.opt_local.wrapmargin = 0
+        vim.opt_local.colorcolumn = "180"
+    end
+})
 -- Vagrant
 vim.api.nvim_create_augroup("vagrant", { clear = true })
 vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
@@ -172,6 +183,7 @@ if mason_lspconfig_ok then
             "ts_ls",
             "marksman",
             "solidity",
+            "ltex",
         },
         automatic_installation = true
     })
@@ -188,53 +200,12 @@ end
 require('plug')    -- Your plugin configurations
 require('opts')    -- Your additional options
 require('keys')    -- Your key mappings
+require('latex-config').setup()
 
 -- Initialize DAP and debugging tools
-local dap_ok, dap = pcall(require, 'dap')
-if dap_ok then
-    -- Initialize DAP-UI with error handling
-    local dapui_ok, dapui = pcall(require, 'dapui')
-    if dapui_ok then
-        dapui.setup({
-            layouts = {
-                {
-                    elements = {
-                        'scopes',
-                        'breakpoints',
-                        'stacks',
-                        'watches',
-                    },
-                    size = 40,
-                    position = 'left',
-                },
-                {
-                    elements = {
-                        'repl',
-                        'console',
-                    },
-                    size = 10,
-                    position = 'bottom',
-                },
-            },
-        })
-        
-        -- Add DAP event listeners
-        dap.listeners.after.event_initialized["dapui_config"] = function()
-            dapui.open()
-        end
-        dap.listeners.before.event_terminated["dapui_config"] = function()
-            dapui.close()
-        end
-        dap.listeners.before.event_exited["dapui_config"] = function()
-            dapui.close()
-        end
-    end
-
-    -- Setup Python DAP
-    local dap_python_ok, dap_python = pcall(require, 'dap-python')
-    if dap_python_ok then
-        dap_python.setup('~/.pyenv/versions/nvim3-10/bin/python')
-    end
+local dap_setup_ok, dap_setup = pcall(require, 'dap-init')
+if dap_setup_ok then
+  dap_setup.setup()
 end
 
 -- Load your remaining plugin configurations

@@ -1,7 +1,3 @@
-# this is all nicked from:
-# zanshin.net/2013/02/02/zsh-configuration-from-the-ground-up
-
-source ~/.zsh/checks.zsh
 source ~/.zsh/colors.zsh
 source ~/.zsh/setopt.zsh
 source ~/.zsh/exports.zsh
@@ -12,7 +8,6 @@ source ~/.zsh/bindkeys.zsh
 source ~/.zsh/functions.zsh
 source ~/.zsh/history.zsh
 source ~/.zsh/zsh_hooks.zsh
-#source  ${HOME}/.dotfiles/z/z.sh
 
 # direnv inits
 if which direnv > /dev/null; then
@@ -31,17 +26,20 @@ if which pyenv-virtualenv-init > /dev/null; then
     eval "$(pyenv virtualenv-init -)"
 fi
 
+if which rbenv > /dev/null; then
+    eval "$(rbenv init -)"
+fi
+
 if which nodenv > /dev/null; then
     export PATH="$HOME/.nodenv/bin:$PATH"
     eval "$(nodenv init -)"
 fi
 
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
+source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 ## pnpm
-export PNPM_HOME="/Users/tims/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
+#export PNPM_HOME="/Users/tims/Library/pnpm"
+#case ":$PATH:" in
+#  *":$PNPM_HOME:"*) ;;
+#  *) export PATH="$PNPM_HOME:$PATH" ;;
+#esac
 # pnpm end

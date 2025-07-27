@@ -25,7 +25,8 @@ local on_attach = function(client, bufnr)
     end
 end
 
---notification setting for Notify
+-- Define capabilities for LSP servers
+local capabilities = vim.lsp.protocol.make_client_capabilities()
 
 -- LSPs
 -- these have been installed via Mason
@@ -113,8 +114,8 @@ require('lspconfig').ruby_lsp.setup {
     },
 }
 
-local cmp_capabilities = vim.lsp.protocol.make_client_capabilities()
-cmp_capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+-- Setup completion capabilities
+capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 require('lspconfig').solidity.setup {
     capabilities = capabilities,

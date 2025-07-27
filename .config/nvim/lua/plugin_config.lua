@@ -54,7 +54,7 @@ cmp.setup({
 
 -- Treesitter Plugin Setup
 require('nvim-treesitter.configs').setup {
-    ensure_installed = { "bash", "c", "cmake", "css", "go", "gomod", "gowork", "hcl", "help", "html",
+    ensure_installed = { "bash", "c", "cmake", "css", "go", "gomod", "gowork", "hcl", "html",
         "http", "javascript", "json", "make", "markdown", "python", "regex", "ruby", "rust", "toml", "vim",
         "yaml",
          "proto", },

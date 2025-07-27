@@ -17,6 +17,8 @@ return require('packer').startup(function(use)
     use 'williamboman/mason.nvim'
     use 'williamboman/mason-lspconfig'
 
+    use 'nvim-neotest/nvim-nio'
+
     -- RUST
     use 'simrat39/rust-tools.nvim'
     
@@ -108,9 +110,12 @@ return require('packer').startup(function(use)
         requires = { 'kyazdani42/nvim-web-devicons', opt = true } }
 
     -- refactoring for PY
-    use { "python-rope/ropevim",
-        run = "pip install ropevim",
-        disable = false
+    use {
+        "ThePrimeagen/refactoring.nvim",
+        requires = {
+            {"nvim-lua/plenary.nvim"},
+            {"nvim-treesitter/nvim-treesitter"}
+        }
     }
 
     -- commenting etc
