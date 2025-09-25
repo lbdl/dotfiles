@@ -1,7 +1,7 @@
 -- Basic Options
 vim.opt.background = 'dark'
 vim.opt.termguicolors = true
-vim.cmd('colorscheme monokai')
+vim.cmd('colorscheme kanagawa')
 vim.opt.wrap = true
 
 --/Users/tims/.pyenv/versions/3.11.0/bin/python
@@ -26,6 +26,13 @@ vim.g.maplocalleader = "\\"
 
 -- Mouse
 vim.opt.mouse = 'a'
+
+-- Cursor
+vim.opt.guicursor = {
+    "n-v-c:block-blinkwait500-blinkoff300-blinkon200",
+    "i-ci-ve:ver25-blinkwait500-blinkoff300-blinkon200",
+    "r-cr:hor20-blinkwait500-blinkoff300-blinkon200"
+}
 
 -- Status Line
 vim.opt.showmode = true
@@ -119,9 +126,17 @@ vim.g.UltiSnipsSnippetDirectories = {"UltiSnips", "snip"}
 vim.g.vimtex_compiler_method = 'latexmk'
 vim.api.nvim_create_augroup("filetype_tex", { clear = true })
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = "tex",
-    group = "filetype_tex",
-    command = "set spell spelllang=en_gb"
+	pattern = "tex",
+	group = "filetype_tex",
+    callback = function()
+        vim.opt_local.spell = true
+        vim.opt_local.spelllang = "en_gb"
+        vim.opt_local.wrap = true
+        vim.opt_local.linebreak = true
+        vim.opt_local.textwidth = 0
+        vim.opt_local.wrapmargin = 0
+        vim.opt_local.colorcolumn = "180"
+    end
 })
 
 -- Golang Settings
@@ -169,25 +184,6 @@ if mason_ok then
     })
 end
 
--- Setup Mason-LSPconfig after Mason
-local mason_lspconfig_ok, mason_lspconfig = pcall(require, 'mason-lspconfig')
-if mason_lspconfig_ok then
-    mason_lspconfig.setup({
-        ensure_installed = {
-            "gopls",
-            "rust_analyzer",
-            "pylsp",
-            "ruby_lsp",
-            "yamlls",
-            "dockerls",
-            "ts_ls",
-            "marksman",
-            "solidity",
-            "ltex",
-        },
-        automatic_installation = true
-    })
-end
 
 -- Load LSP configurations
 local lspconfig_ok, _ = pcall(require, 'lspconfig')

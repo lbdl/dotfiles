@@ -35,6 +35,12 @@ if which nodenv > /dev/null; then
     eval "$(nodenv init -)"
 fi
 
+export PHPENV_ROOT="$HOME/.phpenv"
+[[ -d $PHPENV_ROOT/bin ]] && export PATH="$PHPENV_ROOT/bin:$PATH"
+if which phpenv > /dev/null; then
+    eval "$(phpenv init -)"
+fi
+
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 ## pnpm
 #export PNPM_HOME="/Users/tims/Library/pnpm"

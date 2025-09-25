@@ -5,6 +5,7 @@ local M = {}
 
 function M.setup()
     -- vimtex configuration
+    vim.g.vimtex_quickfix_mode = 0  -- Open quickfix on errors
     vim.g.vimtex_view_method = 'skim'  -- Use Skim PDF viewer on Mac
     vim.g.vimtex_compiler_latexmk = {
         build_dir = 'build',  -- Keep build files organized
@@ -41,17 +42,16 @@ function M.setup()
     vim.g.vimtex_mappings_disable = { ['n'] = { 'K' } }  -- Keep K for LSP hover
 
     -- Quickfix window configuration
-    vim.g.vimtex_quickfix_method = 'pplatex'
-    vim.g.vimtex_quickfix_mode = 2  -- Open quickfix on errors
+    -- vim.g.vimtex_quickfix_method = 'pplatex'
 
     -- LaTeX file type autocmd
     vim.api.nvim_create_autocmd("FileType", {
         pattern = "tex",
         callback = function()
-            vim.opt_local.conceallevel = 2  -- Enable concealment
-            vim.opt_local.wrap = true
-            vim.opt_local.linebreak = true
-            vim.opt_local.textwidth = 80
+
+            -- vim.opt_local.wrap = true
+            -- vim.opt_local.linebreak = true
+            -- vim.opt_local.textwidth = 80
             vim.opt_local.formatoptions = "tcqj"
             
             -- LaTeX-specific keymaps

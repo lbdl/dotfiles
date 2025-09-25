@@ -33,6 +33,17 @@ map("n", "HH", ":HopWord<cr>")
 map("n", "HF", ":HopPattern<cr>")
 map("n", "HL", ":HopLineStart<cr>")
 
+-- Python
+local nvim_python_dir = vim.fn.fnamemodify(vim.g.python3_host_prog, ':h')
+
+-- Manual Black formatting
+map('n', '<leader>lb', ':!' .. nvim_python_dir .. '/black --quiet %<CR>:edit<CR>')
+-- Manual Ruff linting and fixing  
+map('n', '<leader>lr', ':!' .. nvim_python_dir .. '/ruff check --fix %<CR>')
+-- Ruff check only (no fixes)
+map('n', '<leader>lR', ':!' .. nvim_python_dir .. '/ruff check %<CR>')
+-- Show Ruff rules for current file
+map('n', '<leader>lrr', ':!' .. nvim_python_dir .. '/ruff check --explain %<CR>')
 
 -- Telescope
 map("n", "<leader>ff", ":lua require('telescope.builtin').find_files()<cr>")
@@ -42,6 +53,8 @@ map("n", "<leader>fb", ":lua require('telescope.builtin').buffers()<cr>")
 map("n", "<leader>fh", ":lua require('telescope.builtin').help_tags()<cr>")
 map("n", "<leader>fd", ":lua require('telescope.builtin').diagnostics()<cr>")
 map("n", "<leader>fs", ":lua require('telescope.builtin').lsp_workspace_symbols()<cr>")
+map("n", "<leader>fo", ":lua require('telescope.builtin').lsp_document_symbols()<cr>")
+map("n", "<leader>fO", ":lua require('telescope.builtin').lsp_dynamic_workspace_symbols()<cr>")
 map("n", "<leader>fr", ":lua require('telescope.builtin').lsp_references()<cr>")
 map("n", "<leader>fi", ":lua require('telescope.builtin').lsp_implementations()<cr>")
 map("n", "<leader>fl", ":lua require('telescope.builtin').treesitter()<cr>")

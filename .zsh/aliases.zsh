@@ -83,21 +83,13 @@ fi
 #alias mysqladmin='mysqladmin -u root'
 
 # -------------------------------------------------------------------
-# ome devvm start, stop, ssh, and mount
-# -------------------------------------------------------------------
-#alias 'startvm=VBoxHeadless --startvm devvm'
-#alias 'stopvm=VBoxManage controlvm devvm poweroff'
-#alias 'devvm=ssh -p 10022 ome@localhost'
-#alias 'devmount=mount_smbfs //ome:ch1cag0@localhost:10139/ome /Users/$USERNAME/Projects/devvm/'
-
-
-# -------------------------------------------------------------------
 # Git
 # -------------------------------------------------------------------
 alias ga='git add'
 alias gp='git push'
+alias gpl='git pull'
 alias gl='git log'
-alias gpl="git log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+alias glp="git log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 alias gs='git status'
 alias gd='git diff'
 alias gm='git commit -m'
@@ -110,7 +102,6 @@ alias gco='git checkout'
 alias gcb='git checkout -b'
 alias gra='git remote add'
 alias grr='git remote rm'
-alias gpu='git pull'
 alias gmm="git merge"
 alias gcl='git clone'
 alias gta='git tag -a -m'
@@ -131,9 +122,14 @@ alias gu="git shortlog | grep -E '^[^ ]'"
 # -------------------------------------------------------------------
 # Python virtualenv 
 # -------------------------------------------------------------------
-alias mkenv='mkvirtualenv'
+alias mkenv='pyenv virtualenv'
 alias on="workon"
 alias off="deactivate"
+
+# -------------------------------------------------------------------
+# Annoyance removal stuff
+# -------------------------------------------------------------------
+alias cl=clear
 
 # -------------------------------------------------------------------
 # Oddball stuff
@@ -149,22 +145,6 @@ alias rm='rm -i' # make rm command (potentially) less destructive
 alias acat='< ~/.zsh/aliases.zsh'
 alias fcat='< ~/.zsh/functions.zsh'
 alias sz='source ~/.zshrc'
-
-
-# -------------------------------------------------------------------
-# some Octopress helpers
-# -------------------------------------------------------------------
-#alias generate='date ; rake generate ; date ;'
-#alias gen='date ; rake generate ; date ;'
-#alias ingen='date ; rake integrate ; generate ; date ;'
-#alias deploy='rm deploy.log ; rake deploy > deploy.log ; tail -n 3 deploy.log ;'
-#alias np='newpost.rb'
-
-# copy .htaccess files for zanshin.net and its image sub-directory
-#alias 'htaccess=scp /Users/mark/Projects/octopress/zanshin/source/htaccess/.htaccess markn@markn.webfactional.com:~/webapps/zanshin ; scp /Users/mark/Projects/octopress/zanshin/source/images/.htaccess markn@markn.webfactional.com:~/webapps/zanshin/images ;'
-
-# deploy zanshin.net and move its .htaccess files
-alias 'dz=deploy ; htaccess ;'
 
 # -------------------------------------------------------------------
 # Source: http://aur.archlinux.org/packages/lolbash/lolbash/lolbash.sh

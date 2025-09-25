@@ -1,3 +1,4 @@
+print("DEBUG: lsp-dap.lua file started loading")
 local on_attach = function(client, bufnr)
     local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
     local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
@@ -62,6 +63,7 @@ require('lspconfig').lua_ls.setup({
         },
     },
 })
+
 --require('lspconfig').cairo_ls.setup {
     --capabilities = capabilities,
     --on_attach = on_attach,
@@ -72,14 +74,98 @@ require('lspconfig').lua_ls.setup({
     --},
 --}
 
-require('lspconfig').pylsp.setup {
+-- LaTeX LSP (ltex-ls) configuration - DISABLED for spell checking
+-- Using Neovim's native spell checking instead
+print("DEBUG: lsp-dap.lua is loading")
+local lspconfig = require('lspconfig')
+print("DEBUG: About to setup ltex with en-GB")
+lspconfig.ltex.setup {
     capabilities = capabilities,
-    on_attach = on_attach,
-    init_options = {
-        onlyAnalyzeProjectsWithOpenFiles = true,
-        suggestFromUnimportedLibraries = false,
-        closingLabels = true,
+    on_attach = function(client, bufnr)
+        on_attach(client, bufnr)
+        -- Filter out US spelling diagnostics
+        -- vim.diagnostic.config({
+        --     virtual_text = {
+        --         source = "if_many",
+        --         format = function(diagnostic)
+        --             if diagnostic.source == "LTeX" and 
+        --                diagnostic.code and 
+        --                string.match(diagnostic.code, "MORFOLOGIK_RULE_EN_US") then
+        --                 return nil  -- Hide this diagnostic
+        --             end
+        --             return diagnostic.message
+        --         end
+        --     }
+        -- }, bufnr)
+    end,
+    settings = {
+        ltex = {
+            language = "en-GB",
+            enabled = { "latex", "tex", "bib" },
+            diagnosticSeverity = "information",
+            disabledRules = {
+                ["en-GB"] = {"OXFORD_SPELLING_Z_NOT_S", "ENGLISH_WORD_REPEAT_BEGINNING_RULE"}
+            }
+        },
     },
+    filetypes = { "tex", "latex", "bib" },
+    force_setup = true,
+}
+
+require('lspconfig').pyright.setup {
+    capabilities = capabilities,
+    on_attach = function(client, bufnr)
+        on_attach(client, bufnr)
+        
+        -- Use Neovim's Black but understand project's Python
+        if client.supports_method("textDocument/formatting") then
+            vim.api.nvim_create_autocmd("BufWritePre", {
+                buffer = bufnr,
+                pattern = "*.py",
+                callback = function()
+                    -- Always use Neovim's Black (consistent, always available)
+                    local nvim_python_dir = vim.fn.fnamemodify(vim.g.python3_host_prog, ':h')
+                    local black_path = nvim_python_dir .. '/black'
+                    local ruff_path = nvim_python_dir .. '/ruff'
+                    
+                    if vim.fn.executable(black_path) == 1 then
+                        vim.cmd("!" .. black_path .. " --quiet " .. vim.fn.expand("%"))
+                        vim.cmd("edit")
+                    end
+
+                     -- Then lint and fix with Ruff
+                    if vim.fn.executable(ruff_path) == 1 then
+                        vim.cmd("!" .. ruff_path .. " check --fix --quiet " .. vim.fn.expand("%"))
+                    end
+
+                    vim.cmd("edit") -- Reload the file to show all changes
+
+                end,
+            })
+        end
+    end,
+    settings = {
+        python = {
+            analysis = {
+                autoSearchPaths = true,
+                useLibraryCodeForTypes = true,
+                diagnosticMode = "workspace",
+                typeCheckingMode = "basic",
+                autoImportCompletions = true,
+                indexing = true,
+            },
+            -- Let Pyright detect project's Python but Neovim uses its own tools
+            pythonPath = nil,
+            venvPath = vim.fn.expand('~/.pyenv/versions'),
+        },
+    },
+    root_dir = require('lspconfig.util').root_pattern(
+        'pyproject.toml',
+        '.python-version',
+        'setup.py', 
+        'requirements.txt',
+        '.git'
+    ),
 }
 
 local lspconfig = require('lspconfig')
@@ -138,17 +224,6 @@ require('lspconfig').ts_ls.setup {
         closingLabels = true,
     },
 }
-
---require('lspconfig').ltex.setup {
-    --capabilities = capabilities,
-    --on_attach = on_attach,
-    --language = "en.GB",
-    --init_options = {
-        --onlyAnalyzeProjectsWithOpenFiles = true,
-        --suggestFromUnimportedLibraries = false,
-        --closingLabels = true,
-    --},
---}
 
 --require('lspconfig').gopls.setup {
 --    capabilities = capabilities,
