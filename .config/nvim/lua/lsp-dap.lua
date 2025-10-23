@@ -104,7 +104,7 @@ lspconfig.ltex.setup {
             enabled = { "latex", "tex", "bib" },
             diagnosticSeverity = "information",
             disabledRules = {
-                ["en-GB"] = {"OXFORD_SPELLING_Z_NOT_S", "ENGLISH_WORD_REPEAT_BEGINNING_RULE"}
+                ["en-GB"] = {"OXFORD_SPELLING_Z_NOT_S", "ENGLISH_WORD_REPEAT_BEGINNING_RULE", "ID_CASING", "MORFOLOGIK_RULE_EN_GB"}
             }
         },
     },
