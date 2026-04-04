@@ -31,27 +31,25 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 
 -- LSPs
 -- these have been installed via Mason
--- rust_analyzer needs setup as below
-local rt = require("rust-tools")  -- Need to store rust-tools in a variable to use later
-
-rt.setup({
+-- rust_analyzer needs setup as below via rustaceanvim (replaces rust-tools)
+vim.g.rustaceanvim = {
     server = {
-        cmd = { "rust-analyzer" },  -- Missing comma and should be "rust-analyzer" not "rust_analyzer"
+        cmd = { "rust-analyzer" },
         on_attach = function(_, bufnr)
             -- Hover actions
-            vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr })
+            vim.keymap.set("n", "<C-space>", function() vim.cmd.RustLsp({ 'hover', 'actions' }) end, { buffer = bufnr })
             -- Code action groups
-            vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
+            vim.keymap.set("n", "<Leader>a", function() vim.cmd.RustLsp('codeAction') end, { buffer = bufnr })
         end,
     },
-})
+}
 
 
 -- Rest of LSP's below
 -- see :h mason-lspconfig
 
 -- example to setup sumneko and enable call snippets
-require('lspconfig').lua_ls.setup({
+vim.lsp.config('lua_ls', {
     settings = {
         Lua = {
             completion = {
@@ -77,9 +75,8 @@ require('lspconfig').lua_ls.setup({
 -- LaTeX LSP (ltex-ls) configuration - DISABLED for spell checking
 -- Using Neovim's native spell checking instead
 print("DEBUG: lsp-dap.lua is loading")
-local lspconfig = require('lspconfig')
 print("DEBUG: About to setup ltex with en-GB")
-lspconfig.ltex.setup {
+vim.lsp.config('ltex', {
     capabilities = capabilities,
     on_attach = function(client, bufnr)
         on_attach(client, bufnr)
@@ -88,8 +85,8 @@ lspconfig.ltex.setup {
         --     virtual_text = {
         --         source = "if_many",
         --         format = function(diagnostic)
-        --             if diagnostic.source == "LTeX" and 
-        --                diagnostic.code and 
+        --             if diagnostic.source == "LTeX" and
+        --                diagnostic.code and
         --                string.match(diagnostic.code, "MORFOLOGIK_RULE_EN_US") then
         --                 return nil  -- Hide this diagnostic
         --             end
@@ -109,14 +106,13 @@ lspconfig.ltex.setup {
         },
     },
     filetypes = { "tex", "latex", "bib" },
-    force_setup = true,
-}
+})
 
-require('lspconfig').pyright.setup {
+vim.lsp.config('pyright', {
     capabilities = capabilities,
     on_attach = function(client, bufnr)
         on_attach(client, bufnr)
-        
+
         -- Use Neovim's Black but understand project's Python
         if client.supports_method("textDocument/formatting") then
             vim.api.nvim_create_autocmd("BufWritePre", {
@@ -127,7 +123,7 @@ require('lspconfig').pyright.setup {
                     local nvim_python_dir = vim.fn.fnamemodify(vim.g.python3_host_prog, ':h')
                     local black_path = nvim_python_dir .. '/black'
                     local ruff_path = nvim_python_dir .. '/ruff'
-                    
+
                     if vim.fn.executable(black_path) == 1 then
                         vim.cmd("!" .. black_path .. " --quiet " .. vim.fn.expand("%"))
                         vim.cmd("edit")
@@ -159,28 +155,27 @@ require('lspconfig').pyright.setup {
             venvPath = vim.fn.expand('~/.pyenv/versions'),
         },
     },
-    root_dir = require('lspconfig.util').root_pattern(
+    root_markers = {
         'pyproject.toml',
         '.python-version',
-        'setup.py', 
+        'setup.py',
         'requirements.txt',
-        '.git'
-    ),
-}
+        '.git',
+    },
+})
 
-local lspconfig = require('lspconfig')
-lspconfig.biome.setup({
+vim.lsp.config('biome', {
   -- Basic setup
   cmd = { "biome", "lsp-proxy" },
   filetypes = { "javascript", "javascriptreact", "json", "jsonc", "typescript", "typescriptreact" },
-  root_dir = lspconfig.util.root_pattern("biome.json", "biome.jsonc", ".git"),
+  root_markers = { "biome.json", "biome.jsonc", ".git" },
   -- Additional settings if needed
   settings = {
     -- You can add specific Biome LSP settings here if needed
   },
 })
 
-require('lspconfig').dockerls.setup {
+vim.lsp.config('dockerls', {
     capabilities = capabilities,
     on_attach = on_attach,
     init_options = {
@@ -188,9 +183,9 @@ require('lspconfig').dockerls.setup {
         suggestFromUnimportedLibraries = false,
         closingLabels = true,
     },
-}
+})
 
-require('lspconfig').ruby_lsp.setup {
+vim.lsp.config('ruby_lsp', {
     capabilities = capabilities,
     on_attach = on_attach,
     init_options = {
@@ -198,24 +193,24 @@ require('lspconfig').ruby_lsp.setup {
         suggestFromUnimportedLibraries = false,
         closingLabels = true,
     },
-}
+})
 
 -- Setup completion capabilities
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
-require('lspconfig').solidity.setup {
+vim.lsp.config('solidity', {
     capabilities = capabilities,
     cmd = { "nomicfoundation-solidity-language-server", "--stdio" },
     on_attach = on_attach,
-    require("lspconfig.util").root_pattern "foundry.toml",
+    root_markers = { "foundry.toml" },
     init_options = {
         onlyAnalyzeProjectsWithOpenFiles = true,
         suggestFromUnimportedLibraries = false,
         closingLabels = true,
     }
-}
+})
 
-require('lspconfig').ts_ls.setup {
+vim.lsp.config('ts_ls', {
     capabilities = capabilities,
     on_attach = on_attach,
     init_options = {
@@ -223,7 +218,7 @@ require('lspconfig').ts_ls.setup {
         suggestFromUnimportedLibraries = false,
         closingLabels = true,
     },
-}
+})
 
 --require('lspconfig').gopls.setup {
 --    capabilities = capabilities,
@@ -235,7 +230,7 @@ require('lspconfig').ts_ls.setup {
 --    },
 --}
 
-require('lspconfig').marksman.setup {
+vim.lsp.config('marksman', {
     capabilities = capabilities,
     on_attach = on_attach,
     init_options = {
@@ -243,14 +238,14 @@ require('lspconfig').marksman.setup {
         suggestFromUnimportedLibraries = false,
         closingLabels = true,
     },
-}
+})
 
 vim.api.nvim_set_hl(0, 'markdownCode', {
     fg = '#F92672',
     bg = '#272822'
 })
 
-require('lspconfig').yamlls.setup {
+vim.lsp.config('yamlls', {
     capabilities = capabilities,
     on_attach = on_attach,
     init_options = {
@@ -258,7 +253,21 @@ require('lspconfig').yamlls.setup {
         suggestFromUnimportedLibraries = false,
         closingLabels = true,
     },
-}
+})
+
+-- Enable all configured servers
+vim.lsp.enable({
+    'lua_ls',
+    'ltex',
+    'pyright',
+    'biome',
+    'dockerls',
+    'ruby_lsp',
+    'solidity',
+    'ts_ls',
+    'marksman',
+    'yamlls',
+})
 
 
 -----------------------------

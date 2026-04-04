@@ -185,12 +185,9 @@ if mason_ok then
 end
 
 
--- Load LSP configurations
-local lspconfig_ok, _ = pcall(require, 'lspconfig')
-if lspconfig_ok then
-    require('lsp-dap')  -- Your LSP configuration file
-    require('diagnostic-config')
-end
+-- Load LSP configurations (using vim.lsp.config, not require('lspconfig'))
+require('lsp-dap')  -- Your LSP configuration file
+require('diagnostic-config')
 
 -- Load general configurations
 require('plug')    -- Your plugin configurations

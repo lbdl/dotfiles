@@ -20,8 +20,11 @@ return require('packer').startup(function(use)
     use 'nvim-neotest/nvim-nio'
 
     -- RUST
-    use 'simrat39/rust-tools.nvim'
+    use 'mrcjkb/rustaceanvim'
     
+    -- Ansi
+    use 'powerman/vim-plugin-AnsiEsc'
+
     -- SNIPPETS
     use 'SirVer/ultisnips'
     use 'honza/vim-snippets'
